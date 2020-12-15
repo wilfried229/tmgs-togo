@@ -67,16 +67,16 @@
                                 <table id="example1" class="table  estdata table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Site</th>
-                                        <th>Voie</th>
-                                        <th>Vacation</th>
-                                        <th>Agent</th>
+                                        <th data-target="date">Date</th>
+                                        <th data-target="site">Site</th>
+                                        <th data-target="voie">Voie</th>
+                                        <th data-target="vacation">Vacation</th>
+                                        <th data-target="agent">Agent</th>
 
-                                        <th>Montant</th>
+                                        <th data-target="montant">Montant</th>
 
-                                        <th>Recette Informatisée</th>
-                                        <th>Recette déclarée</th>
+                                        <th data-target="recette_information">Recette Informatisée</th>
+                                        <th data-target="recette_declarer">Recette déclarée</th>
                                         <th>Manquant</th>
                                         <th>Suplus</th>
                                         <th>Vl</th>
@@ -87,6 +87,7 @@
                                         <th>Violation</th>
                                         <th>Total</th>
                                         <th>Observation</th>
+                                        <th>Enregister Par</th>
 
                                         <th>Action</th>
                                     </tr>
@@ -113,6 +114,7 @@
                                         <th>Violation</th>
                                         <th>Total</th>
                                         <th>Observation</th>
+                                        <th>Enregister Par</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -124,26 +126,25 @@
 
                                         <tr>
                                             <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-                                            <td>{{$recette->date}}</td>
-
+                                            <td>{{$recette->site()->first()->libelle}}</td>
+                                            <td>{{$recette->voie()->first()->libelle}}</td>
+                                            <td>{{$recette->vacation}}</td>
+                                            <td>{{$recette->agent_voie}}</td>
+                                            <td>{{$recette->montant}}</td>
+                                            <td>{{$recette->recette_informatiser}}</td>
+                                            <td>{{$recette->recette_declarer}}</td>
+                                            <td>{{$recette->manquant}}</td>
+                                            <td>{{$recette->supplus}}</td>
+                                            <td>{{$recette->vl}}</td>
+                                            <td>{{$recette->mini_bus}}</td>
+                                            <td>{{$recette->autocars_camion}}</td>
+                                            <td>{{$recette->pl}}</td>
+                                            <td>{{$recette->nbre_exempte}}</td>
+                                            <td>{{$recette->violation}}</td>
+                                            <td>{{$recette->total}}</td>
+                                            <td>{{$recette->observation}}</td>
+                                            <td>{{$recette->user()->first()->name}}</td>
+<th></th>
                                         </tr>
                                     @endforeach
                                     </tbody>

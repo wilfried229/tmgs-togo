@@ -78,13 +78,27 @@
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Site</label>
-                                        <input type="text" id="site_id" name="site_id" class="form-control" required>
+
+                                        <select name="site_id" id="site_id" class="form-control">
+
+                                            @foreach ($sites as $site)
+                                            <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+                                                
+                                            @endforeach
+                                        </select>
 
                                     </div>
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Voie</label>
-                                        <input type="text" id="voie_id" name="voie_id" class="form-control" required>
+                                        <select name="voie_id" id="voie_id" class="form-control">
+
+                                            @foreach ($voies as $voie)
+                                            <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
+                                                
+                                            @endforeach
+                                        </select>
+
 
                                     </div>
                                 </div>

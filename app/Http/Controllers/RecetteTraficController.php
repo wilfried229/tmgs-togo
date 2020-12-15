@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RecetesTrafic;
+use App\Models\Site;
+use App\Models\Voie;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -18,7 +22,8 @@ class RecetteTraficController extends Controller
         //
 
         $recettes = RecetesTrafic::query()->orderByDesc('id')->get();
-        return view('recettes.index',compact('recettes'));
+        
+        return view('recettes.index',compact('recettes','voie','site'));
     }
 
     /**
@@ -29,7 +34,10 @@ class RecetteTraficController extends Controller
     public function create()
     {
         //
-        return view('recettes.create');
+
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('recettes.create',compact('sites','voies'));
     }
 
     /**
@@ -62,9 +70,10 @@ class RecetteTraficController extends Controller
             $recetteTrafic->violation = $request->violation;
             $recetteTrafic->total = $request->total;
             $recetteTrafic->observation = $request->observation;
-            $recetteTrafic->user_id = $request->user_id;
+            $recetteTrafic->user_id = 1;
             $recetteTrafic->save();
 
+            return back();
         }catch (\Exception $ex){
 
             Log::info($ex->getMessage());

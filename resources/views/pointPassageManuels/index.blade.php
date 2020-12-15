@@ -1,7 +1,7 @@
 
-@extends('template-ide')
+@extends('template')
 @section('title')
-Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
 
@@ -16,13 +16,13 @@ Idé-Log
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Idé-Log
+            <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Demande de formation</li>
+              <li class="breadcrumb-item active">Point de passage</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,7 +33,7 @@ Idé-Log
 <section class="content">
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-md-12">
-            @include('partials.notification')
+           
         </div>
     </div>
     <div class="container-fluid">
@@ -41,11 +41,8 @@ Idé-Log
         <div class="row">
             <div class="col-md-4">
                 <h6 class="element-header">
-                    @if (in_array(Auth::user()->role,['ADMINISTRATEUR','RH','ARH']))
-
-                    <a href="{{route('demandeFormation.create')}}" class="btn btn-primary">Ajouter une  demande de formation</a>
-
-                @endif
+                
+                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter une  demande de formation</a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -60,7 +57,7 @@ Idé-Log
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">Liste des demandes de formation </h5>
+                <h5 class="form-header">Liste des points de passage </h5>
 
 
             </a><!-- /.card-header -->
@@ -72,82 +69,62 @@ Idé-Log
                     <table id="example1" class="table  estdata table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Fonction</th>
-                                <th>Département</th>
-                                <th>Service</th>
-                                <th>ACCORD DU</th>
+                                <th data-target="date">Date</th>
+                                <th data-target="site">Site</th>
+                                <th data-target="voie">Voie</th>
+                                <th data-target="vacation">Vacation</th>
+                                <th data-target="type_passage">Type Passage</th>
+
+                                <th data-target="identite_percepteur">Identite percepteur</th>
+
+                                <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
+                                <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
+                                <th>Heure Debut Comptage</th>
+                                <th>Heure fin Comptage</th>
+                                <th>Trafic CompteManu</th>
+                                <th>Equipe Recette</th>
+                                <th>Etat des Donnetafic Informatisé</th>
+                                <th>Etat Donnes Recette Informatisé</th>
+                                <th>Eta Final Recette Informatisé</th>
+                                <th>Etat Final Trafic Informatisé</th>
+                                <th>observations</th>
+                                <th>Enregister Par</th>
 
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Fonction</th>
-                                <th>Département</th>
-                                <th>Service</th>
-                                <th>ACCORD DU</th>
-                                <th>Action</th>
+                                <th data-target="date">Date</th>
+                                <th data-target="site">Site</th>
+                                <th data-target="voie">Voie</th>
+                                <th data-target="vacation">Vacation</th>
+                                <th data-target="type_passage">Type Passage</th>
 
+                                <th data-target="identite_percepteur">Identite percepteur</th>
+
+                                <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
+                                <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
+                                <th>Heure Debut Comptage</th>
+                                <th>Heure fin Comptage</th>
+                                <th>Trafic CompteManu</th>
+                                <th>Equipe Recette</th>
+                                <th>Etat des Donnetafic Informatisé</th>
+                                <th>Etat Donnes Recette Informatisé</th>
+                                <th>Eta Final Recette Informatisé</th>
+                                <th>Etat Final Trafic Informatisé</th>
+                                <th>observations</th>
+                                <th>Enregister Par</th>
+
+                                <th>Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
 
-                            @foreach ($formations as $f)
+                            @foreach ($pointPassageManuels as $f)
 
                             <tr>
-                                <td>{{$f->agent()->first()->nom}}</td>
-                                <td>{{$f->agent()->first()->prenom}}</td>
-                                <td>{{$f->agent()->first()->poste}}</td>
-                                <td>{{$f->departement()->first()->libelle}}</td>
-
-                                <td>{{$f->service}}</td>
-                                <td>
-
-                                    @foreach ($validationFormations as $vf)
-
-                                    @if ($vf->demande_formation_id == $f->id)
-
-                                        {{$vf->accorder}}
-
-                                    @else
-
-
-
-                                    @endif
-
-                                    @endforeach
-                                </td>
-
-                                <td>
-
-                                    <a href="{{route('demandeFormation.show',$f->id)}}" class="btn btn-warning">Détails</a>
-
-                                    <br>
-
-
-                                    @if (in_array(Auth::user()->role,['ADMINISTRATEUR','RH','ARH']))
-                                    <a href="{{route('validation.formation',$f->id)}}"
-                                        class="btn btn-success">Valider</a>
-
-                                    @endif
-                                <br>
-                                <br>
-                                @if (in_array(Auth::user()->role,['ADMINISTRATEUR','RH','ARH']))
-
-                                <a href="{{route('demandeFormation.edit',$f->id)}}"  class="btn btn-info">Modifier </a>
-                                <a  onclick="event.preventDefault(); document.getElementById('retirer-user-form-{{$f->id}}').submit(); return false;"   class="btn btn-danger">Supprimer </a>
-
-                                <form id="retirer-user-form-{{$f->id}}" action="{{route('demandeFormation.destroy',$f->id)}}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                    @method('DELETE')
-                                </form>
-                                @endif
-
-                            </td>
+                            
 
                             </tr>
                             @endforeach

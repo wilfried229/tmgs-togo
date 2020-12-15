@@ -42,6 +42,20 @@
                 </a>
             </li>
 
+            
+            <li class="nav-item">
+                <a href="{{route('point-passage.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Point de passage</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{route('point-passage-manuel.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Point de passage Manuel</p>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a href="" class="nav-link">

@@ -16,6 +16,9 @@ class PointPassageManuelController extends Controller
     public function index()
     {
         //
+        
+        $pointPassageManuels = PointPassageMaunel::all();
+        return view('pointPassageManuels.index',compact('pointPassageManuels'));
     }
 
     /**
@@ -26,6 +29,9 @@ class PointPassageManuelController extends Controller
     public function create()
     {
         //
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('pointPassageManuels.create',compact('sites','voies'));
     }
 
     /**
@@ -59,7 +65,7 @@ class PointPassageManuelController extends Controller
             $pointPassage->etaFinal_taficInformatiser  = $request->etaDonne_taficInformatiser;
 
             $pointPassage->observations  = $request->observations;
-            $pointPassage->user_id  = $request->user_id;
+            $pointPassage->user_id  = 1;
             $pointPassage->save();
 
             return  redirect()->back();
@@ -95,6 +101,8 @@ class PointPassageManuelController extends Controller
     public function edit($id)
     {
         //
+        $pointPassageManuels = new  PointPassageMaunel();
+        return view('pointPassageManuels.edit',compat('pointPassageManuels'));
     }
 
     /**

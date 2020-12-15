@@ -14,7 +14,7 @@ class VoieController extends Controller
     public function index()
     {
         //
-        return view('');
+        return view('voie.index');
     }
 
     /**

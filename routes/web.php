@@ -37,6 +37,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
 });
-Route::get('file-import-export', [UserController::class, 'fileImportExport']);
-Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
-Route::get('file-export', [UserController::class, 'fileExport'])->name('file-export');
+Route::get('file-import-export', 'UserController@fileImportExport');
+Route::post('file-import', 'UserController@fileImport')->name('file-import');
+Route::get('file-export', 'UserController@fileExport')->name('file-export');

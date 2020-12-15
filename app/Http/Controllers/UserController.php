@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
@@ -20,12 +21,12 @@ class UserController extends Controller
 
     /**
      * @return \Illuminate\Support\Collection
-     */
-    public function fileImport(Request $request)
-    {
-        Excel::import(new UsersImport(), $request->file('file')->store('temp'));
-        return back();
-    }
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new UsersImport(), $request->file('file')->store('temp'));
+            return back();
+        }
 
     /**
      * @return \Illuminate\Support\Collection

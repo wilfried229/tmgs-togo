@@ -15,4 +15,22 @@ class RecetesTrafic extends Model
         'manquant','supplus','vl','mini_bus','autocars_camion','pl',
         'nbre_exempte','violation','total','observation','user_id'
         ];
+
+    
+        
+        public function site(){
+
+            return $this->belongsTo(Site::class,'site_id','id');
+        }
+
+        public function voie(){
+
+            return $this->belongsTo(Voie::class,'voie_id','id');
+        }
+
+
+        public function user(){
+
+            return $this->belongsTo(User::class,'user_id','id');
+        }
 }
