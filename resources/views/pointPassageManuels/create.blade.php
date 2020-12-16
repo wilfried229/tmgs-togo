@@ -48,7 +48,7 @@ Rapport TGMS-GATE \TOGO
 
                 </div>
         </div>
-        <h4 class="element-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h4>
+        <h4 class="element-header">POINT MENSUEL DES PASSAGES EN MODE MANUEL</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -57,7 +57,7 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Ajouter un point journalier passage</h5>
+                <h5 class="form-header">Point des passages en mode manuel</h5>
 
             </div>
 
@@ -176,17 +176,17 @@ Rapport TGMS-GATE \TOGO
 
                     <div class="row">
 
-                    <div class="col-lg-4 col-md-4">
+                    
 
 
                         <div class="col-md-12">
 
-                                <label for="">Observation</label>
+                            <label for="">Observation</label>
                             <textarea class="form-control" name="Observation" id="Observation" cols="30" rows="10"></textarea>
                         </div>
 
                        
-                    </div>
+                    
 
                     </div>
 

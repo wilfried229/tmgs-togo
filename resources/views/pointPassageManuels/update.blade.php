@@ -1,13 +1,12 @@
-
-@extends('template-ide')
+@extends('template')
 @section('title')
-Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
-
-<link rel="stylesheet" href="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap4.css')}}">
+<link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/select2.min.css')}}">
 
 @endsection
+
 @section('header-content')
 
 <div class="content-wrapper">
@@ -16,13 +15,13 @@ Idé-Log
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Idé-Log
+            <h1 class="m-0 text-dark">Point Passage Manuel 
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Formation</li>
+              <li class="breadcrumb-item active"> Point Passage Manuel </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,7 +31,6 @@ Idé-Log
 @section('content')
 <section class="content">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-md-3">
 
@@ -46,12 +44,11 @@ Idé-Log
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('demandeFormation.index')}}" class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('point-passage.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
-        <h4 class="element-header">Demande Formation</h4>
-        <hr>
+        <h4 class="element-header">POINT MENSUEL DES PASSAGES EN MODE MANUEL</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -60,181 +57,151 @@ Idé-Log
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Modification de la  Demande Formation N° {{$formation->id}} ({{$formation->agent->nom}} {{$formation->agent->prenom}})</h5>
+                <h5 class="form-header">Point des passages en mode manuel</h5>
 
             </div>
 
             <div class="card-body">
-
-                <form action="{{route('demandeFormation.update',$formation->id)}}" method="post" class="form">
+                <form action="{{route('point-passage.store')}}" method="post" class="form">
 
                     @csrf
-                    @method('PUT')
                     <div class="row">
+                        <div class="col-lg-4 col-md-4">
 
+                            <label for="">Date</label>
+                            <input type="date" name="date" value="{{$pointPassageManuel->date}}" class="form-control" >
+                        </div>
 
-                        <div class="col-lg-6 col-md-4">
+                        <div class="col-lg-4 col-md-4">
 
-                            <label for="">Départements</label>
+                            <label for="">Voie</label>
+                            <select class="form-control"  name="voie_id" id="voie_id">
 
-                            <select class="form-control"  name="departement_id" id="departement_id">
-
-                                @foreach ($departements as $d)
-                            <option value="{{$d->id}}" @if (old('departement_id',$d->id) == $formation->departement_id) selected
-
-                                  @endif>{{$d->libelle}}</option>
+                                @foreach ($voies as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
 
                                 @endforeach
                             </select>
-
+                        
                         </div>
-                        <div class="col-lg-6 col-md-4">
+                        <div class="col-lg-4 col-md-4">
 
-                            <label for="">Service</label>
-                        <input type="text" value="{{$formation->service}}" name="service" id="service" class="form-control">
+                            <label for="">Site </label>
+                            <select class="form-control"  name="site_id" id="site_id">
 
+                                @foreach ($sites as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                                @endforeach
+                            </select>
                         </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Vacation</label>
+                            <input type="ENUM" name="vacation"  value="{{$pointPassageManuel->vacation}}"  class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Identité percepteur</label>
+                            <input type="VACHAR" name="identite_percepteur"  value="{{$pointPassageManuel->identite_perception}}"  class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Point trafic informatisé avant démarrage du mode manel</label>
+                            <input type="TEXT" name="point_traf_info_mode_manuel"  value="{{$pointPassageManuel->point_traf_info_mode_manuel}}"  class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Solde recette informatisée avant démarrage du mode manuel</label>
+                            <input type="INT" name="solde_recette_info_mode_manuel" value="{{$pointPassageManuel->solde_recette_info_mode_manuel}}" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Heure de debut (comptage manuel) </label>
+                            <input type="TiME" name="heure_debutComptage" value="{{$pointPassageManuel->heure_debutComptage}}" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Heure de fin (comptage manuel)</label>
+                            <input type="TIME" name="heure_finComptage" value="{{$pointPassageManuel->heure_finComptage}}" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Trafic compté manuellement</label>
+                            <textarea value="{{$pointPassageManuel->trafic_compteManu}}" class="form-control" name="trafic_compteManu" id="trafic_compteManu" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Equivalent recette en FCFA</label>
+                            <textarea value="{{$pointPassageManuel->equipRecette}}" class="form-control" name="equipRecette" id="equipRecette" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat données du trafic informatiser</label>
+                            <textarea value="{{$pointPassageManuel->etaDonne_taficInformatiser}}" class="form-control" name="etaDonne_taficInformatiser" id="etaDonne_taficInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat données de recette informatiser</label>
+                            <textarea value="{{$pointPassageManuel->etaDonne_recetteInformatiser}}" class="form-control" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat final de recette informatiser</label>
+                            <textarea value="{{$pointPassageManuel->etaFinal_recetteInformatiser}}" class="form-control" name="etaFinal_recetteInformatiser" id="etaFinal_recetteInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat final du trafic informatiser</label>
+                            <textarea value="{{$pointPassageManuel->etaFinal_taficInformatiser}}" class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        
+
+                        
                     </div>
                     <br>
 
                     <div class="row">
+
+                    
+
+
                         <div class="col-md-12">
 
-                            <label for="">Sollicite une formation sur le thème</label>
-                            <textarea class="form-control"  name="solicite_formation_theme" id="solicite_formation_theme" cols="30" rows="10">{{$formation->solicite_formation_theme}}</textarea>
+                            <label for="">Observation</label>
+                            <textarea class="form-control" name="Observation" id="Observation" cols="30" rows="10"></textarea>
                         </div>
 
-                        <div class="col-md-12">
-
-                                <label for="">Motivation</label>
-                            <textarea class="form-control" name="motivation" id="motivation" cols="30" rows="10">{{$formation->motivation}}</textarea>
-                        </div>
-
-                        <div class="col-md-12">
-
-                            <label for="">Choix du formateur / de l'organisme de formation</label>
-                        <textarea placeholder=""    class="form-control" name="choix_formateur" id="choix_formateur" cols="30" rows="10">{{$formation->choix_formateur}}</textarea>
-                    </div>
+                       
+                    
 
                     </div>
 
                         <br>
                         <fieldset>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Localication</label>
-                            <select name="localisation" id="localisation" class="form-control">
-                                <option value="Nationale" @if ($formation->localisation =="Nationale") selected
+                   
+                </form >
 
-                                @endif>Nationale</option>
-                                <option value="International" @if ($formation->localisation =="International") selected
-
-                                    @endif>International</option>
-
-                            </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Adresse</label>
-                            <input type="text" value="{{$formation->adresse}}" name="adresse" id="adresse" class="form-control">
-
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Téléphone</label>
-                            <input type="text" value="{{$formation->tel}}" name="tel" id="tel" class="form-control">
-
-
-                        </div>
-
-                    </div>
-
-                        </fieldset>
-
-                    <br>
-                    <h6>Personne référente :</h6>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Nom /Prénom</label>
-                            <input type="text" value="{{$formation->nom_personne_referente}}" name="nom_personne_referente" id="nom_personne_referente" class="form-control">
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Téléphone </label>
-                            <input type="tel" value="{{$formation->tel_personne_referente}}" name="tel_personne_referente" id="tel_personne_referente" class="form-control">
-
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Email</label>
-                            <input type="text"  value="{{$formation->email_personne_referente}}"name="email_personne_referente" id="email_personne_referente" class="form-control">
-
-                        </div>
-
-
-                    </div>
-                    <br>
-
-                    <br>
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <label for="">Mode avion: Frais de déplacement(Aller/Retour)</label>
-                            <input type="number" value="{{$formation->mode_avion}}" class="form-control" name="mode_avion" id="mode_avion">
-                        </div>
-                    </div>
-
-
-
-                <h6>Frais annexes</h6>
-
-            <fieldset>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Logement</label>
-                        <input type="text" value="{{$formation->logoment}}" name="logoment" id="logoment" class="form-control">
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Restauration</label>
-                        <input type="tel" value="{{$formation->restauration}}"  name="restauration" id="restauration" class="form-control">
-                    </div>
-
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Déplacement</label>
-                        <input type="text" value="{{$formation->deplacement}}"  name="deplacement" id="deplacement" class="form-control">
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Logement (Devise)</label>
-                        <input type="text" value="{{$formation->logoment_devise}}" name="logoment_devise" id="logoment_devise" class="form-control">
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Restauration (Devise)</label>
-                        <input type="tel" value="{{$formation->restauration_devise}}"  name="restauration_devise" id="restauration_devise" class="form-control">
-                    </div>
-
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Déplacement (Devise)</label>
-                        <input type="text" value="{{$formation->deplacement_devise}}" name="deplacement_devise" id="deplacement_devise" class="form-control">
-                    </div>
-
-                </div>
-            </fieldset>
-
+            <br>
+            
 
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <input type="submit" value="Enregistrer" class="btn btn-success">
+                    <input type="submit" value="Modifier" class="btn btn-success">
 
                 </div>
             </div>
@@ -243,6 +210,18 @@ Idé-Log
             </div>
         </div>
     </div>
-
 </section>
+@endsection
+@section('custmo-js')
+<script src="{{asset('AdminLTE/plugins/select2/select2.full.min.js')}}"></script>
+
+<script>
+   $(function () {
+     //Initialize Select2 Elements
+     $('.select2').select2()
+
+
+
+   })
+ </script>
 @endsection
