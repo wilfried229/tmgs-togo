@@ -65,7 +65,7 @@ TGMS-GATE
 
             <div class="row">
               <div class="col-md-12">
-                  <input type="text" name="libelle" value="{{ $site->libelle }}" class="form-control">
+                  <input type="text" name="libelle" value="{{ $voie->libelle }}" class="form-control">
 
               </div>
           </div>
