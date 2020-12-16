@@ -1,12 +1,11 @@
-
-@extends('template-ide')
+@extends('template')
 @section('title')
-TGMS-TOGO
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
 <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/select2.min.css')}}">
 
-@endsection()
+@endsection
 
 @section('header-content')
 
@@ -16,13 +15,13 @@ TGMS-TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Idé-Log
+            <h1 class="m-0 text-dark">Point Passage 
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Formation</li>
+              <li class="breadcrumb-item active"> Point Passage </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -45,11 +44,11 @@ TGMS-TOGO
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('demandeFormation.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('point-passage.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
-        <h4 class="element-header">Demande Formation</h4>
+        <h4 class="element-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -58,35 +57,29 @@ TGMS-TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Ajouter une Demande Formation</h5>
+                <h5 class="form-header">Ajouter un point journalier passage</h5>
 
             </div>
 
             <div class="card-body">
-                <form action="{{route('demandeFormation.store')}}" method="post" class="form">
+                <form action="{{route('point-passage.store')}}" method="post" class="form">
 
                     @csrf
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">Agent /Personne</label>
-                            <select class="form-control" name="agent_id" id="agent_id">
-
-                                @foreach ($agents as $a)
-                            <option value="{{$a->id}}">{{$a->nom }} {{$a->prenom}}</option>
-
-                                @endforeach
-                            </select>
+                            <label for="">Date</label>
+                            <input type="date" name="date" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">Départements</label>
+                            <label for="">Voie</label>
 
-                            <select class="form-control"  name="departement_id" id="departement_id">
+                            <select class="form-control"  name="voie_id" id="voie_id">
 
-                                @foreach ($departements as $d)
-                            <option value="{{$d->id}}">{{$d->libelle}}</option>
+                                @foreach ($voies as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
 
                                 @endforeach
                             </select>
@@ -94,7 +87,7 @@ TGMS-TOGO
                         </div>
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">Service</label>
+                            <label for="">  </label>
                             <input type="text" name="service" id="service" class="form-control">
 
                         </div>
