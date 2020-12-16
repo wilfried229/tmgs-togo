@@ -50,9 +50,7 @@ class PointPassageManuelController extends Controller
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
             $pointPassage->site_id  = $request->site_id;
-            $pointPassage->vacation_6h = $request->vacation_6h;
-            $pointPassage->vacation_14h = $request->vacation_14h;
-            $pointPassage->vacation_20h = $request->vacation_20h;
+            $pointPassage->vacation = $request->vacation;
             $pointPassage->identite_percepteur  = $request->identite_percepteur;
             $pointPassage->point_traf_info_mode_manuel  = $request->point_traf_info_mode_manuel;
             $pointPassage->solde_recette_info_mode_manuel  = $request->solde_recette_info_mode_manuel;
@@ -122,9 +120,7 @@ class PointPassageManuelController extends Controller
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
             $pointPassage->site_id  = $request->site_id;
-            $pointPassage->vacation_6h = $request->vacation_6h;
-            $pointPassage->vacation_14h = $request->vacation_14h;
-            $pointPassage->vacation_20h = $request->vacation_20h;
+            $pointPassage->vacation = $request->vacation;
             $pointPassage->identite_percepteur  = $request->identite_percepteur;
             $pointPassage->point_traf_info_mode_manuel  = $request->point_traf_info_mode_manuel;
             $pointPassage->solde_recette_info_mode_manuel  = $request->solde_recette_info_mode_manuel;

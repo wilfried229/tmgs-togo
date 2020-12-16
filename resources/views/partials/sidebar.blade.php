@@ -41,8 +41,14 @@
                     <p>Recettes/Tracifs</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('dysfonctionement.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>DYSFONCTIONNEMENT</p>
+                </a>
+            </li>
 
-            
+
             <li class="nav-item">
                 <a href="{{route('point-passage.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
@@ -72,7 +78,7 @@
             </li>
 
 
-            
+
 
             <li class="nav-item">
                 <a href="" class="nav-link">

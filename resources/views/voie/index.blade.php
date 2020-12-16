@@ -47,7 +47,7 @@ TGMS-GATE
                         <div class="col-md-4">
                             <h6 class="element-header">
 
-                                <a class="btn btn-info" href="{{route('site.create')}}"> Ajouter une nouvelle voie</a>
+                                <a class="btn btn-info" href="{{route('voie.create')}}"> Ajouter une nouvelle voie</a>
                             </h6>
                         </div>
                     </div>
@@ -69,14 +69,14 @@ TGMS-GATE
                                     <thead>
                                     <tr>
                                         <th data-target="date">titre</th>
-                                        
+
                                         <th>Options</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>titre</th>
-                                        
+
                                         <th>Options</th>
 
                                     </tr>
@@ -89,11 +89,11 @@ TGMS-GATE
                                         <tr>
                                             <td>{{$voie->libelle}}</td>
                                         <th>
-                                            
+
                                             <a href="" class="btn btn-info"> Modifier</a>
 
                                         </th>
-                                            
+
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dyfonctionnement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DysfonctionnementController extends Controller
 {
@@ -17,7 +18,7 @@ class DysfonctionnementController extends Controller
 
         $dysfonctionnments  = Dyfonctionnement::all();
 
-        return  view('',compact('dysfonctionnments'));
+        return  view('dysfonct.index',compact('dysfonctionnments'));
     }
 
     /**
@@ -28,7 +29,7 @@ class DysfonctionnementController extends Controller
     public function create()
     {
 
-        return view('');
+        return view('dysfonct.create');
     }
 
     /**
@@ -82,8 +83,7 @@ class DysfonctionnementController extends Controller
     public function show($id)
     {
         //
-        $dysfonctionnment  = Dyfonctionnement::findOrFail($id);
-        return  view('',compact('dysfonctionnment'));
+      
     }
 
     /**
@@ -95,7 +95,7 @@ class DysfonctionnementController extends Controller
     public function edit($id)
     {
         $dysfonctionnment  = Dyfonctionnement::findOrFail($id);
-        return  view('',compact('dysfonctionnment'));
+        return  view('dysfonct.update',compact('dysfonctionnment'));
     }
 
     /**
