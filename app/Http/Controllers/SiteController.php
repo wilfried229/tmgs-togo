@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\site;
 class SiteController extends Controller
 {
     /**
@@ -14,6 +14,9 @@ class SiteController extends Controller
     public function index()
     {
         //
+
+        $sites = Site::all();
+        return view('site.index',compact('sites'));
     }
 
     /**
@@ -24,6 +27,7 @@ class SiteController extends Controller
     public function create()
     {
         //
+        return view('site.create');
     }
 
     /**
@@ -34,7 +38,21 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try {
+            //code...
+        $site  = new Site();
+        $site->libelle = $request->libelle;
+        $site->save();
+    
+        return back();
+    
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+            abort(500);
+        }        //
     }
 
     /**
@@ -46,6 +64,7 @@ class SiteController extends Controller
     public function show($id)
     {
         //
+        return view('site.show');
     }
 
     /**
@@ -57,6 +76,8 @@ class SiteController extends Controller
     public function edit($id)
     {
         //
+        $site = Site::find($id);
+        return view('site.update',compact('site'));
     }
 
     /**
@@ -68,7 +89,21 @@ class SiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        try {
+            //code...
+        $site  = Site::find($id);
+        $site->libelle = $request->libelle;
+        $site->save();
+    
+        return back();
+    
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+            abort(500);
+        }   
     }
 
     /**
@@ -79,6 +114,19 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        try {
+            //code...
+        $site  = Site::find($id);
+        $site->delete();
+    
+        return back();
+    
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+            abort(500);
+        }   
     }
 }
