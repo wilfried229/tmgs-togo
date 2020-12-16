@@ -15,7 +15,7 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Point Passage 
+            <h1 class="m-0 text-dark">Point Passage
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -97,13 +97,13 @@ Rapport TGMS-GATE \TOGO
                             </select>
 
                         </div>
-                       
+
                     </div>
                     <br>
 
                     <div class="row">
 
-                        <div class="col-lg-12"> 
+                        <div class="col-lg-12">
 
                             <h4>TRAFIC PAR VACATION </h4>
                         </div>
@@ -132,7 +132,7 @@ Rapport TGMS-GATE \TOGO
 
                     <div class="row">
 
-                        <div class="col-lg-12"> 
+                        <div class="col-lg-12">
 
                             <h4>TYPE DE PASSAGE </h4>
                         </div>
@@ -148,13 +148,13 @@ Rapport TGMS-GATE \TOGO
                             <input type="number" name="type_passage_offline" id="type_passage_offline" class="form-control" required>
                         </div>
 
-                         
+
 
                     </div>
                  <br>
                     <div class="row">
 
-                        <div class="col-lg-12"> 
+                        <div class="col-lg-12">
 
                             <h4>SOMMES TOTAL </h4>
                         </div>
@@ -175,7 +175,7 @@ Rapport TGMS-GATE \TOGO
                     <br>
                     <div class="row">
 
-                        <div class="col-lg-12"> 
+                        <div class="col-lg-12">
 
                             <h4> INFORMATIONS DIVERSES </h4>
                         </div>
@@ -196,12 +196,12 @@ Rapport TGMS-GATE \TOGO
 
                     <div class="row">
                         <div class="col-md-12">
-        
+
                             <label for="Observations">Observations</label>
                             <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required></textarea>
                         </div>
                     </div>
-                    
+
             <div class="row">
                 <div class="col-md-12">
                     <input type="submit" value="Enregistrer" class="btn btn-success">
