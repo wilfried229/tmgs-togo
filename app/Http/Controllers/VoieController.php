@@ -14,7 +14,8 @@ class VoieController extends Controller
     public function index()
     {
         //
-        return view('voie.index');
+        $voies = Voie::all();
+        return view('voie.index',compact('voies'));
     }
 
     /**
@@ -25,6 +26,7 @@ class VoieController extends Controller
     public function create()
     {
         //
+        return view('voie.create');
     }
 
     /**
@@ -35,7 +37,24 @@ class VoieController extends Controller
      */
     public function store(Request $request)
     {
+
+        try {
+            //code...
+        $voie  = new Voie();
+        $voie->libelle = $request->libelle;
+        $voie->save();
+    
+        return back();
+    
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+            abort(500);
+        }      
         //
+
+
     }
 
     /**
@@ -47,6 +66,7 @@ class VoieController extends Controller
     public function show($id)
     {
         //
+        return view('voie.show');
     }
 
     /**
@@ -58,6 +78,8 @@ class VoieController extends Controller
     public function edit($id)
     {
         //
+        $site = Site::find($id);
+        return view('voie.update',compact('voie'));
     }
 
     /**
@@ -70,6 +92,20 @@ class VoieController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+            //code...
+        $voie  = Voie::find($id);
+        $voie->libelle = $request->libelle;
+        $voie->save();
+    
+        return back();
+    
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+            abort(500);
+        }   
     }
 
     /**
