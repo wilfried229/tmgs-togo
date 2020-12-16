@@ -22,7 +22,7 @@ Rapport TGMS-GATE \TOGO
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Point de passage</li>
+              <li class="breadcrumb-item active"> DYSFONCTIONNEMENTS</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,7 +42,7 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
 
-                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de journalier de passage </a>
+                    <a href="{{route('dysfonctionement.create')}}" class="btn btn-primary">Ajouter un dysfonctionnement </a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -57,7 +57,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h5>
+                <h5 class="form-header"> DYSFONCTIONNEMENTS</h5>
 
 
             </a><!-- /.card-header -->
@@ -70,70 +70,51 @@ Rapport TGMS-GATE \TOGO
                         <thead>
                             <tr>
                                 <th data-target="date">DATE</th>
-                                <th data-target="site">SITE</th>
-                                <th data-target="voie">VOIE</th>
-                                <th >TRAFIC PAR VACATION  08H à 16H</th>
-                                <th >TRAFIC PAR VACATION  16H à 22H</th>
-                                <th >TRAFIC PAR VACATION  22H à 08H08H à 16H</th>
+                                <th data-target="site">Site</th>
 
-                                <th> PASSAGE  ONLINE</th>
-                                <th> PASSAGE  OFFLINE</th>
+                                <th data-target="LOCALISATION">LOCALISATION</th>
+                                <th data-target="DYSFONCTIONNEMENT">DYSFONCTIONNEMENT</th>
+                                <th >CAUSE DU DYSFONCTIONNEMENT</th>
+                                <th >TRAVAUX À RÉALISER</th>
+                                <th >TRAVAUX  RÉALISÉS</th>
 
-                                <th>SOMME TOTAL TRAFIC</th>
-                                <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
+                                <th> HEURE DE CONSTAT </th>
+                                <th> HEURE DÉBUT D'INTERVENTION</th>
 
-                                <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
-                                <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
-                                <th>Observations</th>
+                                <th>HEURE FIN D'INTERVENTION</th>
+                                <th>RÉSULTAT OBTENU</th>
+
+                                <th>BESOINS</th>
+                                <th>PREUVE (N° DE FICHE D'INTERVENTION, image avant et après </th>
+                                <th>OBSERVATION</th>
                                 <th>Enregister Par</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th data-target="date">DATE</th>
-                                <th data-target="site">SITE</th>
-                                <th data-target="voie">VOIE</th>
-                                <th >TRAFIC PAR VACATION  08H à 16H</th>
-                                <th >TRAFIC PAR VACATION  16H à 22H</th>
-                                <th >TRAFIC PAR VACATION  22H à 08H08H à 16H</th>
 
-                                <th> PASSAGE  ONLINE</th>
-                                <th> PASSAGE  OFFLINE</th>
-
-                                <th>SOMME TOTAL TRAFIC</th>
-                                <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
-
-                                <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
-                                <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
-                                <th>Observations</th>
-                                <th>Enregister Par</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
 
-                            @foreach ($pointPassages as $point)
+                            @foreach ($dysfonctionnments as $dysfon)
 
                             <tr>
-                                <td>{{ $point->date }}</td>
-                                <td>{{ $point->voie()->first()->libelle }}</td>
-                                <td>{{ $point->site()->first()->libelle }}</td>
-                                <td>{{ $point->vacation_6h }}</td>
-                                <td>{{ $point->vacation_14h }}</td>
-                                <td>{{ $point->vacation_20h }}</td>
-                                <td>{{ $point->type_passage_offline }}</td>
-                                <td>{{ $point->type_passage_online }}</td>
-                                <td>{{ $point->somme_total_tdafic }}</td>
-                                <td>{{ $point->somme_total_recette_equialente }}</td>
-                                <td>{{ $point->paiement_espece_defaut_provision }}</td>
-                                <td>{{ $point->paiement_espece_dysfon }}</td>
-                                <td>{{ $point->observations }}</td>
-                                <td>{{ $point->user_id }}</td>
+                                <td>{{ $dysfon->date }}</td>
+                                <td>{{ $dysfon->site()->first()->libelle }}</td>
+                                <td>{{ $dysfon->localisation }}</td>
+                                <td>{{ $dysfon->dysfonctionnement }}</td>
+                                <td>{{ $dysfon->cause }}</td>
+                                <td>{{ $dysfon->travauxArealiser }}</td>
+                                <td>{{ $dysfon->travauxRealiser }}</td>
+                                <td>{{ $dysfon->heureConstat }}</td>
+                                <td>{{ $dysfon->heureDebutIntervention }}</td>
+                                <td>{{ $dysfon->heureFinIntervention }}</td>
+                                <td>{{ $dysfon->resultatObtenir }}</td>
+                                <td>{{ $dysfon->besoins }}</td>
+                                <td>{{ $dysfon->preuve }}</td>
+                                <td>{{ $dysfon->observation  }}</td>
 
                                 <td>
 
-                                    <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
+                                    <a href="{{ route('dysfonctionement.edit',$dysfon->id) }}" class="btn btn-info">Modifier</a>
                                     <a href="" class="btn btn-danger">Retirer</a>
                                 </td>
                             </tr>
@@ -184,7 +165,7 @@ Rapport TGMS-GATE \TOGO
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
+
         ],
         "paging": true,
             "lengthChange": true,

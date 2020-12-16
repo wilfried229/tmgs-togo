@@ -47,6 +47,12 @@
                     <p>DYSFONCTIONNEMENT</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('comptage.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>COMPATGE CONTRADITOIRE</p>
+                </a>
+            </li>
 
 
             <li class="nav-item">
