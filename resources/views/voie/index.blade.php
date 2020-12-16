@@ -6,7 +6,7 @@ TGMS-GATE
 
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap4.css')}}">
 
-@endsection()
+@endsection
 
 
 @section('header-content')

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e3b2146-d977-4281-82a6-93d863b21b8e" name="Default Changelist" comment="" />
+    <list default="true" id="1e3b2146-d977-4281-82a6-93d863b21b8e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PointPassageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PointPassageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PointPassage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PointPassage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_113532_create_point_passages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_113532_create_point_passages_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pointPassage/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pointPassage/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pointPassage/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pointPassage/update.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pointPassageManuels/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pointPassageManuels/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/voie/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/voie/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/voie/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/voie/index.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +21,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -130,6 +144,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1lK8mHJ9ScG8PO2Vns9a3acwGDz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -161,6 +176,7 @@
       <workItem from="1607411090931" duration="9305000" />
       <workItem from="1607510448615" duration="19555000" />
       <workItem from="1607591750247" duration="2999000" />
+      <workItem from="1608130149646" duration="544000" />
     </task>
     <servers />
   </component>
@@ -192,10 +208,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1607361491233" />
-    <state x="368" y="58" key="SettingsEditor" timestamp="1607591885136">
+    <state x="124" y="55" key="SettingsEditor" timestamp="1608130738182">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="368" y="58" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1607591885136" />
+    <state x="124" y="55" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1608130738182" />
     <state width="498" height="398" key="SwitcherDM" timestamp="1607593109872">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

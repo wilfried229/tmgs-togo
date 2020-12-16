@@ -33,7 +33,7 @@ Rapport TGMS-GATE \TOGO
 <section class="content">
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-md-12">
-           
+
         </div>
     </div>
     <div class="container-fluid">
@@ -41,7 +41,7 @@ Rapport TGMS-GATE \TOGO
         <div class="row">
             <div class="col-md-4">
                 <h6 class="element-header">
-                
+
                     <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de journalier de passage </a>
                 </h6>
             </div>
@@ -81,7 +81,7 @@ Rapport TGMS-GATE \TOGO
 
                                 <th>SOMME TOTAL TRAFIC</th>
                                 <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
-                                
+
                                 <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
                                 <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
                                 <th>Observations</th>
@@ -103,7 +103,7 @@ Rapport TGMS-GATE \TOGO
 
                                 <th>SOMME TOTAL TRAFIC</th>
                                 <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
-                                
+
                                 <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
                                 <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
                                 <th>Observations</th>
@@ -112,9 +112,33 @@ Rapport TGMS-GATE \TOGO
                             </tr>
                         </tfoot>
                         <tbody>
-                            
+
                             @foreach ($pointPassages as $point)
-                                
+
+                            <tr>
+                                <td>{{ $point->date }}</td>
+                                <td>{{ $point->voie()->first()->libelle }}</td>
+                                <td>{{ $point->site()->first()->libelle }}</td>
+                                <td>{{ $point->vacation_6h }}</td>
+                                <td>{{ $point->vacation_14h }}</td>
+                                <td>{{ $point->vacation_20h }}</td>
+                                <td>{{ $point->type_passage_offline }}</td>
+                                <td>{{ $point->type_passage_online }}</td>
+                                <td>{{ $point->somme_total_tdafic }}</td>
+                                <td>{{ $point->somme_total_recette_equialente }}</td>
+                                <td>{{ $point->paiement_espece_defaut_provision }}</td>
+                                <td>{{ $point->paiement_espece_dysfon }}</td>
+                                <td>{{ $point->observations }}</td>
+                                <td>{{ $point->user_id }}</td>
+
+                                <td>
+
+                                    <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
+                                    <a href="" class="btn btn-danger">Retirer</a>
+                                </td>
+                            </tr>
+
+
                             @endforeach
                         </tbody>
                     </table>

@@ -45,7 +45,7 @@ TGMS-GATE
 
                         </div>
                         <div class="col-md-3">
-                            <a href="{{route('recettes-trafics.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                            <a href="{{route('voie.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                         </div>
                     </div>
@@ -63,7 +63,7 @@ TGMS-GATE
                         </div>
 
                         <div class="card-body">
-                            <form action="{{route('site.store')}}" method="post" class="form">
+                            <form action="{{route('voie.store')}}" method="post" class="form">
 
                                 @csrf
 

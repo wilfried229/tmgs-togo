@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PointPassage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\voie;
 use App\Models\site;
@@ -18,9 +19,8 @@ class PointPassageController extends Controller
      */
     public function index()
     {
-        
+
         $pointPassages = PointPassage::all();
-        
         return view('pointPassage.index',compact('pointPassages'));
     }
 
@@ -49,24 +49,29 @@ class PointPassageController extends Controller
 
         try {
 
-            $pointPassage = new  PointPassage();
+            $pointPassage = new PointPassage();
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id = $request->voie_id;
             $pointPassage->site_id = $request->site_id;
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
-
             $pointPassage->type_passage_offline = $request->type_passage_offline;
             $pointPassage->type_passage_online = $request->type_passage_online;
-            
+
+            $pointPassage->somme_total_trafic = $request->somme_total_trafic;
+
             $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->observations = $request->observations;
-            $pointPassage->user_id = $request->user_id;
+
+            $pointPassage->user_id = null;
+
+
             $pointPassage->save();
 
-            return  redirect()->back();
+
+            return back();
 
         }catch (\Exception $ex){
 
@@ -97,10 +102,11 @@ class PointPassageController extends Controller
      */
     public function edit($id)
     {
-        //
 
-        $pointPassages = PointPassage::findOrFail($id);
-        return view('pointPassage.update',compact('pointPassages'));
+        $pointPassage = PointPassage::findOrFail($id);
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return view('pointPassage.update',compact('pointPassage','voies','sites'));
     }
 
     /**
@@ -124,11 +130,12 @@ class PointPassageController extends Controller
 
             $pointPassage->type_passage_offline = $request->type_passage_offline;
             $pointPassage->type_passage_online = $request->type_passage_online;
-            
+            $pointPassage->somme_total_trafic = $request->somme_total_trafic;
             $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
+            $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
+
             $pointPassage->observations = $request->observations;
-            $pointPassage->user_id = auth()->user()->id;
             $pointPassage->update();
 
             return  redirect()->back();
