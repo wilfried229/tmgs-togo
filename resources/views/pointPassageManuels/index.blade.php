@@ -41,13 +41,8 @@ Rapport TGMS-GATE \TOGO
         <div class="row">
             <div class="col-md-4">
                 <h6 class="element-header">
-<<<<<<< HEAD
-                
-                    <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
-=======
     
                 <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
->>>>>>> 41edbae758f6820900ca035ff74273d8a99f317c
                 </h6>
             </div>
             <div class="col-md-4">
@@ -104,8 +99,6 @@ Rapport TGMS-GATE \TOGO
                                 <th data-target="site">Site</th>
                                 <th data-target="voie">Voie</th>
                                 <th data-target="vacation">Vacation</th>
-                                <th data-target="type_passage">Type Passage</th>
-
                                 <th data-target="identite_percepteur">Identite percepteur</th>
 
                                 <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
@@ -130,23 +123,22 @@ Rapport TGMS-GATE \TOGO
                             <tr>
                             
                                 <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->site_id }}</td>
+                                <td>{{ $f->voie_id }}</td>
+                                <td>{{ $f->vacation }}</td>
+                                <td>{{ $f->identite_percepteur }}</td>
+                                <td>{{ $f->point_traf_info_mode_manuel }}</td>
+                                <td>{{ $f->solde_recette_info_mode_manuel }}</td>
+                                <td>{{ $f->heure_debutComptage }}</td>
+                                <td>{{ $f->heure_finComptage }}</td>
+                                <td>{{ $f->trafic_compteManu }}</td>
+                                <td>{{ $f->equipRecette }}</td>
+                                <td>{{ $f->etaDonne_taficInformatiser }}</td>
+                                <td>{{ $f->etaDonne_recetteInformatiser }}</td>
+                                <td>{{ $f->etaFinal_recetteInformatiser }}</td>
+                                <td>{{ $f->etaFinal_taficInformatiser }}</td>
+                                <td>{{ $f->observation }}</td>
+                                
 
 
                             </tr>
