@@ -41,8 +41,13 @@ Rapport TGMS-GATE \TOGO
         <div class="row">
             <div class="col-md-4">
                 <h6 class="element-header">
+<<<<<<< HEAD
                 
                     <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
+=======
+    
+                <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
+>>>>>>> 41edbae758f6820900ca035ff74273d8a99f317c
                 </h6>
             </div>
             <div class="col-md-4">
@@ -124,6 +129,25 @@ Rapport TGMS-GATE \TOGO
 
                             <tr>
                             
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+                                <td>{{ $f->date }}</td>
+
 
                             </tr>
                             @endforeach

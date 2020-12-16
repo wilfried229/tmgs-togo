@@ -18,8 +18,7 @@ class PointPassageManuelController extends Controller
      */
     public function index()
     {
-        //
-        
+
         $pointPassageManuels = PointPassageMaunel::all();
         return view('pointPassageManuels.index',compact('pointPassageManuels'));
     }
@@ -47,13 +46,13 @@ class PointPassageManuelController extends Controller
     {
 
         try {
-
             $pointPassage = new  PointPassageMaunel();
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
             $pointPassage->site_id  = $request->site_id;
-            $pointPassage->vacation  = $request->vacation;
-            $pointPassage->type_passage  = $request->type_passage;
+            $pointPassage->vacation_6h = $request->vacation_6h;
+            $pointPassage->vacation_14h = $request->vacation_14h;
+            $pointPassage->vacation_20h = $request->vacation_20h;
             $pointPassage->identite_percepteur  = $request->identite_percepteur;
             $pointPassage->point_traf_info_mode_manuel  = $request->point_traf_info_mode_manuel;
             $pointPassage->solde_recette_info_mode_manuel  = $request->solde_recette_info_mode_manuel;
@@ -77,7 +76,7 @@ class PointPassageManuelController extends Controller
         }catch (\Exception $ex){
 
          Log::info($ex->getMessage());
-         abort(400);
+         abort(500);
 
 
         }
@@ -104,8 +103,8 @@ class PointPassageManuelController extends Controller
     public function edit($id)
     {
         //
-        $pointPassageManuels = new  PointPassageMaunel();
-        return view('pointPassageManuels.edit',compat('pointPassageManuels'));
+        $pointPassageManuels =PointPassageMaunel::find($id);
+        return view('pointPassageManuels.edit',compact('pointPassageManuels'));
     }
 
     /**
@@ -123,8 +122,9 @@ class PointPassageManuelController extends Controller
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
             $pointPassage->site_id  = $request->site_id;
-            $pointPassage->vacation  = $request->vacation;
-            $pointPassage->type_passage  = $request->type_passage;
+            $pointPassage->vacation_6h = $request->vacation_6h;
+            $pointPassage->vacation_14h = $request->vacation_14h;
+            $pointPassage->vacation_20h = $request->vacation_20h;
             $pointPassage->identite_percepteur  = $request->identite_percepteur;
             $pointPassage->point_traf_info_mode_manuel  = $request->point_traf_info_mode_manuel;
             $pointPassage->solde_recette_info_mode_manuel  = $request->solde_recette_info_mode_manuel;
@@ -139,7 +139,8 @@ class PointPassageManuelController extends Controller
             $pointPassage->etaFinal_taficInformatiser  = $request->etaDonne_taficInformatiser;
 
             $pointPassage->observations  = $request->observations;
-            $pointPassage->user_id  = $request->user_id;
+            $pointPassage->user_id  = 1;
+
             $pointPassage->update();
 
             return  redirect()->back();
@@ -148,7 +149,7 @@ class PointPassageManuelController extends Controller
         }catch (\Exception $ex){
 
             Log::info($ex->getMessage());
-            abort(400);
+            abort(500);
 
         }
     }
@@ -165,14 +166,14 @@ class PointPassageManuelController extends Controller
         try {
 
             $pointPassageManuel = PointPassageMaunel::find($id);
-            $pointPassageManuel->save();
+            $pointPassageManuel->delete();
 
             return  redirect()->back();
 
         }catch (\Exception $ex){
 
             Log::info($ex->getMessage());
-            abort(400);
+            abort(500);
 
         }
     }

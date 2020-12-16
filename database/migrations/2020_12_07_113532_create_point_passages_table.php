@@ -29,7 +29,10 @@ class CreatePointPassagesTable extends Migration
             ]);
             $table->integer('somme_total_trafic');
             $table->integer('somme_total_recette_equialente');
-            $table->longText('paiement_espece_defaut_provision');
+            $table->string('paiement_espece_defaut_provision');
+            $table->string('paiement_espece_dysfon');
+
+            
             $table->longText('observations');
 
             $table->unsignedInteger('users_id');
@@ -51,3 +54,4 @@ class CreatePointPassagesTable extends Migration
         Schema::dropIfExists('point_passages');
     }
 }
+
