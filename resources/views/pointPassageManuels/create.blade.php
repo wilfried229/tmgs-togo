@@ -15,13 +15,13 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Point Passage 
+            <h1 class="m-0 text-dark">Point Passage Manuel 
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Point Passage </li>
+              <li class="breadcrumb-item active"> Point Passage Manuel </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -75,7 +75,6 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Voie</label>
-
                             <select class="form-control"  name="voie_id" id="voie_id">
 
                                 @foreach ($voies as $v)
@@ -83,162 +82,121 @@ Rapport TGMS-GATE \TOGO
 
                                 @endforeach
                             </select>
-
+                        
                         </div>
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">  </label>
-                            <input type="text" name="service" id="service" class="form-control">
+                            <label for="">Site </label>
+                            <select class="form-control"  name="site_id" id="site_id">
 
+                                @foreach ($sites as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                                @endforeach
+                            </select>
                         </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Vacation</label>
+                            <input type="ENUM" name="vacation" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Identité percepteur</label>
+                            <input type="VACHAR" name="identite_percepteur" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Point trafic informatisé avant démarrage du mode manel</label>
+                            <input type="TEXT" name="point_traf_info_mode_manuel" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Solde recette informatisée avant démarrage du mode manuel</label>
+                            <input type="INT" name="solde_recette_info_mode_manuel" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Heure de debut (comptage manuel) </label>
+                            <input type="TiME" name="heure_debutComptage" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Heure de fin (comptage manuel)</label>
+                            <input type="TIME" name="heure_finComptage" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Trafic compté manuellement</label>
+                            <textarea class="form-control" name="trafic_compteManu" id="trafic_compteManu" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Equivalent recette en FCFA</label>
+                            <textarea class="form-control" name="equipRecette" id="equipRecette" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat données du trafic informatiser</label>
+                            <textarea class="form-control" name="etaDonne_taficInformatiser" id="etaDonne_taficInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat données de recette informatiser</label>
+                            <textarea class="form-control" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat final de recette informatiser</label>
+                            <textarea class="form-control" name="etaFinal_recetteInformatiser" id="etaFinal_recetteInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">Etat final du trafic informatiser</label>
+                            <textarea class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" cols="30" rows="10"></textarea>
+                        </div>
+
+                        
+
+                        
                     </div>
                     <br>
 
                     <div class="row">
+
+                    <div class="col-lg-4 col-md-4">
+
+
                         <div class="col-md-12">
 
-                            <label for="">Sollicite une formation sur le thème</label>
-                            <textarea class="form-control" name="solicite_formation_theme" id="solicite_formation_theme" cols="30" rows="10"></textarea>
+                                <label for="">Observation</label>
+                            <textarea class="form-control" name="Observation" id="Observation" cols="30" rows="10"></textarea>
                         </div>
 
-                        <div class="col-md-12">
-
-                                <label for="">Motivation</label>
-                            <textarea class="form-control" name="motivation" id="motivation" cols="30" rows="10"></textarea>
-                        </div>
-
-                        <div class="col-md-12">
-
-                            <label for="">Choix du formateur / de l'organisme de formation</label>
-                        <textarea placeholder="--------------------------------
-                                                 -----------------------------------------------------
-                        "    class="form-control" name="choix_formateur" id="choix_formateur" cols="30" rows="10"></textarea>
+                       
                     </div>
 
                     </div>
 
                         <br>
                         <fieldset>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Localication</label>
-                            <select name="localisation" id="localisation" class="form-control">
-                                <option value="Nationale">Nationale</option>
-                                <option value="International">International</option>
-
-                            </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Adresse</label>
-                            <input type="text" name="adresse" id="adresse" class="form-control">
-
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Téléphone</label>
-                            <input type="text" name="tel" id="tel" class="form-control">
-
-
-                        </div>
-
-                    </div>
-
-                        </fieldset>
-
-                    <br>
-                    <h6>Personne référente :</h6>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Nom /Prénom</label>
-                            <input type="text" name="nom_personne_referente" id="nom_personne_referente" class="form-control">
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Téléphone </label>
-                            <input type="tel" name="tel_personne_referente" id="tel_personne_referente" class="form-control">
-
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <label for="">Email</label>
-                            <input type="text" name="email_personne_referente" id="email_personne_referente" class="form-control">
-
-                        </div>
-
-
-                    </div>
-                    <br>
-
-                    <br>
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <label for="">Mode avion: Frais de déplacement(Aller/Retour)</label>
-                            <input type="number" class="form-control" name="mode_avion" id="mode_avion">
-                        </div>
-                    </div>
-
-
-
-                <h6>Frais annexes</h6>
-
-            <fieldset>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Logement</label>
-                        <input type="text" name="logoment" id="logoment" class="form-control">
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Restauration</label>
-                        <input type="tel" name="restauration" id="restauration" class="form-control">
-                    </div>
-
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Déplacement</label>
-                        <input type="text" name="deplacement" id="deplacement" class="form-control">
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Logement (Devise)</label>
-                        <input type="text" name="logoment_devise" id="logoment_devise" class="form-control">
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Restauration (Devise)</label>
-                        <input type="tel" name="restauration_devise" id="restauration_devise" class="form-control">
-                    </div>
-
-                    <div class="col-lg-4 col-md-4">
-
-                        <label for="">Déplacement (Devise)</label>
-                        <input type="text" name="deplacement_devise" id="deplacement_devise" class="form-control">
-                    </div>
-
-                </div>
-            </fieldset>
-
+                   
+                </form >
 
             <br>
-            <div class="row">
-
-                <div class="col-md-12">
-                    <label for="">Accord du</label>
-                    <select  class="form-control select2 text text-info"  multiple name="accords[]" id="accords"  class="form-control" required>
-                        <option value="RH">RH</option>
-                        <option value="DG">DG</option>
-                        <option value="DT">DT</option>
-                        <option value="DAF">DAF</option>
-                    </select>
-                </div>
-            </div>
+            
 
             <br>
             <div class="row">

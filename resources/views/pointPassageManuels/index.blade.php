@@ -42,7 +42,7 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
                 
-                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
+                    <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
                 </h6>
             </div>
             <div class="col-md-4">
