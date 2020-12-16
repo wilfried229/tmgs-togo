@@ -58,6 +58,23 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{route('site.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Site</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{route('voie.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Voie</p>
+                </a>
+            </li>
+
+
+            
+
+            <li class="nav-item">
                 <a href="" class="nav-link">
                     <i class="fa fa-users"></i>
                     <p>Utilisateurs</p>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PointPassageMaunel;
+use App\Models\voie;
+use App\Models\site;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 

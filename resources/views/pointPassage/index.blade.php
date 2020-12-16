@@ -22,7 +22,7 @@ Rapport TGMS-GATE \TOGO
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Point de passage </li>
+              <li class="breadcrumb-item active">Point de passage</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,7 +42,7 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
                 
-                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
+                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de journalier de passage </a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -57,7 +57,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">Liste des points de passage Manuel </h5>
+                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h5>
 
 
             </a><!-- /.card-header -->
@@ -69,63 +69,52 @@ Rapport TGMS-GATE \TOGO
                     <table id="example1" class="table  estdata table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th data-target="date">Date</th>
-                                <th data-target="site">Site</th>
-                                <th data-target="voie">Voie</th>
-                                <th data-target="vacation">Vacation</th>
-                                <th data-target="type_passage">Type Passage</th>
+                                <th data-target="date">DATE</th>
+                                <th data-target="site">SITE</th>
+                                <th data-target="voie">VOIE</th>
+                                <th >TRAFIC PAR VACATION  08H à 16H</th>
+                                <th >TRAFIC PAR VACATION  16H à 22H</th>
+                                <th >TRAFIC PAR VACATION  22H à 08H08H à 16H</th>
 
-                                <th data-target="identite_percepteur">Identite percepteur</th>
+                                <th> PASSAGE  ONLINE</th>
+                                <th> PASSAGE  OFFLINE</th>
 
-                                <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
-                                <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
-                                <th>Heure Debut Comptage</th>
-                                <th>Heure fin Comptage</th>
-                                <th>Trafic CompteManu</th>
-                                <th>Equipe Recette</th>
-                                <th>Etat des Donnetafic Informatisé</th>
-                                <th>Etat Donnes Recette Informatisé</th>
-                                <th>Eta Final Recette Informatisé</th>
-                                <th>Etat Final Trafic Informatisé</th>
-                                <th>observations</th>
+                                <th>SOMME TOTAL TRAFIC</th>
+                                <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
+                                
+                                <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
+                                <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
+                                <th>Observations</th>
                                 <th>Enregister Par</th>
-
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th data-target="date">Date</th>
-                                <th data-target="site">Site</th>
-                                <th data-target="voie">Voie</th>
-                                <th data-target="vacation">Vacation</th>
-                                <th data-target="type_passage">Type Passage</th>
+                                <th data-target="date">DATE</th>
+                                <th data-target="site">SITE</th>
+                                <th data-target="voie">VOIE</th>
+                                <th >TRAFIC PAR VACATION  08H à 16H</th>
+                                <th >TRAFIC PAR VACATION  16H à 22H</th>
+                                <th >TRAFIC PAR VACATION  22H à 08H08H à 16H</th>
 
-                                <th data-target="identite_percepteur">Identite percepteur</th>
+                                <th> PASSAGE  ONLINE</th>
+                                <th> PASSAGE  OFFLINE</th>
 
-                                <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
-                                <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
-                                <th>Heure Debut Comptage</th>
-                                <th>Heure fin Comptage</th>
-                                <th>Trafic CompteManu</th>
-                                <th>Equipe Recette</th>
-                                <th>Etat des Donnetafic Informatisé</th>
-                                <th>Etat Donnes Recette Informatisé</th>
-                                <th>Eta Final Recette Informatisé</th>
-                                <th>Etat Final Trafic Informatisé</th>
-                                <th>observations</th>
+                                <th>SOMME TOTAL TRAFIC</th>
+                                <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
+                                
+                                <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
+                                <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
+                                <th>Observations</th>
                                 <th>Enregister Par</th>
-
                                 <th>Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach ($pointPassageManuels as $f)
-
-                            <tr>
                             
-
-                            </tr>
+                            @foreach ($pointPassages as $point)
+                                
                             @endforeach
                         </tbody>
                     </table>
