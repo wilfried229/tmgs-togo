@@ -97,7 +97,8 @@ Rapport TGMS-GATE \TOGO
                         </div>
 
                         <div class="col-lg-4 col-md-4">
-
+                            
+                            <label for="">Vacation </label>
                             <select name="vacation" id="vacation" class="form-control">
 
 

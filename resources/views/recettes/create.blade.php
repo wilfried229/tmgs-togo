@@ -157,7 +157,7 @@
                                         <div class="col-lg-4 col-md-4">
 
                                             <label for="">Manquant</label>
-                                            <input type="number" name="manquant" id="manquant" class="form-control">
+                                            <input type="number" name="manquant" id="manquant" class="form-control" required>
                                         </div>
 
                                     </div>
