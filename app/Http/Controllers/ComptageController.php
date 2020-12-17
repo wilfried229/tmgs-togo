@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\voie;
 use App\Models\site;
+use MercurySeries\Flashy\Flashy;
 
 class ComptageController extends Controller
 {
@@ -59,7 +60,7 @@ class ComptageController extends Controller
             $comptage->observation = $request->observation;
             $comptage->user_id = null;
             $comptage->save();
-            Modification
+            flashy()->success("Enregistrement effectuée avec succès");
             return  redirect()->back();
 
         }catch (\Exception $ex){

@@ -70,6 +70,7 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->site_id = $request->site_id;
             $dysfonctionnment->user_id = null;
             $dysfonctionnment->save();
+            flashy()->success("Enregistrement effectuée avec succès");
 
             return  redirect()->back();
 

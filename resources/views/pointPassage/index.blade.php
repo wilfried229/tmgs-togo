@@ -164,7 +164,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->vacation_20h }}</td>
                                 <td>{{ $point->type_passage_offline }}</td>
                                 <td>{{ $point->type_passage_online }}</td>
-                                <td>{{ $point->somme_total_tdafic }}</td>
+                                <td>{{ $point->somme_total_trafic }}</td>
                                 <td>{{ $point->somme_total_recette_equialente }}</td>
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>
                                 <td>{{ $point->paiement_espece_dysfon }}</td>
@@ -174,7 +174,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>
 
                                     <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
-                                    <a href="" class="btn btn-danger">Retirer</a>
+
                                 </td>
                             </tr>
 
@@ -224,7 +224,7 @@ Rapport TGMS-GATE \TOGO
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            
+
         ],
         "paging": true,
             "lengthChange": true,

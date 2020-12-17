@@ -62,7 +62,10 @@ TGMS-GATE
                 <h5 class="form-header">Modification de la voie N° {{$voie->id}}</h5>
 
             </div>
+            <form action="{{route('voie.update',$voie->id)}}" method="post" class="form">
 
+                @csrf
+                @method('PUT')
             <div class="row">
               <div class="col-md-12">
                   <input type="text" name="libelle" value="{{ $voie->libelle }}" class="form-control">

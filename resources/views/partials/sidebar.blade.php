@@ -38,7 +38,7 @@
             <li class="nav-item">
                 <a href="{{route('recettes-trafics.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
-                    <p>Recettes/Tracifs</p>
+                    <p>Recettes/Trafics</p>
                 </a>
             </li>
             <li class="nav-item">

@@ -71,6 +71,7 @@ class PointPassageController extends Controller
 
 
             $pointPassage->save();
+            flashy()->success("Enregistrement effectuée avec succès");
 
 
             return back();

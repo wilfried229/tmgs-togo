@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class RecetesTrafic extends Model
@@ -16,8 +17,8 @@ class RecetesTrafic extends Model
         'nbre_exempte','violation','total','observation','user_id'
         ];
 
-    
-        
+
+
         public function site(){
 
             return $this->belongsTo(Site::class,'site_id','id');

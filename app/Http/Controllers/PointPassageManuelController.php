@@ -7,6 +7,7 @@ use App\Models\voie;
 use App\Models\site;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class PointPassageManuelController extends Controller
@@ -66,9 +67,10 @@ class PointPassageManuelController extends Controller
             $pointPassage->etaFinal_recetteInformatiser  = $request->etaFinal_recetteInformatiser;
             $pointPassage->etaFinal_taficInformatiser  = $request->etaDonne_taficInformatiser;
 
-            $pointPassage->observations  = $request->observations;
-            $pointPassage->user_id  = 1;
+            $pointPassage->observation  = $request->observation;
+            $pointPassage->user_id  = Auth::user()->id;
             $pointPassage->save();
+            flashy()->success("Enregistrement effectuée avec succès");
 
             return  redirect()->back();
 
@@ -103,8 +105,10 @@ class PointPassageManuelController extends Controller
     public function edit($id)
     {
         //
-        $pointPassageManuels =PointPassageMaunel::find($id);
-        return view('pointPassageManuels.edit',compact('pointPassageManuels'));
+        $pointPassageManuel =PointPassageMaunel::find($id);
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return view('pointPassageManuels.update',compact('pointPassageManuel','sites','voies'));
     }
 
     /**
@@ -136,8 +140,8 @@ class PointPassageManuelController extends Controller
             $pointPassage->etaFinal_recetteInformatiser  = $request->etaFinal_recetteInformatiser;
             $pointPassage->etaFinal_taficInformatiser  = $request->etaDonne_taficInformatiser;
 
-            $pointPassage->observations  = $request->observations;
-            $pointPassage->user_id  = 1;
+            $pointPassage->observation  = $request->observation;
+            $pointPassage->user_id  = Auth::user()->id;;
 
             $pointPassage->update();
 

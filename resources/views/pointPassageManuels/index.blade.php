@@ -125,7 +125,6 @@ Rapport TGMS-GATE \TOGO
                                 <th data-target="site">Site</th>
                                 <th data-target="voie">Voie</th>
                                 <th data-target="vacation">Vacation</th>
-                                <th data-target="type_passage">Type Passage</th>
 
                                 <th data-target="identite_percepteur">Identite percepteur</th>
 
@@ -152,8 +151,8 @@ Rapport TGMS-GATE \TOGO
                             <tr>
 
                                 <td>{{ $f->date }}</td>
-                                <td>{{ $f->site_id }}</td>
-                                <td>{{ $f->voie_id }}</td>
+                                <td>{{ $f->site()->first()->libelle }}</td>
+                                <td>{{ $f->voie()->first()->libelle }}</td>
                                 <td>{{ $f->vacation }}</td>
                                 <td>{{ $f->identite_percepteur }}</td>
                                 <td>{{ $f->point_traf_info_mode_manuel }}</td>
@@ -167,6 +166,14 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $f->etaFinal_recetteInformatiser }}</td>
                                 <td>{{ $f->etaFinal_taficInformatiser }}</td>
                                 <td>{{ $f->observation }}</td>
+                                <td>{{ $f->user()->first()->name }}</td>
+
+
+                                <td>
+                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+                                    <a href="{{ route('point-passage-manuel.edit',$f->id) }}" class="btn btn-info">Modifier</a>
+                                    @endif
+                                </td>
 
 
 

@@ -62,15 +62,16 @@ TGMS-GATE
                 <h5 class="form-header">Modification du site N° {{$site->id}}</h5>
 
             </div>
+            <form action="{{route('site.update',$site->id)}}" method="post" class="form">
 
+                @csrf
+                @method('PTUT')
             <div class="row">
               <div class="col-md-12">
                   <input type="text" name="libelle" value="{{ $site->libelle }}" class="form-control">
 
               </div>
           </div>
-
-
             <br>
             <div class="row">
                 <div class="col-md-12">

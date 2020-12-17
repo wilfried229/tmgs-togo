@@ -80,7 +80,7 @@ class VoieController extends Controller
     public function edit($id)
     {
         //
-        $site = voie::find($id);
+        $voie = voie::find($id);
         return view('voie.update',compact('voie'));
     }
 

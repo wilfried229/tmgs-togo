@@ -73,6 +73,7 @@ class RecetteTraficController extends Controller
             $recetteTrafic->observation = $request->observation;
             $recetteTrafic->user_id = 1;
             $recetteTrafic->save();
+            flashy()->success("Enregistrement effectuée avec succès");
 
             return back();
         }catch (\Exception $ex){

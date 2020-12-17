@@ -62,7 +62,7 @@ Rapport TGMS-GATE \TOGO
             </div>
 
             <div class="card-body">
-                <form action="{{route('point-passage.store')}}" method="post" class="form">
+                <form action="{{route('point-passage-manuel.store')}}" method="post" class="form">
 
                     @csrf
                     <div class="row">
@@ -97,7 +97,7 @@ Rapport TGMS-GATE \TOGO
                         </div>
 
                         <div class="col-lg-4 col-md-4">
-                            
+
                             <label for="">Vacation </label>
                             <select name="vacation" id="vacation" class="form-control">
 
@@ -111,31 +111,31 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Identité percepteur</label>
-                            <input type="VACHAR" name="identite_percepteur" class="form-control" >
+                            <input type="text" name="identite_percepteur" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Point trafic informatisé avant démarrage du mode manel</label>
-                            <input type="TEXT" name="point_traf_info_mode_manuel" class="form-control" >
+                            <input type="text" name="point_traf_info_mode_manuel" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Solde recette informatisée avant démarrage du mode manuel</label>
-                            <input type="INT" name="solde_recette_info_mode_manuel" class="form-control" >
+                            <input type="number" name="solde_recette_info_mode_manuel" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Heure de debut (comptage manuel) </label>
-                            <input type="TiME" name="heure_debutComptage" class="form-control" >
+                            <input type="time" name="heure_debutComptage" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Heure de fin (comptage manuel)</label>
-                            <input type="TIME" name="heure_finComptage" class="form-control" >
+                            <input type="time" name="heure_finComptage" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
@@ -182,13 +182,10 @@ Rapport TGMS-GATE \TOGO
 
                     <div class="row">
 
-
-
-
                         <div class="col-md-12">
 
                             <label for="">Observation</label>
-                            <textarea class="form-control" name="Observation" id="Observation" cols="30" rows="10"></textarea>
+                            <textarea class="form-control" name="observation" id="observation" cols="30" rows="10"></textarea>
                         </div>
 
 

@@ -57,12 +57,12 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Point des passages en mode manuel</h5>
+                <h5 class="form-header">Modification Point des passages en mode manuel n° {{$pointPassageManuel->id}}</h5>
 
             </div>
 
             <div class="card-body">
-                <form action="{{route('point-passage.store')}}" method="post" class="form">
+                <form action="{{route('point-passage.update',$pointPassageManuel->id)}}" method="post" class="form">
 
                     @csrf
                     <div class="row">

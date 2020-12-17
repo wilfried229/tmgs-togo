@@ -58,10 +58,10 @@
 @include('partials.javascript')
 
 @yield('custmo-js')
+@include('flashy::message')
 <script>
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-
-    </script>
+</script>
 
 </body>
 </html>

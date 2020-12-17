@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\site;
+use Illuminate\Support\Facades\Log;
+
 class SiteController extends Controller
 {
     /**
@@ -44,9 +46,9 @@ class SiteController extends Controller
         $site  = new Site();
         $site->libelle = $request->libelle;
         $site->save();
-    
+
         return back();
-    
+
         } catch (\Exception $ex) {
             //throw $th;
             Log::info($ex->getMessage());
@@ -89,21 +91,21 @@ class SiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
         try {
             //code...
         $site  = Site::find($id);
         $site->libelle = $request->libelle;
         $site->save();
-    
+
         return back();
-    
+
         } catch (\Exception $ex) {
             //throw $th;
             Log::info($ex->getMessage());
 
             abort(500);
-        }   
+        }
     }
 
     /**
@@ -114,19 +116,19 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        
+
         try {
             //code...
         $site  = Site::find($id);
         $site->delete();
-    
+
         return back();
-    
+
         } catch (\Exception $ex) {
             //throw $th;
             Log::info($ex->getMessage());
 
             abort(500);
-        }   
+        }
     }
 }
