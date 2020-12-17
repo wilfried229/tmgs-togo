@@ -203,6 +203,12 @@
                                             <td>{{$recette->total}}</td>
                                             <td>{{$recette->observation}}</td>
                                             <td>{{$recette->user()->first()->name}}</td>
+
+                                            <td>
+
+                                                <a href="{{ route('recettes-trafics.edit',$recette->id) }}" class="btn btn-info">Modifier</a>
+                                                
+                                            </td>
                     <th></th>
                                         </tr>
                                     @endforeach

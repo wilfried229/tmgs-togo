@@ -106,6 +106,10 @@ class RecetteTraficController extends Controller
     public function edit($id)
     {
         //
+        $recetteTrafic = RecetesTrafic::find($id);
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('recettes.update',compact('recetteTrafic','sites','voies'));
     }
 
     /**
