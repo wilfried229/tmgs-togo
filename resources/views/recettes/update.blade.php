@@ -1,7 +1,7 @@
 
 @extends('template')
 @section('title')
-    Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/select2.min.css')}}">
@@ -16,13 +16,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Idé-Log
+                        <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item active"> Formation</li>
+                            <li class="breadcrumb-item active"> Recette/Trafic</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -58,15 +58,16 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="form-header">Ajouter une recette</h5>
+                            <h5 class="form-header">Modification de la recette n° {{ $recetteTrafic->id }} </h5>
 
                         </div>
 
                         <div class="card-body">
-                            <form action="{{route('recettes-trafics.store')}}" method="post" class="form">
+                            <form action="{{route('recettes-trafics.update',$recetteTrafic->id)}}" method="post" class="form">
 
                                 @csrf
 
+                                @method('PUT')
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
 
@@ -83,7 +84,7 @@
 
                                             @foreach ($sites as $site)
                                             <option value="{{ $site->id }}">{{ $site->libelle }}</option>
-                                                
+
                                             @endforeach
                                         </select>
 
@@ -95,7 +96,7 @@
 
                                             @foreach ($voies as $voie)
                                             <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
-                                                
+
                                             @endforeach
                                         </select>
 
@@ -128,7 +129,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-4">
 
-                                        <label for="">Montant</label>
+                                        <label for="">Montant Coupan</label>
                                         <input type="number" id="montant" value="{{ $recetteTrafic->montant }}" name="montant" class="form-control" required>
 
 
@@ -221,7 +222,7 @@
                                     <div class="col-lg-12 col-md-12">
                                         <label for="">Observation</label>
 
-                                        <textarea name="observation" value="{{ $recetteTrafic->observation }}" id="observation" cols="30" rows="10" class="form-control"></textarea>
+                                        <textarea name="observation"  id="observation" cols="30" rows="10" class="form-control">{{ $recetteTrafic->observation }}</textarea>
                                     </div>
 
                                 </div>

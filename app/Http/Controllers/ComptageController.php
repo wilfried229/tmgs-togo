@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Comptage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\voie;
-use App\Models\site;
+use App\Models\Voie;
+use App\Models\Site;
+use Illuminate\Support\Facades\Auth;
 use MercurySeries\Flashy\Flashy;
 
 class ComptageController extends Controller
@@ -58,7 +59,7 @@ class ComptageController extends Controller
             $comptage->montantManuel = $request->montantManuel;
             $comptage->montantInformatiser = $request->montantInformatiser;
             $comptage->observation = $request->observation;
-            $comptage->user_id = null;
+            $comptage->user_id = Auth::user()->id;
             $comptage->save();
             flashy()->success("Enregistrement effectuée avec succès");
             return  redirect()->back();
@@ -124,7 +125,7 @@ class ComptageController extends Controller
         $comptage->montantManuel = $request->montantManuel;
         $comptage->montantInformatiser = $request->montantInformatiser;
         $comptage->observation = $request->observation;
-        $comptage->user_id = null;
+        $comptage->user_id = Auth::user()->id;
 
         $comptage->save();
         flashy()->success("Modification effectuée avec succès");

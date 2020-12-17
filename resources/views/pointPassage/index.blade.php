@@ -109,18 +109,31 @@ Rapport TGMS-GATE \TOGO
                     <table id="example1" class="table  estdata table-bordered table-striped">
                         <thead>
                             <tr>
+                                <tr>
+                                    <th colspan="3"></th>
+                                    <th colspan="3">TRAFIC PAR VACATION</th>
+
+                                    <th colspan="2">TYPE DE PASSAGE </th>
+                                    <th colspan="2">SOMME TOTAL</th>
+                                    <th colspan="3">INFORMATIONS DIVERSES </th>
+
+
+                                    <th colspan="2"></th>
+                                </tr>
+                            </tr>
+                            <tr>
                                 <th data-target="date">DATE</th>
                                 <th data-target="site">SITE</th>
                                 <th data-target="voie">VOIE</th>
-                                <th >TRAFIC PAR VACATION  08H à 16H</th>
-                                <th >TRAFIC PAR VACATION  16H à 22H</th>
-                                <th >TRAFIC PAR VACATION  22H à 08H08H à 16H</th>
+                                <th> 08H-16H</th>
+                                <th> 16H-22H</th>
+                                <th> 22H-08H</th>
 
-                                <th> PASSAGE  ONLINE</th>
-                                <th> PASSAGE  OFFLINE</th>
+                                <th>ONLINE</th>
+                                <th>OFFLINE</th>
 
-                                <th>SOMME TOTAL TRAFIC</th>
-                                <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
+                                <th>TRAFIC</th>
+                                <th>RECETTE EQUIVALENTE</th>
 
                                 <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
                                 <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
@@ -129,28 +142,7 @@ Rapport TGMS-GATE \TOGO
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th data-target="date">DATE</th>
-                                <th data-target="site">SITE</th>
-                                <th data-target="voie">VOIE</th>
-                                <th >TRAFIC PAR VACATION  08H à 16H</th>
-                                <th >TRAFIC PAR VACATION  16H à 22H</th>
-                                <th >TRAFIC PAR VACATION  22H à 08H08H à 16H</th>
 
-                                <th> PASSAGE  ONLINE</th>
-                                <th> PASSAGE  OFFLINE</th>
-
-                                <th>SOMME TOTAL TRAFIC</th>
-                                <th>SOMME TOTAL RECETTE EQUIVALENTE</th>
-
-                                <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
-                                <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
-                                <th>Observations</th>
-                                <th>Enregister Par</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
 
                             @foreach ($pointPassages as $point)
@@ -169,12 +161,12 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>
                                 <td>{{ $point->paiement_espece_dysfon }}</td>
                                 <td>{{ $point->observations }}</td>
-                                <td>{{ $point->user_id }}</td>
+                                <td>{{ $point->user()->first()->name ?? "" }}</td>
 
                                 <td>
-
+                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
-
+                                    @endif
                                 </td>
                             </tr>
 

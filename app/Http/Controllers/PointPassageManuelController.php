@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\PointPassageMaunel;
-use App\Models\voie;
-use App\Models\site;
+use App\Models\Voie;
+use App\Models\Site;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

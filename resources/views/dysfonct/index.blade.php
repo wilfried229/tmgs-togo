@@ -109,6 +109,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $dysfon->heureFinIntervention }}</td>
                                 <td>{{ $dysfon->resultatObtenir }}</td>
                                 <td>{{ $dysfon->besoins }}</td>
+
                                 <td>
                                     <p>
                                         <img  height="100" src="{{asset('preuve'). '/'. $dysfon->preuve_avant}}" alt="{{'preuve avant '. $dysfon->preuve_avant}}">
@@ -117,12 +118,12 @@ Rapport TGMS-GATE \TOGO
                                     </p>
                                 </td>
                                 <td>{{ $dysfon->observation  }}</td>
-                                <td></td>
+                                <td>{{ $dysfon->user()->first()->name ?? ""  }}</td>
 
                                 <td>
-
+                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('dysfonctionement.edit',$dysfon->id) }}" class="btn btn-info">Modifier</a>
-                                    <a href="" class="btn btn-danger">Retirer</a>
+                                    @endif
                                 </td>
                             </tr>
 

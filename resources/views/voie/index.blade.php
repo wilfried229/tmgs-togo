@@ -90,7 +90,7 @@ TGMS-GATE
                                             <td>{{$voie->libelle}}</td>
                                         <th>
 
-                                            <a href="" class="btn btn-info"> Modifier</a>
+                                            <a href="{{ route('voie.edit',$voie->id) }}" class="btn btn-info"> Modifier</a>
 
                                         </th>
 

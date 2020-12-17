@@ -98,12 +98,12 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $comp->montantManuel }}</td>
                                 <td>{{ $comp->montantInformatiser }}</td>
                                 <td>{{ $comp->observation }}</td>
-                                <td></td>
+                                <td>{{ $comp->user()->first()->name ?? "" }}</td>
 
                                 <td>
-
+                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('comptage.edit',$comp->id) }}" class="btn btn-info">Modifier</a>
-                                    <a href="" class="btn btn-danger">Retirer</a>
+                                    @endif
                                 </td>
                             </tr>
 

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Dyfonctionnement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\voie;
-use App\Models\site;
+use App\Models\Voie;
+use App\Models\Site;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class DysfonctionnementController extends Controller
@@ -68,7 +69,7 @@ class DysfonctionnementController extends Controller
 
             $dysfonctionnment->observation = $request->observation;
             $dysfonctionnment->site_id = $request->site_id;
-            $dysfonctionnment->user_id = null;
+            $dysfonctionnment->user_id = Auth::user()->id;
             $dysfonctionnment->save();
             flashy()->success("Enregistrement effectuée avec succès");
 
@@ -147,7 +148,7 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->observation = $request->observation;
 
             $dysfonctionnment->site_id = $request->site_id;
-            $dysfonctionnment->user_id = null;
+            $dysfonctionnment->user_id = Auth::user()->id;
             $dysfonctionnment->update();
 
 

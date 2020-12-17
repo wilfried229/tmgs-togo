@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\voie;
+use App\Models\Voie;
 use Illuminate\Support\Facades\Log;
 
 class VoieController extends Controller

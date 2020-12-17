@@ -69,14 +69,14 @@ TGMS-GATE
                                     <thead>
                                     <tr>
                                         <th data-target="date">titre</th>
-                                        
+
                                         <th>Options</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>titre</th>
-                                        
+
                                         <th>Options</th>
 
                                     </tr>
@@ -89,11 +89,11 @@ TGMS-GATE
                                         <tr>
                                             <td>{{$site->libelle}}</td>
                                         <th>
-                                            
-                                            <a href="" class="btn btn-info"> Modifier</a>
+
+                                            <a href="{{ route('site.edit',$site->id) }}" class="btn btn-info"> Modifier</a>
 
                                         </th>
-                                            
+
                                         </tr>
                                     @endforeach
                                     </tbody>

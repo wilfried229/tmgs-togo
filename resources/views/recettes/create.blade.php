@@ -1,12 +1,12 @@
 
 @extends('template')
 @section('title')
-    Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/select2.min.css')}}">
 
-@endsection()
+@endsection
 
 @section('header-content')
 
@@ -16,13 +16,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Idé-Log
+                        <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item active"> Formation</li>
+                            <li class="breadcrumb-item active">Recettes/Trafics</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -83,7 +83,7 @@
 
                                             @foreach ($sites as $site)
                                             <option value="{{ $site->id }}">{{ $site->libelle }}</option>
-                                                
+
                                             @endforeach
                                         </select>
 
@@ -95,7 +95,7 @@
 
                                             @foreach ($voies as $voie)
                                             <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
-                                                
+
                                             @endforeach
                                         </select>
 
@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-4">
 
-                                        <label for="">Montant</label>
+                                        <label for="">Montant Coupon</label>
                                         <input type="number" id="montant" name="montant" class="form-control" required>
 
 
@@ -146,46 +146,34 @@
                                         <div class="col-lg-4 col-md-4">
 
                                             <label for="">Recettes Informatisée</label>
-                                            <input type="number" name="recette_informatiser" id="recette_informatiser" class="form-control">
+                                            <input type="number" name="recette_informatiser" id="recette_informatiser" class="form-control" required>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
 
                                             <label for="">Recettes Déclarée</label>
-                                            <input type="number" name="recette_declarer" id="recette_declarer" class="form-control">
+                                            <input type="number" name="recette_declarer" id="recette_declarer" class="form-control" required>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4">
-
-                                            <label for="">Manquant</label>
-                                            <input type="number" name="manquant" id="manquant" class="form-control" required>
-                                        </div>
-
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4">
-
-                                            <label for="">Suplus</label>
-                                            <input type="number" name="supplus" id="supplus" class="form-control" required>
-                                        </div>
                                         <div class="col-lg-4 col-md-4">
 
                                             <label for="">VL</label>
                                             <input type="number" name="vl" id="vl" class="form-control" required>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4">
-
-                                            <label for="">mini_bus</label>
-                                            <input type="number" name="mini_bus" id="mini_bus" class="form-control" required>
-                                        </div>
-
                                     </div>
+                                    <br>
+
                                 </fieldset>
 
 
                                 <br>
                                 <div class="row">
+                                    <div class="col-lg-4 col-md-4">
+
+                                        <label for="">mini_bus</label>
+                                        <input type="number" name="mini_bus" id="mini_bus" class="form-control" required>
+                                    </div>
+
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Autocars camion</label>
@@ -197,22 +185,23 @@
                                         <input type="number" name="pl" id="pl" class="form-control" required>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4">
 
-                                        <label for="">Nombre Exempté</label>
-                                        <input type="number" name="nbre_exempte" id="nbre_exempte" class="form-control" required>
-                                    </div>
 
                                 </div>
 
                                 <br>
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-4 col-md-4">
+
+                                        <label for="">Nombre Exempté</label>
+                                        <input type="number" name="nbre_exempte" id="nbre_exempte" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
 
                                         <label for="">Violation</label>
                                         <input type="number" name="violation" id="violation" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-4 col-md-4">
 
                                         <label for="">total</label>
                                         <input type="number" name="total" id="total" class="form-control" required>
@@ -221,7 +210,7 @@
                                     <div class="col-lg-12 col-md-12">
                                         <label for="">Observation</label>
 
-                                        <textarea name="observation" id="observation" cols="30" rows="10" class="form-control"></textarea>
+                                        <textarea name="observation" id="observation" cols="30" rows="10" class="form-control" required></textarea>
                                     </div>
 
                                 </div>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
+
 
 
 
@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function() {
         'voie' => 'VoieController'
     ]);
 });
+
+Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
 Route::get('file-import-export', 'UserController@fileImportExport');
 Route::post('file-import', 'UserController@fileImport')->name('file-import');
 Route::get('file-export', 'UserController@fileExport')->name('file-export');

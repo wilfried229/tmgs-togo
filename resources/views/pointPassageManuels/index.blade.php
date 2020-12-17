@@ -121,6 +121,17 @@ Rapport TGMS-GATE \TOGO
                     <table id="example1" class="table  estdata table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th colspan="5"></th>
+                                <th colspan="2">ETAT AVANT PASSAGE EN MODE MANUEL</th>
+                                <th colspan="2"></th>
+                                <th colspan="2">RESULTAT ISSU DU COMPTAGE MANUEL </th>
+
+                                <th colspan="2">ETAT DONNEES INFORMATISEES ENREGISTREES APRES PASSAGES EN MODE MANUEL</th>
+
+                                <th colspan="2">ETAT FINAL DE LA VOIE POUR LA VACATION CONCERNEE </th>
+                                <th colspan="3"> </th>
+                            </tr>
+                            <tr>
                                 <th data-target="date">Date</th>
                                 <th data-target="site">Site</th>
                                 <th data-target="voie">Voie</th>
@@ -132,12 +143,12 @@ Rapport TGMS-GATE \TOGO
                                 <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
                                 <th>Heure Debut Comptage</th>
                                 <th>Heure fin Comptage</th>
-                                <th>Trafic CompteManu</th>
-                                <th>Equipe Recette</th>
-                                <th>Etat des Donnetafic Informatisé</th>
-                                <th>Etat Donnes Recette Informatisé</th>
-                                <th>Eta Final Recette Informatisé</th>
-                                <th>Etat Final Trafic Informatisé</th>
+                                <th>Trafic compté manuellement</th>
+                                <th>Equivalent recette en FCFA  </th>
+                                <th>Trafic Informatisé </th>
+                                <th>Recette Informatisée </th>
+                                <th>Trafic (Informatisé + manuel)</th>
+                                <th>Recette (Informatisé + manuel)</th>
                                 <th>observations</th>
                                 <th>Enregister Par</th>
 
@@ -166,7 +177,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $f->etaFinal_recetteInformatiser }}</td>
                                 <td>{{ $f->etaFinal_taficInformatiser }}</td>
                                 <td>{{ $f->observation }}</td>
-                                <td>{{ $f->user()->first()->name }}</td>
+                                <td>{{ $f->user()->first()->name ?? "" }}</td>
 
 
                                 <td>

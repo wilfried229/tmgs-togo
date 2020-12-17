@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\site;
+use App\Models\Site;
 use Illuminate\Support\Facades\Log;
 
 class SiteController extends Controller

@@ -6,8 +6,8 @@ use App\Models\PointPassage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use App\Models\voie;
-use App\Models\site;
+use App\Models\Voie;
+use App\Models\Site;
 
 
 class PointPassageController extends Controller
@@ -67,7 +67,7 @@ class PointPassageController extends Controller
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->observations = $request->observations;
 
-            $pointPassage->user_id = null;
+            $pointPassage->user_id = Auth::user()->id;
 
 
             $pointPassage->save();

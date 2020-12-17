@@ -44,7 +44,7 @@ Rapport TGMS-GATE \TOGO
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('point-passage.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('point-passage-manuel.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
@@ -66,12 +66,22 @@ Rapport TGMS-GATE \TOGO
 
                     @csrf
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Date</label>
                             <input type="date" name="date" class="form-control" >
                         </div>
+                        <div class="col-lg-6 col-md-6">
 
+                            <label for="">Site </label>
+                            <select class="form-control"  name="site_id" id="site_id">
+
+                                @foreach ($sites as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Voie</label>
@@ -84,17 +94,6 @@ Rapport TGMS-GATE \TOGO
                             </select>
 
                         </div>
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">Site </label>
-                            <select class="form-control"  name="site_id" id="site_id">
-
-                                @foreach ($sites as $v)
-                            <option value="{{$v->id}}">{{$v->libelle}}</option>
-
-                                @endforeach
-                            </select>
-                        </div>
 
                         <div class="col-lg-4 col-md-4">
 
@@ -106,77 +105,104 @@ Rapport TGMS-GATE \TOGO
                             <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
                             <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
 
-                        </select>            </div>
+                            </select>
+                    </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Identité percepteur</label>
-                            <input type="text" name="identite_percepteur" class="form-control" >
+                            <input type="text" name="identite_percepteur" id="identite_percepteur" class="form-control" required>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                    </div>
+                    <br>
+                    <div class="row">
 
-                            <label for="">Point trafic informatisé avant démarrage du mode manel</label>
-                            <input type="text" name="point_traf_info_mode_manuel" class="form-control" >
+                        <div class="col-lg-12">
+                            <h4>ETAT AVANT PASSAGE EN MODE MANUEL </h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+
+                            <label for="">Point trafic informatisé avant démarrage du mode manuel </label>
+                            <input type="number" name="point_traf_info_mode_manuel" class="form-control" required>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Solde recette informatisée avant démarrage du mode manuel</label>
-                            <input type="number" name="solde_recette_info_mode_manuel" class="form-control" >
+                            <input type="number" name="solde_recette_info_mode_manuel" class="form-control" required>
                         </div>
+                    </div>
 
-                        <div class="col-lg-4 col-md-4">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Heure de debut (comptage manuel) </label>
                             <input type="time" name="heure_debutComptage" class="form-control" >
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Heure de fin (comptage manuel)</label>
                             <input type="time" name="heure_finComptage" class="form-control" >
                         </div>
+                    </div>
+                    <br>
 
-                        <div class="col-lg-4 col-md-4">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                        <h4>RESULTAT ISSU DU COMPTAGE MANUEL </h4>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Trafic compté manuellement</label>
-                            <textarea class="form-control" name="trafic_compteManu" id="trafic_compteManu" cols="30" rows="10"></textarea>
+                            <input type="number"  class="form-control" name="trafic_compteManu" id="trafic_compteManu" required>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Equivalent recette en FCFA</label>
-                            <textarea class="form-control" name="equipRecette" id="equipRecette" cols="30" rows="10"></textarea>
+                            <input type="number" class="form-control" name="equipRecette" id="equipRecette" required>
+
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <h4>ETAT DONNEES INFORMATISEES ENREGISTREES APRES PASSAGES EN MODE MANUEL</h4>
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Etat données du trafic informatiser</label>
-                            <textarea class="form-control" name="etaDonne_taficInformatiser" id="etaDonne_taficInformatiser" cols="30" rows="10"></textarea>
+                            <input type="number" class="form-control" name="etaDonne_taficInformatiser" id="etaDonne_taficInformatiser" required>
+
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Etat données de recette informatiser</label>
-                            <textarea class="form-control" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" cols="30" rows="10"></textarea>
-                        </div>
+                            <input type="number" class="form-control" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" required>
 
-                        <div class="col-lg-4 col-md-4">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <h4>ETAT FINAL DE LA VOIE POUR LA VACATION CONCERNEE</h4>
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Etat final de recette informatiser</label>
-                            <textarea class="form-control" name="etaFinal_recetteInformatiser" id="etaFinal_recetteInformatiser" cols="30" rows="10"></textarea>
+                            <input type="number" class="form-control" name="etaFinal_recetteInformatiser"   id="etaFinal_recetteInformatiser" required>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Etat final du trafic informatiser</label>
-                            <textarea class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" cols="30" rows="10"></textarea>
+                            <input type="number" class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" required>
+
                         </div>
-
-
-
-
                     </div>
                     <br>
 

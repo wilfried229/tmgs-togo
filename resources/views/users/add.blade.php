@@ -86,6 +86,8 @@ Rapport TGMS-GATE \TOGO
                             <select name="role" id="role" class="form-control">
                                 <option value="ADMIN">ADMIN</option>
                                 <option value="PERCEPTEUR">PERCEPTEUR</option>
+                                <option value="SAFER">SAFER</option>
+
                             </select>
                         </div>
                         <div class="col-lg-6 col-md-6">

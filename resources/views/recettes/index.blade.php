@@ -1,6 +1,6 @@
 @extends('template')
 @section('title')
-    Rapport togo
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
 
@@ -123,8 +123,21 @@
                         <div class="card-body">
 
                             <div class="table-responsive">
+
+
                                 <table id="example1" class="table  estdata table-bordered table-striped">
                                     <thead>
+                                        <tr>
+                                            <tr>
+                                                <th colspan="4"></th>
+                                                <th colspan="5">Recetes</th>
+
+                                                <th colspan="7">Trafic</th>
+                                                <th colspan="3"></th>
+
+                                                <th></th>
+                                            </tr>
+                                        </tr>
                                     <tr>
                                         <th data-target="date">Date</th>
                                         <th data-target="site">Site</th>
@@ -132,7 +145,7 @@
                                         <th data-target="vacation">Vacation</th>
                                         <th data-target="agent">Agent</th>
 
-                                        <th data-target="montant">Montant</th>
+                                        <th data-target="montant">Montant Coupon</th>
 
                                         <th data-target="recette_information">Recette Informatisée</th>
                                         <th data-target="recette_declarer">Recette déclarée</th>
@@ -151,33 +164,7 @@
                                         <th>Action</th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Site</th>
-                                        <th>Voie</th>
-                                        <th>Vacation</th>
-                                        <th>Agent</th>
 
-                                        <th>Montant</th>
-
-                                        <th>Recette Informatisée</th>
-                                        <th>Recette déclarée</th>
-                                        <th>Manquant</th>
-                                        <th>Suplus</th>
-                                        <th>Vl</th>
-                                        <th>Mini bus</th>
-                                        <th>Autocars camion</th>
-                                        <th>Pl</th>
-                                        <th>Nombre exempté</th>
-                                        <th>Violation</th>
-                                        <th>Total</th>
-                                        <th>Observation</th>
-                                        <th>Enregister Par</th>
-                                        <th>Action</th>
-
-                                    </tr>
-                                    </tfoot>
                                     <tbody>
 
                                     @foreach($recettes as $recette)
@@ -203,13 +190,21 @@
                                             <td>{{$recette->total}}</td>
                                             <td>{{$recette->observation}}</td>
                                             <td>{{$recette->user()->first()->name}}</td>
-
                                             <td>
-
+                                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                                 <a href="{{ route('recettes-trafics.edit',$recette->id) }}" class="btn btn-info">Modifier</a>
-                                                
+
+                                                @if ($recette->manquant > 0 )
+                                                <a  onclick="event.preventDefault(); document.getElementById('payer-manquant-{{$recette->id}}').submit(); return false;"   class="btn btn-warning">Payer </a>
+                                                <form id="payer-manquant-{{$recette->id}}" action="{{route('payement.manquant',$recette->id)}}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                    @method('GET')
+                                                </form>
+
+                                                @endif
+                                                @endif
                                             </td>
-                    <th></th>
+
                                         </tr>
                                     @endforeach
                                     </tbody>
