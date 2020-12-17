@@ -59,7 +59,7 @@ class ComptageController extends Controller
             $comptage->observation = $request->observation;
             $comptage->user_id = null;
             $comptage->save();
-
+            Modification
             return  redirect()->back();
 
         }catch (\Exception $ex){
@@ -126,7 +126,7 @@ class ComptageController extends Controller
         $comptage->user_id = null;
 
         $comptage->save();
-
+        flashy()->success("Modification effectuée avec succès");
         return  redirect()->back();
 
         }catch (\Exception $ex){

@@ -1,11 +1,11 @@
-@extends('template-ide')
+@extends('template')
 @section('title')
-Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
 <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/select2.min.css')}}">
 
-@endsection()
+@endsection
 
 
 @section('header-content')
@@ -16,7 +16,7 @@ Idé-Log
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Idé-Log
+            <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">

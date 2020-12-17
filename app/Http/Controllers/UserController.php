@@ -6,6 +6,10 @@ use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
+use App\Models\Site;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -44,6 +48,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users  = User::get();
+        return view('users.liste',compact('users'));
     }
 
     /**
@@ -54,6 +60,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        $sites = Site::all();
+        return view('users.add',compact('sites'));
     }
 
     /**
@@ -65,6 +73,27 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+
+        if ($request->password != $request->password_confirmation) {
+            # code...
+
+            Session::flash('success', 'Mot de passe non identique');
+
+            return redirect()->back();
+
+        }
+
+        $user  = new User();
+        $user->name  = $request->name;
+        $user->email  = $request->email;
+        $user->password  = Hash::make($request->password);
+        $user->role  = $request->role;
+        $user->site_id  = $request->site_id;
+
+        $user->save();
+        Session::flash('success', 'Utilisateur ajouté avec succès ');
+
+        return redirect()->back();
     }
 
     /**

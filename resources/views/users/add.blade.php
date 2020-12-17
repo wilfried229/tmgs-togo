@@ -1,11 +1,11 @@
-@extends('template-ide')
+@extends('template')
 @section('title')
-Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
 <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/select2.min.css')}}">
 
-@endsection()
+@endsection
 
 
 @section('header-content')
@@ -16,7 +16,7 @@ Idé-Log
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Idé-Log
+            <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -46,7 +46,7 @@ Idé-Log
 
             </div>
             <div class="col-md-3">
-            <a href="{{route('users.list')}}" class="btn btn-primary">Retour vers la liste</a>
+            <a href="{{route('users.index')}}" class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
@@ -69,33 +69,35 @@ Idé-Log
                     @csrf
 
                     <div class="row">
-                        <div class="col-lg-12 col-md-4">
+                        <div class="col-lg-6 col-md-6">
                             <label for="">Nom</label>
                             <input type="text" name="name" id="name" class="form-control">
                         </div>
-                    </div>
-                    <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for=""> Email</label>
 
                             <input type="email" name="email" id="email" class="form-control">
                         </div>
-                     </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-4">
+
+                        <div class="col-lg-6 col-md-6">
                             <label for="">Role</label>
 
                             <select name="role" id="role" class="form-control">
-                                <option value="AGENT">AGENT</option>
-                                <option value="ADMINISTRATEUR">ADMINISTRATEUR</option>
-                                <option value="RH">RH</option>
-                                <option value="GAP">GAP</option>
-                                <option value="GTP">GTP</option>
-                                <option value="DT">DT</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="PERCEPTEUR">PERCEPTEUR</option>
                             </select>
                         </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label for="">Site</label>
 
+                            <select name="site_id" id="site_id" class="form-control">
+                                @foreach ($sites as $site)
+                                            <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+
+                                @endforeach
+                             </select>
+                        </div>
 
                         <div class="col-md-12">
                             <label for="">Mot de passe</label>
@@ -108,6 +110,9 @@ Idé-Log
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                         </div>
                     </div>
+
+
+
                     <br>
 
 

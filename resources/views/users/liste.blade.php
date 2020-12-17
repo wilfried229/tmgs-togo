@@ -1,12 +1,12 @@
-@extends('template-ide')
+@extends('template')
 @section('title')
-    Idé-Log
+Rapport TGMS-GATE \TOGO
 @endsection
 @section('style-css')
 
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap4.css')}}">
 
-@endsection()
+@endsection
 
 
 @section('header-content')
@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Idé-Log
+                        <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <h6 class="element-header">
-                                @if (in_array(Auth::user()->role,['ADMINISTRATEUR','RH']))
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
                                     <a href="{{route('users.create')}}" class="btn btn-primary">Ajouter un
                                         utilisateur </a>

@@ -85,9 +85,9 @@
 
 
 
-
+            @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
             <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="fa fa-users"></i>
                     <p>Utilisateurs</p>
                 </a>
@@ -102,6 +102,7 @@
 
                 </li>
 
+            @endif
                 <li class="nav-item">
 
                     <a class="dropdown-item" href=""
