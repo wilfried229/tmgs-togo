@@ -22,8 +22,9 @@ class RecetteTraficController extends Controller
         //
 
         $recettes = RecetesTrafic::query()->orderByDesc('id')->get();
-        
-        return view('recettes.index',compact('recettes','voie','site'));
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('recettes.index',compact('recettes','voies','sites'));
     }
 
     /**

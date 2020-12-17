@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comptage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\voie;
+use App\Models\site;
 
 class ComptageController extends Controller
 {
@@ -19,7 +21,7 @@ class ComptageController extends Controller
 
         $comptages  = Comptage::all();
 
-        return  view('comptage.index');
+        return  view('comptage.index',compact('comptages'));
     }
 
     /**
@@ -29,8 +31,9 @@ class ComptageController extends Controller
      */
     public function create()
     {
-
-        return  view('');
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return  view('comptage.create',compact('sites','voies'));
         //
     }
 
@@ -54,7 +57,7 @@ class ComptageController extends Controller
             $comptage->montantManuel = $request->montantManuel;
             $comptage->montantInformatiser = $request->montantInformatiser;
             $comptage->observation = $request->observation;
-            $comptage->user_id = $request->user_id;
+            $comptage->user_id = null;
             $comptage->save();
 
             return  redirect()->back();
@@ -92,9 +95,10 @@ class ComptageController extends Controller
     public function edit($id)
     {
 
-        $comptages  = Comptage::findOrFail($id);
-
-        return  view('',compact('comptages'));
+        $comptage  = Comptage::findOrFail($id);
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return  view('comptage.update',compact('comptage','sites','voies'));
     }
 
     /**
@@ -119,7 +123,8 @@ class ComptageController extends Controller
         $comptage->montantManuel = $request->montantManuel;
         $comptage->montantInformatiser = $request->montantInformatiser;
         $comptage->observation = $request->observation;
-        $comptage->user_id = $request->user_id;
+        $comptage->user_id = null;
+
         $comptage->save();
 
         return  redirect()->back();

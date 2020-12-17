@@ -32,6 +32,8 @@
         @endsection
         @section('content')
             <section class="content">
+
+                <div class="data-table-area mg-b-15">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
@@ -50,7 +52,64 @@
                             </h6>
                         </div>
                     </div>
+                    <form class="mb-4" action="" method="POST">
+                        @csrf
+                        <div class="row">
+                            <!-- secteur d'activité -->
+                            <div class="form-group col-md-4">
+                                <label for="date">Date</label>
+                              <input type="date" name="date" id="date" class="form-control">
+                            </div>
+                            <!-- niveau etude -->
+                            <div class="form-group col-md-4">
+                                <label for="site">Site</label>
+                                <select name="site_id" id="site_id" class="form-control">
 
+                                    @foreach ($sites as $site)
+                                    <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- sexe -->
+                            <div class="form-group col-md-4">
+                                <label for="">Voie</label>
+                                <select name="voie_id" id="voie_id" class="form-control">
+
+                                    @foreach ($voies as $voie)
+                                    <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
+
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- age -->
+                            <div class="form-group col-md-6">
+                                <label for="">Vacation</label>
+
+                                        <select name="vacation" id="vacation" class="form-control">
+
+
+                                                <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
+                                            <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
+                                            <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
+
+                                        </select>
+                            </div>
+                            <!-- année d'experience -->
+                            <div class="form-group col-md-6">
+                                <label for="agent">Agent</label>
+                                        <input type="text" id="agent_voie" name="agent_voie" class="form-control" required>
+                            </div>
+                            <!-- pays residence -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-center">
+                                <input class="btn btn-success" type="submit" value="Rechercher">
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </form>
                     <div class="card card-success">
 
                         <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal"
@@ -144,7 +203,7 @@
                                             <td>{{$recette->total}}</td>
                                             <td>{{$recette->observation}}</td>
                                             <td>{{$recette->user()->first()->name}}</td>
-<th></th>
+                    <th></th>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -160,7 +219,7 @@
                 <!-- /.row (main row) -->
                 <!-- /.container-fluid -->
 
-
+                </div>
                 <!--  modal ajout --->
 
             </section>
@@ -195,7 +254,6 @@
                             'copyHtml5',
                             'excelHtml5',
                             'csvHtml5',
-                            'pdfHtml5'
                         ],
                         "paging": true,
                         "lengthChange": true,

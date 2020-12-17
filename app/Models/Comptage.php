@@ -8,7 +8,7 @@ class Comptage extends Model
 {
     //
 
-    protected $table = "comptage";
+    protected $table = "comptage_contraditoire";
 
     protected $fillable =['date','voie_id','site_id','vacation','nbre_passageManuel',
         'nbre_passageSysteme','montantManuel','montantInformatiser',

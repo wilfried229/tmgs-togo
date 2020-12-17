@@ -15,7 +15,7 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Point Passage Manuel 
+            <h1 class="m-0 text-dark">Point Passage Manuel
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -82,7 +82,7 @@ Rapport TGMS-GATE \TOGO
 
                                 @endforeach
                             </select>
-                        
+
                         </div>
                         <div class="col-lg-4 col-md-4">
 
@@ -98,9 +98,14 @@ Rapport TGMS-GATE \TOGO
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">Vacation</label>
-                            <input type="ENUM" name="vacation" class="form-control" >
-                        </div>
+                            <select name="vacation" id="vacation" class="form-control">
+
+
+                                <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
+                            <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
+                            <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
+
+                        </select>            </div>
 
                         <div class="col-lg-4 col-md-4">
 
@@ -168,15 +173,15 @@ Rapport TGMS-GATE \TOGO
                             <textarea class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" cols="30" rows="10"></textarea>
                         </div>
 
-                        
 
-                        
+
+
                     </div>
                     <br>
 
                     <div class="row">
 
-                    
+
 
 
                         <div class="col-md-12">
@@ -185,18 +190,18 @@ Rapport TGMS-GATE \TOGO
                             <textarea class="form-control" name="Observation" id="Observation" cols="30" rows="10"></textarea>
                         </div>
 
-                       
-                    
+
+
 
                     </div>
 
                         <br>
                         <fieldset>
-                   
+
                 </form >
 
             <br>
-            
+
 
             <br>
             <div class="row">

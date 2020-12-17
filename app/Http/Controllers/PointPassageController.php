@@ -21,7 +21,9 @@ class PointPassageController extends Controller
     {
 
         $pointPassages = PointPassage::all();
-        return view('pointPassage.index',compact('pointPassages'));
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('pointPassage.index',compact('pointPassages','sites','voies'));
     }
 
     /**

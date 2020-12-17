@@ -9,7 +9,7 @@ class Dyfonctionnement extends Model
     //
     protected $table= "dyfonctionnement";
 
-    protected $fillable =['voie_id','site_id','date','localisation',
+    protected $fillable =['site_id','date','localisation',
         'dysfonctionnement','cause',
         'travauxArealiser','travauxRealiser',
         'heureConstat',
@@ -17,17 +17,14 @@ class Dyfonctionnement extends Model
         'heureFinIntervention',
         'resultatObtenir',
         'besoins',
-        'preuve',
+        'preuve_avant',
+        'preuve_apres',
         'observation'];
         public function site(){
 
             return $this->belongsTo(Site::class,'site_id','id');
         }
 
-        public function voie(){
-
-            return $this->belongsTo(Voie::class,'voie_id','id');
-        }
 
 
         public function user(){

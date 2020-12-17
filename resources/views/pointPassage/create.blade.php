@@ -78,7 +78,6 @@ Rapport TGMS-GATE \TOGO
                             <select class="form-control"  name="site_id" id="site_id">
 
                                 @foreach ($sites as $s)
-
                             <option value="{{$s->id}}">{{$s->libelle}}</option>
                                 @endforeach
                             </select>

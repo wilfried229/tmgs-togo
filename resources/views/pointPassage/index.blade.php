@@ -53,6 +53,46 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
+        <form class="mb-4" action="" method="POST">
+            @csrf
+            <div class="row">
+                <!-- secteur d'activité -->
+                <div class="form-group col-md-4">
+                    <label for="date">Date</label>
+                  <input type="date" name="date" id="date" class="form-control">
+                </div>
+                <!-- niveau etude -->
+                <div class="form-group col-md-4">
+                    <label for="site">Site</label>
+                    <select name="site_id" id="site_id" class="form-control">
+
+                        @foreach ($sites as $site)
+                        <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+
+                        @endforeach
+                    </select>
+                </div>
+                <!-- sexe -->
+                <div class="form-group col-md-4">
+                    <label for="">Voie</label>
+                    <select name="voie_id" id="voie_id" class="form-control">
+
+                        @foreach ($voies as $voie)
+                        <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
+
+                        @endforeach
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <input class="btn btn-success" type="submit" value="Rechercher">
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </form>
         <div class="card card-success">
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
@@ -184,7 +224,7 @@ Rapport TGMS-GATE \TOGO
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
+            
         ],
         "paging": true,
             "lengthChange": true,
@@ -193,11 +233,11 @@ Rapport TGMS-GATE \TOGO
             "info": true,
             "autoWidth": true,
             "language": {
-                "lengthMenu": "Afficher _MENU_ abonnés par Page",
+                "lengthMenu": "Afficher _MENU_ données par Page",
                 "zeroRecords": "Aucun résultat",
                 "info": "Page _PAGE_ sur _PAGES_",
-                "infoEmpty": "Aucun  abonnés trouvée",
-                "infoFiltered": "(sur les _MAX_ abonnés",
+                "infoEmpty": "Aucun  données trouvée",
+                "infoFiltered": "(sur les _MAX_ données",
                 "infoPostFix":    "",
                 "thousands":      ",",
                 "loadingRecords": "Chargement...",

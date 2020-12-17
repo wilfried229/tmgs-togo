@@ -41,11 +41,7 @@ Rapport TGMS-GATE \TOGO
         <div class="row">
             <div class="col-md-4">
                 <h6 class="element-header">
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 01d38cdb5f35dfc2edcae8539def9e0d422da002
                 <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
                 </h6>
             </div>
@@ -57,6 +53,58 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
+        <form class="mb-4" action="" method="POST">
+            @csrf
+            <div class="row">
+                <!-- secteur d'activité -->
+                <div class="form-group col-md-3">
+                    <label for="date">Date</label>
+                  <input type="date" name="date" id="date" class="form-control">
+                </div>
+                <!-- niveau etude -->
+                <div class="form-group col-md-3">
+                    <label for="site">Site</label>
+                    <select name="site_id" id="site_id" class="form-control">
+
+                        @foreach ($sites as $site)
+                        <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+
+                        @endforeach
+                    </select>
+                </div>
+                <!-- sexe -->
+                <div class="form-group col-md-3">
+                    <label for="">Voie</label>
+                    <select name="voie_id" id="voie_id" class="form-control">
+
+                        @foreach ($voies as $voie)
+                        <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
+
+                        @endforeach
+                    </select>
+                </div>
+               <div class="form-group col-md-3">
+                     <label for="">Vacation</label>
+                            <select name="vacation" id="vacation" class="form-control">
+
+
+                                <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
+                            <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
+                            <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
+
+                        </select>
+                </div>
+
+                <!-- pays residence -->
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <input class="btn btn-success" type="submit" value="Rechercher">
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </form>
         <div class="card card-success">
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
@@ -97,30 +145,7 @@ Rapport TGMS-GATE \TOGO
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th data-target="date">Date</th>
-                                <th data-target="site">Site</th>
-                                <th data-target="voie">Voie</th>
-                                <th data-target="vacation">Vacation</th>
-                                <th data-target="identite_percepteur">Identite percepteur</th>
 
-                                <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
-                                <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
-                                <th>Heure Debut Comptage</th>
-                                <th>Heure fin Comptage</th>
-                                <th>Trafic CompteManu</th>
-                                <th>Equipe Recette</th>
-                                <th>Etat des Donnetafic Informatisé</th>
-                                <th>Etat Donnes Recette Informatisé</th>
-                                <th>Eta Final Recette Informatisé</th>
-                                <th>Etat Final Trafic Informatisé</th>
-                                <th>observations</th>
-                                <th>Enregister Par</th>
-
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($pointPassageManuels as $f)
 
@@ -142,7 +167,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $f->etaFinal_recetteInformatiser }}</td>
                                 <td>{{ $f->etaFinal_taficInformatiser }}</td>
                                 <td>{{ $f->observation }}</td>
-                                
+
 
 
                             </tr>
@@ -191,7 +216,6 @@ Rapport TGMS-GATE \TOGO
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
         ],
         "paging": true,
             "lengthChange": true,
@@ -200,11 +224,11 @@ Rapport TGMS-GATE \TOGO
             "info": true,
             "autoWidth": true,
             "language": {
-                "lengthMenu": "Afficher _MENU_ abonnés par Page",
+                "lengthMenu": "Afficher _MENU_ point passage par Page",
                 "zeroRecords": "Aucun résultat",
                 "info": "Page _PAGE_ sur _PAGES_",
-                "infoEmpty": "Aucun  abonnés trouvée",
-                "infoFiltered": "(sur les _MAX_ abonnés",
+                "infoEmpty": "Aucun données trouvée",
+                "infoFiltered": "(sur les _MAX_ données",
                 "infoPostFix":    "",
                 "thousands":      ",",
                 "loadingRecords": "Chargement...",

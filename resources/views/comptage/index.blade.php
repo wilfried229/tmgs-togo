@@ -22,7 +22,7 @@ Rapport TGMS-GATE \TOGO
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> DYSFONCTIONNEMENTS</li>
+              <li class="breadcrumb-item active"> COMPTAGE</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,7 +42,7 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
 
-                    <a href="{{route('dysfonctionement.create')}}" class="btn btn-primary">Ajouter un dysfonctionnement </a>
+                    <a href="{{route('comptage.create')}}" class="btn btn-primary">Ajouter un comptage </a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -57,7 +57,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header"> DYSFONCTIONNEMENTS</h5>
+                <h5 class="form-header"> COMPTAGE</h5>
 
 
             </a><!-- /.card-header -->
@@ -71,22 +71,14 @@ Rapport TGMS-GATE \TOGO
                             <tr>
                                 <th data-target="date">DATE</th>
                                 <th data-target="site">Site</th>
+                                <th data-target="voies">VOIES</th>
+                                <th data-target="vacation">Vacation</th>
 
-                                <th data-target="LOCALISATION">LOCALISATION</th>
-                                <th data-target="DYSFONCTIONNEMENT">DYSFONCTIONNEMENT</th>
-                                <th >CAUSE DU DYSFONCTIONNEMENT</th>
-                                <th >TRAVAUX À RÉALISER</th>
-                                <th >TRAVAUX  RÉALISÉS</th>
-
-                                <th> HEURE DE CONSTAT </th>
-                                <th> HEURE DÉBUT D'INTERVENTION</th>
-
-                                <th>HEURE FIN D'INTERVENTION</th>
-                                <th>RÉSULTAT OBTENU</th>
-
-                                <th>BESOINS</th>
-                                <th>PREUVE (N° DE FICHE D'INTERVENTION, image avant et après </th>
-                                <th>OBSERVATION</th>
+                                <th>NOMBRE DE PASSAGE (MANUEL)ISATION</th>
+                                <th>NOMBRE DE PASSAGE (SYSTÈME)</th>
+                                <th>MONTANT MANUEL EN FCFA</th>
+                                <th>MONTANT INFORMATISÉ EN FCFA</th>
+                                <th>OBSERVATIONS</th>
                                 <th>Enregister Par</th>
                                 <th>Action</th>
                             </tr>
@@ -94,34 +86,23 @@ Rapport TGMS-GATE \TOGO
 
                         <tbody>
 
-                            @foreach ($dysfonctionnments as $dysfon)
+                            @foreach ($comptages as $comp)
 
                             <tr>
-                                <td>{{ $dysfon->date }}</td>
-                                <td>{{ $dysfon->site()->first()->libelle }}</td>
-                                <td>{{ $dysfon->localisation }}</td>
-                                <td>{{ $dysfon->dysfonctionnement }}</td>
-                                <td>{{ $dysfon->cause }}</td>
-                                <td>{{ $dysfon->travauxArealiser }}</td>
-                                <td>{{ $dysfon->travauxRealiser }}</td>
-                                <td>{{ $dysfon->heureConstat }}</td>
-                                <td>{{ $dysfon->heureDebutIntervention }}</td>
-                                <td>{{ $dysfon->heureFinIntervention }}</td>
-                                <td>{{ $dysfon->resultatObtenir }}</td>
-                                <td>{{ $dysfon->besoins }}</td>
-                                <td>
-                                    <p>
-                                        <img  height="100" src="{{asset('preuve'). '/'. $dysfon->preuve_avant}}" alt="{{'preuve avant '. $dysfon->preuve_avant}}">
-
-                                        <img height="100" src="{{asset('preuve'). '/'. $dysfon->preuve_apres}}" alt="{{'preuve apres '. $dysfon->preuve_apres}}">
-                                    </p>
-                                </td>
-                                <td>{{ $dysfon->observation  }}</td>
+                                <td>{{ $comp->date }}</td>
+                                <td>{{ $comp->site()->first()->libelle }}</td>
+                                <td>{{ $comp->voie()->first()->libelle }}</td>
+                                <td>{{ $comp->vacation }}</td>
+                                <td>{{ $comp->nbre_passageManuel }}</td>
+                                <td>{{ $comp->nbre_passageSysteme }}</td>
+                                <td>{{ $comp->montantManuel }}</td>
+                                <td>{{ $comp->montantInformatiser }}</td>
+                                <td>{{ $comp->observation }}</td>
                                 <td></td>
 
                                 <td>
 
-                                    <a href="{{ route('dysfonctionement.edit',$dysfon->id) }}" class="btn btn-info">Modifier</a>
+                                    <a href="{{ route('comptage.edit',$comp->id) }}" class="btn btn-info">Modifier</a>
                                     <a href="" class="btn btn-danger">Retirer</a>
                                 </td>
                             </tr>

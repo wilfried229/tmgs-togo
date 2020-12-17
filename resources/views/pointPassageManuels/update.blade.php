@@ -78,9 +78,11 @@ Rapport TGMS-GATE \TOGO
                             <select class="form-control"  name="voie_id" id="voie_id">
 
                                 @foreach ($voies as $v)
-                                @if ($v->id == $pointPassageManuel->site_id )
-                                <option value="{{$v->id}}" selected>{{$v->libelle}}</option>
-                                @endif
+
+                                <option value="{{$v->id}}" @if ($v->id == $pointPassageManuel->site_id )
+                                    selected
+                                    @endif >{{$v->libelle}}</option>
+
                                 @endforeach
                             </select>
 
@@ -92,10 +94,12 @@ Rapport TGMS-GATE \TOGO
 
                                 @foreach ($sites as $s)
 
-                                @if ($s->id == $pointPassageManuel->site_id )
-                                <option value="{{$s->id}}" selected>{{$s->libelle}}</option>
 
-                                @endif
+                                <option value="{{$s->id}}"  @if ($s->id == $pointPassageManuel->site_id )
+                                    selected
+
+                                    @endif >{{$s->libelle}}</option>
+
                                 @endforeach
                             </select>
                         </div>
@@ -103,7 +107,19 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Vacation</label>
-                            <input type="text" name="vacation"  value="{{$pointPassageManuel->vacation}}"  class="form-control" >
+                            <select name="vacation" id="vacation" class="form-control">
+
+                            <option value="{{ env('TYPE_VACATION_06H')}}" @if (env('TYPE_VACATION_06H') == $pointPassageManuel->vacation)
+                                selected
+                            @endif>{{ env('TYPE_VACATION_06H')}}</option>
+                                <option value="{{ env('TYPE_VACATION_14H')}}"  @if (env('TYPE_VACATION_14H') == $pointPassageManuel->vacation)
+                                selected
+                            @endif>{{ env('TYPE_VACATION_14H')}}</option>
+                                <option value="{{ env('TYPE_VACATION_20H')}}"
+                                @if (env('TYPE_VACATION_20H') == $pointPassageManuel->vacation)
+                                selected
+                            @endif>{{ env('TYPE_VACATION_20H')}}</option>
+                        </select>
                         </div>
 
                         <div class="col-lg-4 col-md-4">

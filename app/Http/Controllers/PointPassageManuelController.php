@@ -20,7 +20,9 @@ class PointPassageManuelController extends Controller
     {
 
         $pointPassageManuels = PointPassageMaunel::all();
-        return view('pointPassageManuels.index',compact('pointPassageManuels'));
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('pointPassageManuels.index',compact('pointPassageManuels','sites','voies'));
     }
 
     /**

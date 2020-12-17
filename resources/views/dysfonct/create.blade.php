@@ -15,13 +15,13 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Point Passage
+            <h1 class="m-0 text-dark">DYSFONCTIONNEMENT
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Point Passage </li>
+              <li class="breadcrumb-item active"> DYSFONCTIONNEMENT </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -44,11 +44,11 @@ Rapport TGMS-GATE \TOGO
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('point-passage.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('dysfonctionement.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
-        <h4 class="element-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h4>
+        <h4 class="element-header">DYSFONCTIONNEMENT</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -57,34 +57,22 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Ajouter un point journalier passage</h5>
+                <h5 class="form-header">Ajouter un dysfonctionnement</h5>
 
             </div>
 
             <div class="card-body">
-                <form action="{{route('point-passage.store')}}" method="post" class="form">
+                <form action="{{route('dysfonctionement.store')}}" method="post" class="form" enctype="multipart/form-data">
 
                     @csrf
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">Id</label>
-                            <input type="BIGINT" name="date" class="form-control" >
+                        <div class="col-lg-6 col-md-6">
+                            <label for="">Date</label>
+                            <input type="date" name="date" class="form-control" >
                         </div>
-                        <div class="col-lg-4 col-md-4">
 
-                            <label for="">Voie</label>
 
-                            <select class="form-control"  name="voie_id" id="voie_id">
-
-                                @foreach ($voies as $s)
-
-                            <option value="{{$s->id}}">{{$s->libelle}}</option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Site</label>
 
@@ -104,39 +92,39 @@ Rapport TGMS-GATE \TOGO
                     <div class="row">
 
 
-                        <div class="col-lg-4 col-md-4">
-                        <label for="">Date</label>
-                        <input type="date" name="date" class="form-control" >
-                        </div>
 
                         <div class="col-lg-4 col-md-4">
                         <label for="">Localisation</label>
-                        <input type="VARCHAR" name="localisation" class="form-control" >
+                        <textarea name="localisation"  id="localisation" class="form-control" cols="30" rows="10" required></textarea>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
                         <label for="">Dysfonctionnement</label>
-                        <input type="VARCHAR" name="dysfonctionnement" class="form-control" >
+                        <textarea name="dysfonctionnement"  id="dysfonctionnement" class="form-control" cols="30" rows="10" required></textarea>
+
                         </div>
 
                         <div class="col-lg-4 col-md-4">
                         <label for="">Cause</label>
-                        <input type="VARCHAR" name="cause" class="form-control" >
+                        <textarea name="cause"  id="cause" class="form-control" cols="30" rows="10" required></textarea>
+
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
                         <label for="">Travaux a réaliser</label>
-                        <input type="VARCHAR" name="travauxArealiser" class="form-control" >
+                        <textarea name="travauxArealiser"  id="travauxArealiser" class="form-control" cols="30" rows="10" required></textarea>
+
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
                         <label for="">Travaux réaliser</label>
-                        <input type="VARCHAR" name="travauxRealiser" class="form-control" >
+                        <textarea name="travauxRealiser"  id="travauxArealiser" class="form-control" cols="30" rows="10" required></textarea>
+
                         </div>
 
                         <div class="col-lg-4 col-md-4">
                         <label for="">Heure de constat</label>
-                        <input type="TIME" name="heurConstat" class="form-control" >
+                        <input type="time" name="heureConstat" class="form-control" >
                         </div>
 
                         <div class="col-lg-4 col-md-4">
@@ -146,25 +134,38 @@ Rapport TGMS-GATE \TOGO
 
                         <div class="col-lg-4 col-md-4">
                         <label for="">Heure fin d'intervention</label>
-                        <input type="TIME" name="heureFinIntervention" class="form-control" >
+                        <input type="time" name="heureFinIntervention" class="form-control" >
                         </div>
-                        
-                        <div class="col-lg-12">
 
-                            <label for="">Resultat obtenu </label>
-                            <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required></textarea>
+                        <div class="col-lg-6 col-md-6">
+                            <label for="">Résultat obtenu </label>
+                            <textarea name="resultatObtenir" id="resultatObtenir" cols="30" rows="10" class="form-control" required></textarea>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label for="">Besoins </label>
+                            <textarea name="besoins" id="besoins" cols="30" rows="10" class="form-control" required></textarea>
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <label for="">PREUVE   (N° DE FICHE D'INTERVENTION, image avant ) </label>
+                            <input type="file" name="preuve_avant" id="preuve_avant" class="form-control" required>
+                            <br>
+                            <label for="">PREUVE   (N° DE FICHE D'INTERVENTION, image après ) </label>
+
+
+                            <input type="file" name="preuve_apres" id="preuve_apres" class="form-control" required>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label for="Observations">Observations</label>
+                            <textarea name="observation" id="observation" cols="30" rows="10" class="form-control" required></textarea>
 
                         </div>
                     </div>
                     <br>
 
-                    <div class="row">
-                        <div class="col-md-12">
 
-                            <label for="Observations">Observations</label>
-                            <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required></textarea>
-                        </div>
-                    </div>
 
             <div class="row">
                 <div class="col-md-12">

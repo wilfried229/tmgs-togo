@@ -80,10 +80,12 @@ Rapport TGMS-GATE \TOGO
 
                                 @foreach ($sites as $s)
 
-                                @if ($s->id == $pointPassage->site_id )
-                                <option value="{{$s->id}}" selected>{{$s->libelle}}</option>
 
-                                @endif
+                                <option value="{{$s->id}}" @if ($s->id == $pointPassage->site_id )
+                                    selected
+
+                                    @endif >{{$s->libelle}}</option>
+
                                 @endforeach
                             </select>
 
@@ -95,9 +97,11 @@ Rapport TGMS-GATE \TOGO
                             <select class="form-control"  name="voie_id" id="voie_id">
 
                                 @foreach ($voies as $v)
-                                @if ($v->id == $pointPassage->site_id )
-                                <option value="{{$v->id}}" selected>{{$v->libelle}}</option>
-                                @endif
+
+                                <option value="{{$v->id}}" @if ($v->id == $pointPassage->voie_id )
+                                    selected
+                                    @endif >{{$v->libelle}}</option>
+
                                 @endforeach
                             </select>
 

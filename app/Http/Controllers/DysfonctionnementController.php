@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Dyfonctionnement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\voie;
+use App\Models\site;
+use Illuminate\Support\Facades\File;
 
 class DysfonctionnementController extends Controller
 {
@@ -28,8 +31,9 @@ class DysfonctionnementController extends Controller
      */
     public function create()
     {
-
-        return view('dysfonct.create');
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return view('dysfonct.create',compact('sites','voies'));
     }
 
     /**
@@ -45,6 +49,7 @@ class DysfonctionnementController extends Controller
 
             $dysfonctionnment  = new  Dyfonctionnement();
             $dysfonctionnment->date = $request->date;
+
             $dysfonctionnment->localisation = $request->localisation;
             $dysfonctionnment->dysfonctionnement = $request->dysfonctionnement;
             $dysfonctionnment->cause = $request->cause;
@@ -55,11 +60,15 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->heureFinIntervention = $request->heureFinIntervention;
             $dysfonctionnment->resultatObtenir = $request->resultatObtenir;
             $dysfonctionnment->besoins = $request->besoins;
-            $dysfonctionnment->preuve = $request->preuve;
+
+            $path = 'preuve';
+            File::makeDirectory(public_path().'/'. $path, $mode = 0777, true, true);
+            $dysfonctionnment->preuve_avant  = DysfonctionnementController::uploadImage($request->file('preuve_avant'),$path);
+            $dysfonctionnment->preuve_apres  = DysfonctionnementController::uploadImage($request->file('preuve_apres'),$path);
+
             $dysfonctionnment->observation = $request->observation;
             $dysfonctionnment->site_id = $request->site_id;
-            $dysfonctionnment->voie_id = $request->voie_id;
-            $dysfonctionnment->user_id = $request->user_id;
+            $dysfonctionnment->user_id = null;
             $dysfonctionnment->save();
 
             return  redirect()->back();
@@ -83,7 +92,7 @@ class DysfonctionnementController extends Controller
     public function show($id)
     {
         //
-      
+
     }
 
     /**
@@ -94,8 +103,9 @@ class DysfonctionnementController extends Controller
      */
     public function edit($id)
     {
+        $sites = Site::all();
         $dysfonctionnment  = Dyfonctionnement::findOrFail($id);
-        return  view('dysfonct.update',compact('dysfonctionnment'));
+        return  view('dysfonct.update',compact('dysfonctionnment','sites'));
     }
 
     /**
@@ -121,12 +131,22 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->heureFinIntervention = $request->heureFinIntervention;
             $dysfonctionnment->resultatObtenir = $request->resultatObtenir;
             $dysfonctionnment->besoins = $request->besoins;
-            $dysfonctionnment->preuve = $request->preuve;
+
+
+            if ($request->file('preuve_avant') || $request->file('preuve_apres')) {
+                # code...
+                $path = 'preuve';
+                File::makeDirectory(public_path().'/'. $path, $mode = 0777, true, true);
+                $dysfonctionnment->preuve_avant  = DysfonctionnementController::uploadImage($request->file('preuve_avant'),$path);
+                $dysfonctionnment->preuve_apres  = DysfonctionnementController::uploadImage($request->file('preuve_apres'),$path);
+
+            }
+
+
             $dysfonctionnment->observation = $request->observation;
 
             $dysfonctionnment->site_id = $request->site_id;
-            $dysfonctionnment->voie_id = $request->voie_id;
-            $dysfonctionnment->user_id = $request->user_id;
+            $dysfonctionnment->user_id = null;
             $dysfonctionnment->update();
 
 
@@ -161,4 +181,26 @@ class DysfonctionnementController extends Controller
             abort(500);
         }
     }
+
+
+     /**
+     * Envoyer le mail de confirmation de compte après création de compte.
+     * @param $name
+     */
+    public static function uploadImage($image,$folder){
+
+        try {
+
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/'.$folder);
+        $image->move($destinationPath, $name);
+
+        return $name;
+        } catch (\Throwable $th) {
+
+            Log::error($th->getMessage());
+            return false;
+        }
+    }
+
 }
