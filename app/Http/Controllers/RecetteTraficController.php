@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RecetesTrafic;
 use App\Models\Site;
 use App\Models\Voie;
-
-
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -208,6 +207,76 @@ class RecetteTraficController extends Controller
 
             flashy()->error("Opération non éffectuée ");
             return back();
+        }
+    }
+
+
+    public function searchRecettesByAllRequest(Request $request){
+
+        try {
+
+            $recettes= [];
+            $sites  = Site::all();
+            $voies  = Voie::all();
+            if ($request->isMethod('POST')) {
+                # code...
+                $recetteTrafic = RecetesTrafic::query();
+
+                $date  = $request->input('date');
+                $site  = $request->input('site_id');
+                $voie  = $request->input('voie_id');
+                $vacation  = $request->input('vacation');
+                $agent  = $request->input('agent');
+
+                if ($date != null) {
+                    # code...
+                    $recetteTrafic->where("date", "=", $date);
+
+                }
+
+
+                if ($site != null) {
+                    # code...
+                    $recetteTrafic->where("site_id", "=", $site);
+
+                }
+
+
+
+                if ($voie != null) {
+                    # code...
+                    $recetteTrafic->where("voie_id", "=", $voie);
+
+                }
+
+
+                if ($vacation != null) {
+                    # code...
+                    $recetteTrafic->where("vacation", "=", $vacation);
+
+                }
+
+
+                if ($agent != null) {
+                    # code...
+                    $recetteTrafic->where("agent_voie", "=", $agent);
+                }
+
+                $recettes =  $recetteTrafic->get(['recettes_trafics.*']);
+
+                session()->flashInput($request->all());
+
+            }
+
+            return view('recettes.index',compact('recettes',
+            'voies',
+            'sites'))->with($request->all());
+
+
+        } catch (Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
+            abort(500);
         }
     }
 }

@@ -52,7 +52,7 @@ Rapport TGMS-GATE \TOGO
                             </h6>
                         </div>
                     </div>
-                    <form class="mb-4" action="" method="POST">
+                    <form class="mb-4" action="{{ route('recettes.trafics.search') }}" method="POST">
                         @csrf
                         <div class="row">
                             <!-- secteur d'activité -->
@@ -64,6 +64,7 @@ Rapport TGMS-GATE \TOGO
                             <div class="form-group col-md-4">
                                 <label for="site">Site</label>
                                 <select name="site_id" id="site_id" class="form-control">
+                                    <option value="" selected>Selectionnez</option>
 
                                     @foreach ($sites as $site)
                                     <option value="{{ $site->id }}">{{ $site->libelle }}</option>
@@ -75,6 +76,7 @@ Rapport TGMS-GATE \TOGO
                             <div class="form-group col-md-4">
                                 <label for="">Voie</label>
                                 <select name="voie_id" id="voie_id" class="form-control">
+                                    <option value="" selected>Selectionnez</option>
 
                                     @foreach ($voies as $voie)
                                     <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
@@ -87,6 +89,7 @@ Rapport TGMS-GATE \TOGO
                                 <label for="">Vacation</label>
 
                                         <select name="vacation" id="vacation" class="form-control">
+                                            <option value="" selected>Selectionnez</option>
 
 
                                                 <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
@@ -98,7 +101,7 @@ Rapport TGMS-GATE \TOGO
                             <!-- année d'experience -->
                             <div class="form-group col-md-6">
                                 <label for="agent">Agent</label>
-                                        <input type="text" id="agent_voie" name="agent_voie" class="form-control" required>
+                                        <input type="text" id="agent_voie" name="agent_voie" class="form-control">
                             </div>
                             <!-- pays residence -->
                         </div>

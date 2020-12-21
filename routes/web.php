@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function() {
         'site' =>'SiteController',
         'voie' => 'VoieController'
     ]);
+
+    Route::post('recettes-trafics/search','RecetteTraficController@searchRecettesByAllRequest')->name('recettes.trafics.search');
 });
 
 Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
