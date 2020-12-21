@@ -26,6 +26,16 @@ class PointPassageController extends Controller
         return view('pointPassage.index',compact('pointPassages','sites','voies'));
     }
 
+    
+                         
+                        public function __post( $valeur)
+                        {
+                            $obj->attribut = 'Simple test';
+                            $obj->unAttributPrive = 'Autre simple test';
+    
+                        }
+
+                        
     /**
      * Show the form for creating a new resource.
      *

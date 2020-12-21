@@ -113,7 +113,7 @@ Rapport TGMS-GATE \TOGO
                                     <th colspan="3"></th>
                                     <th colspan="3">TRAFIC PAR VACATION</th>
 
-                                    <th colspan="2">TYPE DE PASSAGE </th>
+                                    <th colspan="1"></th>
                                     <th colspan="2">SOMME TOTAL</th>
                                     <th colspan="3">INFORMATIONS DIVERSES </th>
 
@@ -129,8 +129,8 @@ Rapport TGMS-GATE \TOGO
                                 <th> 16H-22H</th>
                                 <th> 22H-08H</th>
 
-                                <th>ONLINE</th>
-                                <th>OFFLINE</th>
+                                <th>PASSAGE GATE</th>
+                                
 
                                 <th>TRAFIC</th>
                                 <th>RECETTE EQUIVALENTE</th>
@@ -154,8 +154,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->vacation_6h }}</td>
                                 <td>{{ $point->vacation_14h }}</td>
                                 <td>{{ $point->vacation_20h }}</td>
-                                <td>{{ $point->type_passage_offline }}</td>
-                                <td>{{ $point->type_passage_online }}</td>
+                                <td>{{ $point->passage_gate }}</td>
                                 <td>{{ $point->somme_total_trafic }}</td>
                                 <td>{{ $point->somme_total_recette_equialente }}</td>
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>
