@@ -129,27 +129,7 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-                    <div class="row">
-
-                        <div class="col-lg-12">
-
-                            <h4>TYPE DE PASSAGE </h4>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-
-                            <label for="">ONLINE </label>
-                            <input type="number" name="type_passage_online" id="type_passage_online" class="form-control" required>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6">
-
-                                <label for="">OFFLINE   </label>
-                            <input type="number" name="type_passage_offline" id="type_passage_offline" class="form-control" required>
-                        </div>
-
-
-
-                    </div>
+                    
                  <br>
                     <div class="row">
 
@@ -157,13 +137,20 @@ Rapport TGMS-GATE \TOGO
 
                             <h4>SOMMES TOTAL </h4>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+
+                        <div class="col-lg-4 col-md-4">
+
+                            <label for="">PASSAGE GATE </label>
+                            <input type="number" name="type_passage_online" id="type_passage_online" class="form-control" required>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
 
                             <label for="">TRAFIC</label>
                             <input type="number" name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
                         </div>
 
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-4">
 
                                 <label for="">RECETTE EQUIVALENTE   </label>
                             <input type="number" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
@@ -178,6 +165,8 @@ Rapport TGMS-GATE \TOGO
 
                             <h4> INFORMATIONS DIVERSES </h4>
                         </div>
+
+                        
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</label>
@@ -189,6 +178,7 @@ Rapport TGMS-GATE \TOGO
                                 <label for="">CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION </label>
                             <input type="text" name="paiement_espece_dysfon" id="paiement_espece_dysfon" class="form-control" required>
                         </div>
+
 
                     </div>
                     <br>
