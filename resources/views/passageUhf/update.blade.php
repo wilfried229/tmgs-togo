@@ -62,7 +62,7 @@ Rapport TGMS-GATE \TOGO
             </div>
 
             <div class="card-body">
-                <form action="{{route('point-passage.update',$pointPassage->id)}}" method="post" class="form">
+                <form action="{{route('point-passage.update',$passageUhf->id)}}" method="post" class="form">
 
                     @csrf
                     @method('PUT')
@@ -70,7 +70,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Date</label>
-                            <input type="date" value="{{ $pointPassage->date }}" name="date" class="form-control" >
+                            <input type="date" value="{{ $passageUhf->date }}" name="date" class="form-control" >
                         </div>
                         <div class="col-lg-4 col-md-4">
 
@@ -81,7 +81,7 @@ Rapport TGMS-GATE \TOGO
                                 @foreach ($sites as $s)
 
 
-                                <option value="{{$s->id}}" @if ($s->id == $pointPassage->site_id )
+                                <option value="{{$s->id}}" @if ($s->id == $passageUhf->site_id )
                                     selected
 
                                     @endif >{{$s->libelle}}</option>
@@ -98,7 +98,7 @@ Rapport TGMS-GATE \TOGO
 
                                 @foreach ($voies as $v)
 
-                                <option value="{{$v->id}}" @if ($v->id == $pointPassage->voie_id )
+                                <option value="{{$v->id}}" @if ($v->id == $passageUhf->voie_id )
                                     selected
                                     @endif >{{$v->libelle}}</option>
 
@@ -119,19 +119,19 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">08H à 16H</label>
-                            <input type="number" value="{{ $pointPassage->vacation_6h }}" name="vacation_6h" id="vacation_6h" class="form-control" required>
+                            <input type="number" value="{{ $passageUhf->vacation_6h }}" name="vacation_6h" id="vacation_6h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                                 <label for="">16H à 22H</label>
-                            <input type="number" value="{{ $pointPassage->vacation_14h }}"  name="vacation_14h" id="vacation_14h" class="form-control" required>
+                            <input type="number" value="{{ $passageUhf->vacation_14h }}"  name="vacation_14h" id="vacation_14h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">22H à 08H</label>
-                            <input type="number" value="{{ $pointPassage->vacation_20h }}"  name="vacation_20h" id="vacation_20h" class="form-control" required>
+                            <input type="number" value="{{ $passageUhf->vacation_20h }}"  name="vacation_20h" id="vacation_20h" class="form-control" required>
 
                             </div>
 
@@ -139,8 +139,8 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-                    
-                    
+
+
                  <br>
                     <div class="row">
 
@@ -151,14 +151,14 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">TRAFIC</label>
-                            <input type="number" value="{{ $pointPassage->somme_total_trafic }}"  name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
+                            <input type="number" value="{{ $passageUhf->somme_total_trafic }}"  name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
                         </div>
 
 
                         <div class="col-lg-6 col-md-6">
 
                            <label for="">PASSAGE GATE </label>
-                           <input type="number" value="{{ $pointPassage->type_passage_online }}"  name="type_passage_online" id="type_passage_online" class="form-control" required>
+                           <input type="number" value="{{ $passageUhf->passage_uhf }}"  name="type_passage_online" id="type_passage_online" class="form-control" required>
                         </div>
 
 
@@ -166,7 +166,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-6 col-md-6">
 
                                 <label for="">RECETTE EQUIVALENTE   </label>
-                            <input type="number" value="{{ $pointPassage->somme_total_recette_equialente }}" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
+                            <input type="number" value="{{ $passageUhf->somme_total_recette_equialente }}" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
                         </div>
 
                     </div>
@@ -181,13 +181,13 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</label>
-                            <input type="text" value="{{ $pointPassage->paiement_espece_defaut_provision }}" name="paiement_espece_defaut_provision" id="paiement_espece_defaut_provision" class="form-control" required>
+                            <input type="text" value="{{ $passageUhf->paiement_espece_defaut_provision }}" name="paiement_espece_defaut_provision" id="paiement_espece_defaut_provision" class="form-control" required>
                         </div>
 
                         <div class="col-lg-6 col-md-6">
 
                                 <label for="">CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION </label>
-                            <input type="text" value="{{ $pointPassage->paiement_espece_dysfon }}"  name="paiement_espece_dysfon" id="paiement_espece_dysfon" class="form-control" required>
+                            <input type="text" value="{{ $passageUhf->paiement_espece_dysfon }}"  name="paiement_espece_dysfon" id="paiement_espece_dysfon" class="form-control" required>
                         </div>
 
                     </div>
@@ -197,7 +197,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-md-12">
 
                             <label for="Observations">Observations</label>
-                            <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required>{{ $pointPassage->observations }}</textarea>
+                            <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required>{{ $passageUhf->observations }}</textarea>
                         </div>
                     </div>
 

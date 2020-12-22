@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PassageUhf;
+use App\Models\PointPassage;
 use App\Models\PointRecapPayement;
 use Illuminate\Http\Request;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class PointRecapPayementController extends Controller
 {
@@ -14,7 +17,13 @@ class PointRecapPayementController extends Controller
      */
     public function index()
     {
+
         //
+        $passageGate  = PointPassage::query()->select('somme_total_trafic','somme_total_recette_equialente')->get();
+
+        $passageUhf  = PassageUhf::query()->select('somme_total_trafic','somme_total_recette_equialente')->get();
+
+        dd($passageGate,$passageUhf);
     }
 
     /**

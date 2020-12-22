@@ -11,7 +11,7 @@ class PointPassage extends Model
  //
     protected $table = "point_passages";
 
-    protected $fillable =['date','voie_id','site_id','vacation_6h','vacation_14h', 'vacation_20h','type_passage_offline','type_passage_online',
+    protected $fillable =['date','voie_id','site_id','vacation_6h','vacation_14h', 'vacation_20h','passage_gate',
         'somme_total_trafic','somme_total_recette_equialente','paiement_espece_defaut_provision','paiement_espece_dysfon',
         'observations','user_id'
     ];

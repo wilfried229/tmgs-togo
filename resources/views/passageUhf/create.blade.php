@@ -44,11 +44,11 @@ Rapport TGMS-GATE \TOGO
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('point-passage.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('point-passage-uhf.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
-        <h4 class="element-header">POINT JOURNALIER DES PASSAGES UHF_ PREPAIEMENT</h4>
+        <h4 class="element-header">POINT JOURNALIER DES PASSAGES UHF</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -57,12 +57,12 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Ajouter un point journalier passage</h5>
+                <h5 class="form-header">Ajouter un point journalier passage UHF</h5>
 
             </div>
 
             <div class="card-body">
-                <form action="{{route('point-passage.store')}}" method="post" class="form">
+                <form action="{{route('point-passage-uhf.store')}}" method="post" class="form">
 
                     @csrf
                     <div class="row">
@@ -129,7 +129,7 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-                    
+
                  <br>
                     <div class="row">
 
@@ -141,7 +141,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">PASSAGE UHF </label>
-                            <input type="number" name="type_passage_online" id="type_passage_online" class="form-control" required>
+                            <input type="number" name="passage_uhf" id="passage_uhf" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
@@ -166,7 +166,7 @@ Rapport TGMS-GATE \TOGO
                             <h4> INFORMATIONS DIVERSES </h4>
                         </div>
 
-                        
+
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</label>

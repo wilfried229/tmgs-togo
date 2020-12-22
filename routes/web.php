@@ -27,7 +27,8 @@ Route::group(['middleware' => ['auth']], function() {
         'point-passage-uhf'=>'PassageUhfController',
         'point-passage-manuel'=> 'PointPassageManuelController',
         'site' =>'SiteController',
-        'voie' => 'VoieController'
+        'voie' => 'VoieController',
+        'point-recap' =>'PointRecapPayementController'
     ]);
 
     Route::post('recettes-trafics/search','RecetteTraficController@searchRecettesByAllRequest')->name('recettes.trafics.search');

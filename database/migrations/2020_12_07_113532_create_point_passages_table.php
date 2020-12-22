@@ -18,11 +18,10 @@ class CreatePointPassagesTable extends Migration
             $table->date('date');
             $table->unsignedInteger('voie_id');
             $table->unsignedInteger('site_id');
-            $table->enum('vacation', [
-                env('TYPE_VACATION_06H'),
-                env('TYPE_VACATION_14H'),
-                env('TYPE_VACATION_20H'),
-            ]);
+            $table->integer('vacation_6h');
+            $table->integer('vacation_14h');
+            $table->integer('vacation_20h');
+
             $table->integer('passage_gate');
 
             $table->integer('somme_total_trafic');
@@ -33,7 +32,7 @@ class CreatePointPassagesTable extends Migration
 
             $table->longText('observations');
 
-            $table->unsignedInteger('users_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
             //$table->foreign('users_id')->references('id')->on('users');
             //$table->foreign('site_id')->references('id')->on('site');

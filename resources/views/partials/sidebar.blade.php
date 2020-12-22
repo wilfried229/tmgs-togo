@@ -81,6 +81,13 @@
             </li>
 
 
+            <li class="nav-item">
+                <a href="{{route('point-recap.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-list"></i>
+                    <p>POINT RECPITULATIF DES MODES DE PAIEMENT</p>
+                </a>
+            </li>
+
             @endif
 
 

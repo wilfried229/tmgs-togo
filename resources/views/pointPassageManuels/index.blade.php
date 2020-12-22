@@ -1,4 +1,3 @@
-
 @extends('template')
 @section('title')
 Rapport TGMS-GATE \TOGO

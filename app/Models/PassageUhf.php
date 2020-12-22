@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 class PassageUhf extends Model
 {
     //
 
-    protected $table = "Passage_Uhf";
+    protected $table = "Passage_Uhfs";
 
-    protected $fillable =['date','voie_id','site_id','vacation_6h','vacation_14h', 'vacation_20h','type_passage_offline','type_passage_online',
+    protected $fillable =['date','voie_id','site_id','vacation_6h','vacation_14h', 'vacation_20h','passage_uhf',
         'somme_total_trafic','somme_total_recette_equialente','paiement_espece_defaut_provision','paiement_espece_dysfon',
         'observations','user_id'
     ];

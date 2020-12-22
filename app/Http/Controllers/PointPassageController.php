@@ -67,6 +67,8 @@ class PointPassageController extends Controller
 
             $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
+            $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
+
             $pointPassage->observations = $request->observations;
 
             $pointPassage->user_id = Auth::user()->id;
@@ -132,9 +134,8 @@ class PointPassageController extends Controller
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
+            $pointPassage->passage_uhf= $request->passage_uhf;
 
-            $pointPassage->type_passage_offline = $request->type_passage_offline;
-            $pointPassage->type_passage_online = $request->type_passage_online;
             $pointPassage->somme_total_trafic = $request->somme_total_trafic;
             $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
