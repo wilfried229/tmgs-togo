@@ -52,6 +52,67 @@ Rapport TGMS-GATE \TOGO
                 <h6 class="element-header">
                     </h6>
             </div>
+
+            <div class="col-lg-12">
+
+                <form class="mb-4" action="{{ route('comptage.search') }}" method="POST">
+                    
+                    @csrf
+                    <div class="row">
+                        <!-- secteur d'activité -->
+                        <div class="form-group col-md-3">
+                            <label for="date">Date</label>
+                          <input type="date" name="date" id="date" class="form-control">
+                        </div>
+                        <!-- niveau etude -->
+                        <div class="form-group col-md-3">
+                            <label for="site">Site</label>
+                            <select name="site_id" id="site_id" class="form-control">
+                                <option value="" selected>Selectionnez</option>
+
+                                @foreach ($sites as $site)
+                                <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        <!-- sexe -->
+                        <div class="form-group col-md-3">
+                            <label for="">Voie</label>
+                            <select name="voie_id" id="voie_id" class="form-control">
+                                <option value="" selected>Selectionnez</option>
+
+                                @foreach ($voies as $voie)
+                                <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                       <div class="form-group col-md-3">
+                             <label for="">Vacation</label>
+                                    <select name="vacation" id="vacation" class="form-control">
+
+                                        <option value="" selected>Selectionnez</option>
+
+                                        <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
+                                    <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
+                                    <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
+
+                                </select>
+                        </div>
+
+
+                        <!-- pays residence -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            <input class="btn btn-success" type="submit" value="Rechercher">
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="card card-success">
 

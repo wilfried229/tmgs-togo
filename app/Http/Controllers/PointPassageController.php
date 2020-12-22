@@ -61,8 +61,7 @@ class PointPassageController extends Controller
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
-            $pointPassage->type_passage_offline = $request->type_passage_offline;
-            $pointPassage->type_passage_online = $request->type_passage_online;
+            $pointPassage->passage_gate= $request->passage_gate;
 
             $pointPassage->somme_total_trafic = $request->somme_total_trafic;
 

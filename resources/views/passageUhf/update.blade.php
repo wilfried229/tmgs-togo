@@ -57,19 +57,20 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Ajouter un point journalier passage</h5>
+                <h5 class="form-header">Modification point journalier passage {{ $pointPassage->id }}</h5>
 
             </div>
 
             <div class="card-body">
-                <form action="{{route('point-passage.store')}}" method="post" class="form">
+                <form action="{{route('point-passage.update',$pointPassage->id)}}" method="post" class="form">
 
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Date</label>
-                            <input type="date" name="date" class="form-control" >
+                            <input type="date" value="{{ $pointPassage->date }}" name="date" class="form-control" >
                         </div>
                         <div class="col-lg-4 col-md-4">
 
@@ -79,7 +80,12 @@ Rapport TGMS-GATE \TOGO
 
                                 @foreach ($sites as $s)
 
-                            <option value="{{$s->id}}">{{$s->libelle}}</option>
+
+                                <option value="{{$s->id}}" @if ($s->id == $pointPassage->site_id )
+                                    selected
+
+                                    @endif >{{$s->libelle}}</option>
+
                                 @endforeach
                             </select>
 
@@ -91,7 +97,10 @@ Rapport TGMS-GATE \TOGO
                             <select class="form-control"  name="voie_id" id="voie_id">
 
                                 @foreach ($voies as $v)
-                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                                <option value="{{$v->id}}" @if ($v->id == $pointPassage->voie_id )
+                                    selected
+                                    @endif >{{$v->libelle}}</option>
 
                                 @endforeach
                             </select>
@@ -110,19 +119,19 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">08H à 16H</label>
-                            <input type="number" name="vacation_6h" id="vacation_6h" class="form-control" required>
+                            <input type="number" value="{{ $pointPassage->vacation_6h }}" name="vacation_6h" id="vacation_6h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                                 <label for="">16H à 22H</label>
-                            <input type="number" name="vacation_14h" id="vacation_14h" class="form-control" required>
+                            <input type="number" value="{{ $pointPassage->vacation_14h }}"  name="vacation_14h" id="vacation_14h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">22H à 08H</label>
-                            <input type="number" name="vacation_20h" id="vacation_20h" class="form-control" required>
+                            <input type="number" value="{{ $pointPassage->vacation_20h }}"  name="vacation_20h" id="vacation_20h" class="form-control" required>
 
                             </div>
 
@@ -130,7 +139,8 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-
+                    
+                    
                  <br>
                     <div class="row">
 
@@ -138,23 +148,25 @@ Rapport TGMS-GATE \TOGO
 
                             <h4>SOMMES TOTAL </h4>
                         </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">PASSAGE GATE </label>
-                            <input type="number" name="passage_gate" id="passage_gate" class="form-control" required>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">TRAFIC</label>
-                            <input type="number" name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
+                            <input type="number" value="{{ $pointPassage->somme_total_trafic }}"  name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+
+                        <div class="col-lg-6 col-md-6">
+
+                           <label for="">PASSAGE GATE </label>
+                           <input type="number" value="{{ $pointPassage->type_passage_online }}"  name="type_passage_online" id="type_passage_online" class="form-control" required>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-md-6">
 
                                 <label for="">RECETTE EQUIVALENTE   </label>
-                            <input type="number" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
+                            <input type="number" value="{{ $pointPassage->somme_total_recette_equialente }}" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
                         </div>
 
                     </div>
@@ -166,20 +178,17 @@ Rapport TGMS-GATE \TOGO
 
                             <h4> INFORMATIONS DIVERSES </h4>
                         </div>
-
-
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</label>
-                            <input type="text" name="paiement_espece_defaut_provision" id="paiement_espece_defaut_provision" class="form-control" required>
+                            <input type="text" value="{{ $pointPassage->paiement_espece_defaut_provision }}" name="paiement_espece_defaut_provision" id="paiement_espece_defaut_provision" class="form-control" required>
                         </div>
 
                         <div class="col-lg-6 col-md-6">
 
                                 <label for="">CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION </label>
-                            <input type="text" name="paiement_espece_dysfon" id="paiement_espece_dysfon" class="form-control" required>
+                            <input type="text" value="{{ $pointPassage->paiement_espece_dysfon }}"  name="paiement_espece_dysfon" id="paiement_espece_dysfon" class="form-control" required>
                         </div>
-
 
                     </div>
                     <br>
@@ -188,7 +197,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-md-12">
 
                             <label for="Observations">Observations</label>
-                            <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required></textarea>
+                            <textarea name="observations" id="observations" cols="30" rows="10" class="form-control" required>{{ $pointPassage->observations }}</textarea>
                         </div>
                     </div>
 

@@ -14,12 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
-
-Auth::routes();
-
-
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
@@ -39,6 +33,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('passage-gate/search','PointPassageController@searchPassageByAllRequest')->name('passage.gate.search');
 
     Route::post('passage-uhf/search','PointPassageController@searchRecettesByAllRequest')->name('recettes.trafics.search');
+
+    Route::post('passage-manuel/search','PointPassageManuelController@searchPassageManuelByAllRequest')->name('passage.manuel.search');
+
+    Route::post('comptage/search','ComptageController@searchComptageByAllRequest')->name('comptage.search');
+
 
 });
 

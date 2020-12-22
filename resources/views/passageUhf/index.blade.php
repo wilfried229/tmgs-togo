@@ -22,7 +22,7 @@ Rapport TGMS-GATE \TOGO
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Point de passage </li>
+              <li class="breadcrumb-item active">Point de passage</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,7 +42,7 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
 
-                <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
+                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de journalier de passage </a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -53,7 +53,7 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
-        <form class="mb-4" action="{{ route('passage.manuel.search') }}" method="POST">
+        <form class="mb-4" action="{{ route('passage.gate.search') }}" method="POST">
             @csrf
             <div class="row">
                 <!-- secteur d'activité -->
@@ -85,24 +85,7 @@ Rapport TGMS-GATE \TOGO
                         @endforeach
                     </select>
                 </div>
-               <div class="form-group col-md-6">
-                     <label for="">Vacation</label>
-                            <select name="vacation" id="vacation" class="form-control">
 
-                                <option value="" selected>Selectionnez</option>
-
-                                <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
-                                <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
-                                <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
-
-                            </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="">Agent</label>
-                        <input type="text" name="identite_percepteur" id="identite_percepteur" class="form-control">
-               </div>
-
-                <!-- pays residence -->
             </div>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -116,7 +99,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">Liste des points de passage Manuel </h5>
+                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h5>
 
 
             </a><!-- /.card-header -->
@@ -128,74 +111,67 @@ Rapport TGMS-GATE \TOGO
                     <table id="example1" class="table  estdata table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th colspan="5"></th>
-                                <th colspan="2">ETAT AVANT PASSAGE EN MODE MANUEL</th>
-                                <th colspan="2"></th>
-                                <th colspan="2">RESULTAT ISSU DU COMPTAGE MANUEL </th>
+                                <tr>
+                                    <th colspan="3"></th>
+                                    <th colspan="3">TRAFIC PAR VACATION</th>
 
-                                <th colspan="2">ETAT DONNEES INFORMATISEES ENREGISTREES APRES PASSAGES EN MODE MANUEL</th>
+                                    <th colspan="1"></th>
+                                    <th colspan="2">SOMME TOTAL</th>
+                                    <th colspan="3">INFORMATIONS DIVERSES </th>
 
-                                <th colspan="2">ETAT FINAL DE LA VOIE POUR LA VACATION CONCERNEE </th>
-                                <th colspan="3"> </th>
+
+                                    <th colspan="2"></th>
+                                </tr>
                             </tr>
                             <tr>
-                                <th data-target="date">Date</th>
-                                <th data-target="site">Site</th>
-                                <th data-target="voie">Voie</th>
-                                <th data-target="vacation">Vacation</th>
+                                <th data-target="date">DATE</th>
+                                <th data-target="site">SITE</th>
+                                <th data-target="voie">VOIE</th>
+                                <th> 08H-16H</th>
+                                <th> 16H-22H</th>
+                                <th> 22H-08H</th>
 
-                                <th data-target="identite_percepteur">Identite percepteur</th>
+                                <th>PASSAGE GATE</th>
 
-                                <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
-                                <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
-                                <th>Heure Debut Comptage</th>
-                                <th>Heure fin Comptage</th>
-                                <th>Trafic compté manuellement</th>
-                                <th>Equivalent recette en FCFA  </th>
-                                <th>Trafic Informatisé </th>
-                                <th>Recette Informatisée </th>
-                                <th>Trafic (Informatisé + manuel)</th>
-                                <th>Recette (Informatisé + manuel)</th>
-                                <th>observations</th>
+
+                                <th>TRAFIC</th>
+                                <th>RECETTE EQUIVALENTE</th>
+
+                                <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
+                                <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
+                                <th>Observations</th>
                                 <th>Enregister Par</th>
-
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($pointPassageManuels as $f)
+
+                            @foreach ($pointPassages as $point)
 
                             <tr>
-
-                                <td>{{ $f->date }}</td>
-                                <td>{{ $f->site()->first()->libelle }}</td>
-                                <td>{{ $f->voie()->first()->libelle }}</td>
-                                <td>{{ $f->vacation }}</td>
-                                <td>{{ $f->identite_percepteur }}</td>
-                                <td>{{ $f->point_traf_info_mode_manuel }}</td>
-                                <td>{{ $f->solde_recette_info_mode_manuel }}</td>
-                                <td>{{ $f->heure_debutComptage }}</td>
-                                <td>{{ $f->heure_finComptage }}</td>
-                                <td>{{ $f->trafic_compteManu }}</td>
-                                <td>{{ $f->equipRecette }}</td>
-                                <td>{{ $f->etaDonne_taficInformatiser }}</td>
-                                <td>{{ $f->etaDonne_recetteInformatiser }}</td>
-                                <td>{{ $f->etaFinal_recetteInformatiser }}</td>
-                                <td>{{ $f->etaFinal_taficInformatiser }}</td>
-                                <td>{{ $f->observation }}</td>
-                                <td>{{ $f->user()->first()->name ?? "" }}</td>
-
+                                <td>{{ $point->date }}</td>
+                                <td>{{ $point->voie()->first()->libelle }}</td>
+                                <td>{{ $point->site()->first()->libelle }}</td>
+                                <td>{{ $point->vacation_6h }}</td>
+                                <td>{{ $point->vacation_14h }}</td>
+                                <td>{{ $point->vacation_20h }}</td>
+                                <td>{{ $point->passage_gate }}</td>
+                                <td>{{ $point->somme_total_trafic }}</td>
+                                <td>{{ $point->somme_total_recette_equialente }}</td>
+                                <td>{{ $point->paiement_espece_defaut_provision }}</td>
+                                <td>{{ $point->paiement_espece_dysfon }}</td>
+                                <td>{{ $point->observations }}</td>
+                                <td>{{ $point->user()->first()->name ?? "" }}</td>
 
                                 <td>
                                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
-                                    <a href="{{ route('point-passage-manuel.edit',$f->id) }}" class="btn btn-info">Modifier</a>
+                                    <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
                                     @endif
                                 </td>
-
-
-
                             </tr>
+
+
                             @endforeach
                         </tbody>
                     </table>
@@ -241,6 +217,7 @@ Rapport TGMS-GATE \TOGO
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
+
         ],
         "paging": true,
             "lengthChange": true,
@@ -249,10 +226,10 @@ Rapport TGMS-GATE \TOGO
             "info": true,
             "autoWidth": true,
             "language": {
-                "lengthMenu": "Afficher _MENU_ point passage par Page",
+                "lengthMenu": "Afficher _MENU_ données par Page",
                 "zeroRecords": "Aucun résultat",
                 "info": "Page _PAGE_ sur _PAGES_",
-                "infoEmpty": "Aucun données trouvée",
+                "infoEmpty": "Aucun  données trouvée",
                 "infoFiltered": "(sur les _MAX_ données",
                 "infoPostFix":    "",
                 "thousands":      ",",

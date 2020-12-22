@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Voie;
 use App\Models\Site;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use MercurySeries\Flashy\Flashy;
 
@@ -22,8 +23,10 @@ class ComptageController extends Controller
         //
 
         $comptages  = Comptage::all();
+        $sites  = Site::all();
+        $voies  = Voie::all();
 
-        return  view('comptage.index',compact('comptages'));
+        return  view('comptage.index',compact('comptages','voies','sites'));
     }
 
     /**
@@ -162,5 +165,64 @@ class ComptageController extends Controller
 
             abort(500);
         }
+    }
+
+
+
+    public function searchComptageByAllRequest(Request $request){
+
+        try {
+
+            $comptages = [];
+            $sites  = Site::all();
+            $voies  = Voie::all();
+
+            if ($request->isMethod('POST')) {
+                # code...
+                $comptage = Comptage::query();
+
+                $date  = $request->input('date');
+                $site  = $request->input('site_id');
+                $voie  = $request->input('voie_id');
+
+                $vacation  = $request->input('vacation');
+
+                if ($date != null) {
+                    # code...
+                    $comptage->where("date", "=", $date);
+                }
+
+
+
+                if ($site != null) {
+                    # code...
+                    $comptage->where("site_id", "=", $site);
+                }
+
+                if ($voie != null) {
+                    # code...
+                    $comptage->where("voie_id", "=", $voie);
+                }
+
+                if ($vacation != null) {
+                    # code...
+                    $comptage->where("vacation", "=", $vacation);
+                }
+
+                $comptages =  $comptage->get(['comptage_contraditoire.*']);
+
+
+                session()->flashInput($request->all());
+            }
+
+
+            return  view('comptage.index',compact('comptages','voies','sites'))->with($request->all());
+
+        } catch (Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
+            abort(500);
+        }
+
     }
 }

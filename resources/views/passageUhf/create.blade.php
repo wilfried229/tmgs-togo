@@ -78,7 +78,6 @@ Rapport TGMS-GATE \TOGO
                             <select class="form-control"  name="site_id" id="site_id">
 
                                 @foreach ($sites as $s)
-
                             <option value="{{$s->id}}">{{$s->libelle}}</option>
                                 @endforeach
                             </select>
@@ -130,7 +129,7 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-
+                    
                  <br>
                     <div class="row">
 
@@ -142,7 +141,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">PASSAGE GATE </label>
-                            <input type="number" name="passage_gate" id="passage_gate" class="form-control" required>
+                            <input type="number" name="type_passage_online" id="type_passage_online" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
@@ -167,7 +166,7 @@ Rapport TGMS-GATE \TOGO
                             <h4> INFORMATIONS DIVERSES </h4>
                         </div>
 
-
+                        
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</label>

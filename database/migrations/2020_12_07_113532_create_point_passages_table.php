@@ -23,16 +23,14 @@ class CreatePointPassagesTable extends Migration
                 env('TYPE_VACATION_14H'),
                 env('TYPE_VACATION_20H'),
             ]);
-            $table->enum('type_passage', [
-                env('TYPE_PASSAGE_ONLINE'),
-                env('TYPE_PASSAGE_OFFLINE'),
-            ]);
+            $table->integer('passage_gate');
+
             $table->integer('somme_total_trafic');
             $table->integer('somme_total_recette_equialente');
             $table->string('paiement_espece_defaut_provision');
             $table->string('paiement_espece_dysfon');
 
-            
+
             $table->longText('observations');
 
             $table->unsignedInteger('users_id');

@@ -233,7 +233,7 @@ class PointPassageManuelController extends Controller
                     $passage->where("identite_percepteur", "=", $agent);
                 }
 
-                $pointPassages =  $passage->get(['point_passages.*']);
+                $pointPassageManuels =  $passage->get(['point_passage_manuelle.*']);
 
                 session()->flashInput($request->all());
 

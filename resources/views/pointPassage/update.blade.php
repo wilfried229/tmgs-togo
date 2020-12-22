@@ -139,8 +139,8 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-                    
-                    
+
+
                  <br>
                     <div class="row">
 
@@ -158,7 +158,7 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-6 col-md-6">
 
                            <label for="">PASSAGE GATE </label>
-                           <input type="number" value="{{ $pointPassage->type_passage_online }}"  name="type_passage_online" id="type_passage_online" class="form-control" required>
+                           <input type="number" value="{{ $pointPassage->type_passage_online }}"  name="passage_gate" id="passage_gate" class="form-control" required>
                         </div>
 
 
