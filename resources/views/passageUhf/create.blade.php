@@ -15,13 +15,13 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Point Passage
+            <h1 class="m-0 text-dark">Point Passage Uhf
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Point Passage </li>
+              <li class="breadcrumb-item active"> Point Passage Uhf </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -48,7 +48,7 @@ Rapport TGMS-GATE \TOGO
 
                 </div>
         </div>
-        <h4 class="element-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h4>
+        <h4 class="element-header">POINT JOURNALIER DES PASSAGES UHF_ PREPAIEMENT</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -140,7 +140,7 @@ Rapport TGMS-GATE \TOGO
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">PASSAGE GATE </label>
+                            <label for="">PASSAGE UHF </label>
                             <input type="number" name="type_passage_online" id="type_passage_online" class="form-control" required>
                         </div>
 

@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\PassageUhf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Models\Voie;
+use App\Models\Site;
+use Exception;
 
 class PassageUhfController extends Controller
 {
@@ -15,6 +20,10 @@ class PassageUhfController extends Controller
     public function index()
     {
         //
+        $PassageUhf = PassageUhf::all();
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('PassageUhf.index',compact('PassageUhf','sites','voies'));
     }
 
     /**
@@ -25,6 +34,9 @@ class PassageUhfController extends Controller
     public function create()
     {
         //
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return view('PassageUhf.create',compact('voies','sites'));
     }
 
     /**
@@ -58,6 +70,10 @@ class PassageUhfController extends Controller
     public function edit(PassageUhf $passageUhf)
     {
         //
+        $pointPassage = PointPassage::findOrFail($id);
+        $sites = Site::all();
+        $voies  = Voie::all();
+        return view('PassageUhf.update',compact('PassageUhf','voies','sites'));
     }
 
     /**

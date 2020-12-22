@@ -22,7 +22,7 @@ Rapport TGMS-GATE \TOGO
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Point de passage</li>
+              <li class="breadcrumb-item active">Point de passage Uhf</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -42,7 +42,7 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
 
-                    <a href="{{route('point-passage.create')}}" class="btn btn-primary">Ajouter un point de journalier de passage </a>
+                    <a href="{{route('point-passage-uhf.create')}}" class="btn btn-primary">Ajouter un point de journalier de passage Uhf </a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -99,7 +99,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h5>
+                <h5 class="form-header">POINT JOURNALIER DES PASSAGES UHF</h5>
 
 
             </a><!-- /.card-header -->
@@ -131,7 +131,7 @@ Rapport TGMS-GATE \TOGO
                                 <th> 16H-22H</th>
                                 <th> 22H-08H</th>
 
-                                <th>PASSAGE GATE</th>
+                                <th>PASSAGE UHF</th>.
 
 
                                 <th>TRAFIC</th>
@@ -156,7 +156,7 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->vacation_6h }}</td>
                                 <td>{{ $point->vacation_14h }}</td>
                                 <td>{{ $point->vacation_20h }}</td>
-                                <td>{{ $point->passage_gate }}</td>
+                                <td>{{ $point->passage_Uhf }}</td>
                                 <td>{{ $point->somme_total_trafic }}</td>
                                 <td>{{ $point->somme_total_recette_equialente }}</td>
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>
@@ -166,7 +166,7 @@ Rapport TGMS-GATE \TOGO
 
                                 <td>
                                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
-                                    <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
+                                    <a href="{{ route('point-passage-uhf.edit',$point->id) }}" class="btn btn-info">Modifier</a>
                                     @endif
                                 </td>
                             </tr>

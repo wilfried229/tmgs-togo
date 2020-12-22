@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function() {
         'comptage'=>'ComptageController',
         'dysfonctionement'=>'DysfonctionnementController',
         'point-passage'=>'PointPassageController',
+        'point-passage-uhf'=>'PassageUhfController',
         'point-passage-manuel'=> 'PointPassageManuelController',
         'site' =>'SiteController',
         'voie' => 'VoieController'

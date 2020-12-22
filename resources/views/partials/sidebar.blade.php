@@ -51,7 +51,7 @@
 
 
             <li class="nav-item">
-                <a href="{{route('point-passage.index')}}" class="nav-link">
+                <a href="{{route('point-passage-uhf.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Point de passage UHF</p>
                 </a>
