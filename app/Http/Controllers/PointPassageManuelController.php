@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PointPassageMaunel;
 use App\Models\Voie;
 use App\Models\Site;
-
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -179,4 +179,76 @@ class PointPassageManuelController extends Controller
 
         }
     }
+
+
+    public function searchPassageManuelByAllRequest(Request $request){
+
+        try {
+
+            $pointPassageManuels= [];
+            $sites  = Site::all();
+            $voies  = Voie::all();
+
+            if ($request->isMethod('POST')) {
+                # code...
+                $passage = PointPassageMaunel::query();
+
+                $date  = $request->input('date');
+                $site  = $request->input('site_id');
+                $voie  = $request->input('voie_id');
+
+                $vacation  = $request->input('vacation');
+                $agent  = $request->input('identite_percepteur');
+
+                if ($date != null) {
+                    # code...
+                    $passage->where("date", "=", $date);
+
+                }
+
+
+                if ($site != null) {
+                    # code...
+                    $passage->where("site_id", "=", $site);
+
+                }
+
+
+
+                if ($voie != null) {
+                    # code...
+                    $passage->where("voie_id", "=", $voie);
+
+                }
+
+                if ($vacation != null) {
+                    # code...
+                    $passage->where("vacation", "=", $vacation);
+
+                }
+
+
+                if ($agent != null) {
+                    # code...
+                    $passage->where("identite_percepteur", "=", $agent);
+                }
+
+                $pointPassages =  $passage->get(['point_passages.*']);
+
+                session()->flashInput($request->all());
+
+            }
+
+
+            return view('pointPassageManuels.index',
+            compact('pointPassageManuels','sites','voies'))->with($request->all());
+
+        } catch (Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
+            abort(500);
+        }
+
+}
+
 }

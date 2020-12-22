@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\Voie;
 use App\Models\Site;
-
+use Exception;
 
 class PointPassageController extends Controller
 {
@@ -26,16 +26,9 @@ class PointPassageController extends Controller
         return view('pointPassage.index',compact('pointPassages','sites','voies'));
     }
 
-    
-                         
-                        public function __post( $valeur)
-                        {
-                            $obj->attribut = 'Simple test';
-                            $obj->unAttributPrive = 'Autre simple test';
-    
-                        }
 
-                        
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -181,6 +174,60 @@ class PointPassageController extends Controller
 
             Log::info($ex->getMessage());
 
+            abort(500);
+        }
+    }
+
+    public function searchPassageByAllRequest(Request $request){
+
+        try {
+
+            $pointPassages= [];
+            $sites  = Site::all();
+            $voies  = Voie::all();
+            if ($request->isMethod('POST')) {
+                # code...
+                $passage = PointPassage::query();
+
+                $date  = $request->input('date');
+                $site  = $request->input('site_id');
+                $voie  = $request->input('voie_id');
+
+                if ($date != null) {
+                    # code...
+                    $passage->where("date", "=", $date);
+
+                }
+
+
+                if ($site != null) {
+                    # code...
+                    $passage->where("site_id", "=", $site);
+
+                }
+
+
+
+                if ($voie != null) {
+                    # code...
+                    $passage->where("voie_id", "=", $voie);
+
+                }
+
+                $pointPassages =  $passage->get(['point_passages.*']);
+
+                session()->flashInput($request->all());
+
+            }
+
+
+            return view('pointPassage.index',
+            compact('pointPassages','sites','voies'))->with($request->all());;
+
+
+        } catch (Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
             abort(500);
         }
     }

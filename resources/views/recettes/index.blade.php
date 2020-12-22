@@ -90,7 +90,7 @@ Rapport TGMS-GATE \TOGO
 
                                         <select name="vacation" id="vacation" class="form-control">
                                             <option value="" selected>Selectionnez</option>
-
+                                            
 
                                                 <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
                                             <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>

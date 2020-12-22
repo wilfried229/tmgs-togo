@@ -53,7 +53,7 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
-        <form class="mb-4" action="" method="POST">
+        <form class="mb-4" action="{{ route('passage.gate.search') }}" method="POST">
             @csrf
             <div class="row">
                 <!-- secteur d'activité -->
@@ -65,6 +65,7 @@ Rapport TGMS-GATE \TOGO
                 <div class="form-group col-md-4">
                     <label for="site">Site</label>
                     <select name="site_id" id="site_id" class="form-control">
+                        <option value="" selected>Selectionnez</option>
 
                         @foreach ($sites as $site)
                         <option value="{{ $site->id }}">{{ $site->libelle }}</option>
@@ -76,6 +77,7 @@ Rapport TGMS-GATE \TOGO
                 <div class="form-group col-md-4">
                     <label for="">Voie</label>
                     <select name="voie_id" id="voie_id" class="form-control">
+                        <option value="" selected>Selectionnez</option>
 
                         @foreach ($voies as $voie)
                         <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
@@ -130,7 +132,7 @@ Rapport TGMS-GATE \TOGO
                                 <th> 22H-08H</th>
 
                                 <th>PASSAGE GATE</th>
-                                
+
 
                                 <th>TRAFIC</th>
                                 <th>RECETTE EQUIVALENTE</th>
