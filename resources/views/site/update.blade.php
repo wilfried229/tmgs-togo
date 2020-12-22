@@ -1,4 +1,4 @@
-@extends('template-ide')
+@extends('template')
 @section('title')
 TGMS-GATE
 @endsection
@@ -65,7 +65,7 @@ TGMS-GATE
             <form action="{{route('site.update',$site->id)}}" method="post" class="form">
 
                 @csrf
-                @method('PTUT')
+                @method('PUT')
             <div class="row">
               <div class="col-md-12">
                   <input type="text" name="libelle" value="{{ $site->libelle }}" class="form-control">
