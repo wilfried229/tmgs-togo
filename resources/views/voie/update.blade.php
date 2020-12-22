@@ -1,4 +1,4 @@
-@extends('template-ide')
+@extends('template')
 @section('title')
 TGMS-GATE
 @endsection
