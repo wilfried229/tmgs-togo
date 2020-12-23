@@ -24,6 +24,7 @@ class PointRecapPayementController extends Controller
         $passageUhf  = PassageUhf::query()->select('somme_total_trafic','somme_total_recette_equialente')->get();
 
         dd($passageGate,$passageUhf);
+
     }
 
     /**

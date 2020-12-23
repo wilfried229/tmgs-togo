@@ -64,8 +64,8 @@ class PointPassageManuelController extends Controller
             $pointPassage->etaDonne_taficInformatiser  = $request->etaDonne_taficInformatiser;
             $pointPassage->etaDonne_recetteInformatiser  = $request->etaDonne_recetteInformatiser;
 
-            $pointPassage->etaFinal_recetteInformatiser  = $request->etaFinal_recetteInformatiser;
-            $pointPassage->etaFinal_taficInformatiser  = $request->etaDonne_taficInformatiser;
+            $pointPassage->etaFinal_recetteInformatiser  = ($request->point_traf_info_mode_manuel+$request->trafic_compteManu+$request->etaDonne_taficInformatiser);
+            $pointPassage->etaFinal_taficInformatiser  = ($request->solde_recette_info_mode_manuel+$request->equipRecette+$request->etaDonne_recetteInformatiser);
 
             $pointPassage->observation  = $request->observation;
             $pointPassage->user_id  = Auth::user()->id;
@@ -137,8 +137,8 @@ class PointPassageManuelController extends Controller
             $pointPassage->etaDonne_taficInformatiser  = $request->etaDonne_taficInformatiser;
             $pointPassage->etaDonne_recetteInformatiser  = $request->etaDonne_recetteInformatiser;
 
-            $pointPassage->etaFinal_recetteInformatiser  = $request->etaFinal_recetteInformatiser;
-            $pointPassage->etaFinal_taficInformatiser  = $request->etaDonne_taficInformatiser;
+            $pointPassage->etaFinal_recetteInformatiser  = ($request->point_traf_info_mode_manuel+$request->trafic_compteManu+$request->etaDonne_taficInformatiser);
+            $pointPassage->etaFinal_taficInformatiser  = ($request->solde_recette_info_mode_manuel+$request->equipRecette+$request->etaDonne_recetteInformatiser);
 
             $pointPassage->observation  = $request->observation;
             $pointPassage->user_id  = Auth::user()->id;;
