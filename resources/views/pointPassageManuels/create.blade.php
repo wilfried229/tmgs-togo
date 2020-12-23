@@ -188,22 +188,7 @@ Rapport TGMS-GATE \TOGO
                         </div>
                     </div>
 
-                    <div class="row">
-
-                        <h4>ETAT FINAL DE LA VOIE POUR LA VACATION CONCERNEE</h4>
-                        <div class="col-lg-6 col-md-6">
-
-                            <label for="">Etat final de recette informatiser</label>
-                            <input type="number" class="form-control" name="etaFinal_recetteInformatiser"   id="etaFinal_recetteInformatiser" required>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6">
-
-                            <label for="">Etat final du trafic informatiser</label>
-                            <input type="number" class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" required>
-
-                        </div>
-                    </div>
+                    
                     <br>
 
                     <div class="row">

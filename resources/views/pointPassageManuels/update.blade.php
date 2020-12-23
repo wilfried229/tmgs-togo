@@ -176,18 +176,7 @@ Rapport TGMS-GATE \TOGO
                             <textarea  class="form-control" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" cols="30" rows="10">{{$pointPassageManuel->etaDonne_recetteInformatiser}}</textarea>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">Etat final de recette informatiser</label>
-                            <textarea class="form-control" name="etaFinal_recetteInformatiser" id="etaFinal_recetteInformatiser" cols="30" rows="10">{{$pointPassageManuel->etaFinal_recetteInformatiser}}</textarea>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">Etat final du trafic informatiser</label>
-                            <textarea class="form-control" name="etaFinal_taficInformatiser" id="etaFinal_taficInformatiser" cols="30" rows="10">{{$pointPassageManuel->etaFinal_taficInformatiser}}</textarea>
-                        </div>
-
+                        
 
 
 
