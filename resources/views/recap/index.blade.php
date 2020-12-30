@@ -41,7 +41,6 @@ Rapport TGMS-GATE \TOGO
             <div class="col-md-4">
                 <h6 class="element-header">
 
-                <a href="{{route('point-passage-manuel.create')}}" class="btn btn-primary">Ajouter un point de passage manuel</a>
                 </h6>
             </div>
             <div class="col-md-4">
@@ -115,7 +114,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">Liste des points de passage Manuel </h5>
+                <h5 class="form-header">POINT RECPITULATIF DES DIFFERENTS MODES DE PAIEMENT</h5>
 
 
             </a><!-- /.card-header -->
@@ -127,14 +126,14 @@ Rapport TGMS-GATE \TOGO
                     <table id="example1" class="table  estdata table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th colspan="5"></th>
-                                <th colspan="2">MODE ESPECE </th>
+                                <th></th>
+                                <th colspan="2">MODE ESPECE</th>
                                 <th colspan="2">MODE GATE </th>
                                 <th colspan="2">MODE UHF</th>
                                 <th colspan="2">SOMMES TOTAL</th>
-                                <th colspan="3"> </th>
                             </tr>
                             <tr>
+                                <th>Date</th>
                                 <th data-target="trafic">Trafic</th>
                                 <th data-target="site">Recettes</th>
                                 <th data-target="Trafic">Trafic</th>
@@ -149,7 +148,29 @@ Rapport TGMS-GATE \TOGO
                         </thead>
 
                         <tbody>
-                           
+
+                            @foreach ($fusions as $fusion)
+ 
+                            <tr>
+
+                            <th>{{ $fusion['dateGate']  }} {{ $fusion['dateUhf']  }} {{ $fusion['dateManuel']  }}</th>
+                            <td> {{ $fusion['etaFinal_taficInformatiser'] }}</td>
+                            <td>{{ $fusion['etaFinal_recetteInformatiser'] }}
+
+                            </td>
+                            <td> {{ $fusion['trafis_uhf'] }}</td>
+                            <td> {{ $fusion['recette_uhf'] }}</td>
+                            <td> {{ $fusion['somme_total_trafic'] }}</td>
+                            <td>  {{ $fusion['somme_total_recette_equialente'] }}</td>
+                            <td> {{$fusion['somme_total_trafic']+$fusion['trafis_uhf']+$fusion['etaFinal_taficInformatiser']  }}</td>
+                            <td> {{$fusion['somme_total_recette_equialente']+ $fusion['etaFinal_recetteInformatiser']+ $fusion['recette_uhf'] }}</td>
+
+                            </tr>
+
+
+
+                            @endforeach
+
                         </tbody>
                     </table>
 

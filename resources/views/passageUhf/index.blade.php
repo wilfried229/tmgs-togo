@@ -52,7 +52,7 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
-        <form class="mb-4" action="{{ route('passage.gate.search') }}" method="POST">
+        <form class="mb-4" action="{{ route('passage.uhf.search') }}" method="POST">
             @csrf
             <div class="row">
                 <!-- secteur d'activité -->

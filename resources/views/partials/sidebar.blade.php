@@ -5,10 +5,10 @@
         <div class="info">
             <a href="#" class="d-block">
                 <i class="fa fa-circle text-success"> </i>
-                {{--@if (Auth::user())
+                @if (Auth::user())
 
                 {{Auth::user()->name}}
-                @endif--}}
+             @endif
             </a>
         </div>
     </div>

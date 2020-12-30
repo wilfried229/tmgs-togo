@@ -15,7 +15,7 @@ class PointPassageMaunel extends Model
 
     protected $fillable =['date','voie_id','site_id','vacation','identite_percepteur',
         'point_traf_info_mode_manuel','solde_recette_info_mode_manuel','heure_debutComptage','heure_finComptage',
-        'trafic_compteManu','equipRecette','etaDonne_taficInformatiser','etaDonne_recetteInformatiser','etaFinal_recetteInformatiser',
+        'trafic_compteManu','equipRecette','etaDonne_taficInformatiser','etaDonne_recetteInformatiser','etaFinal_taficInformatiser',
         'etaFinal_recetteInformatiser','observations','user_id'
     ];
 

@@ -23,7 +23,7 @@ class PassageUhfController extends Controller
         $passageUhfs = PassageUhf::all();
         $sites  = Site::all();
         $voies  = Voie::all();
-        return view('PassageUhf.index',compact('passageUhfs','sites','voies'));
+        return view('passageUhf.index',compact('passageUhfs','sites','voies'));
     }
 
     /**
@@ -36,7 +36,7 @@ class PassageUhfController extends Controller
         //
         $sites = Site::all();
         $voies  = Voie::all();
-        return view('PassageUhf.create',compact('voies','sites'));
+        return view('passageUhf.create',compact('voies','sites'));
     }
 
     /**
@@ -65,7 +65,7 @@ class PassageUhfController extends Controller
             $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
-            
+
             $pointPassage->observations = $request->observations;
 
             $pointPassage->user_id = Auth::user()->id;
@@ -108,7 +108,7 @@ class PassageUhfController extends Controller
         $passageUhf = PassageUhf::findOrFail($id);
         $sites = Site::all();
         $voies  = Voie::all();
-        return view('PassageUhf.update',compact('passageUhf','voies','sites'));
+        return view('passageUhf.update',compact('passageUhf','voies','sites'));
     }
 
     /**
@@ -205,7 +205,7 @@ class PassageUhfController extends Controller
             }
 
 
-            return view('PassageUhf.index',
+            return view('passageUhf.index',
             compact('passageUhfs','sites','voies'))->with($request->all());;
 
 

@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('recettes-trafics/search','RecetteTraficController@searchRecettesByAllRequest')->name('recettes.trafics.search');
     Route::post('passage-gate/search','PointPassageController@searchPassageByAllRequest')->name('passage.gate.search');
 
-    Route::post('passage-uhf/search','PointPassageController@searchRecettesByAllRequest')->name('recettes.trafics.search');
+    Route::post('passage-uhf/search','PassageUhfController@searchPassageByAllRequest')->name('passage.uhf.search');
 
     Route::post('passage-manuel/search','PointPassageManuelController@searchPassageManuelByAllRequest')->name('passage.manuel.search');
 
