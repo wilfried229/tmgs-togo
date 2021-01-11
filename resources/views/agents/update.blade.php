@@ -21,7 +21,7 @@ TGMS-GATE
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Voie</li>
+              <li class="breadcrumb-item active"> Agent</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -45,11 +45,11 @@ TGMS-GATE
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('voie.index')}}" class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('agent.index')}}" class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
-        <h4 class="element-header">Voie</h4>
+        <h4 class="element-header">Agent</h4>
         <hr>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
@@ -59,16 +59,16 @@ TGMS-GATE
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Modification de la voie N° {{$voie->id}}</h5>
+                <h5 class="form-header">Modification de l'agent N° {{$agent->id}}</h5>
 
             </div>
-            <form action="{{route('voie.update',$voie->id)}}" method="post" class="form">
+            <form action="{{ route('agent.update',$agent->id)}}" method="post" class="form">
 
                 @csrf
                 @method('PUT')
             <div class="row">
               <div class="col-md-12">
-                  <input type="text" name="libelle" value="{{ $voie->libelle }}" class="form-control">
+                  <input type="text" name="nom" value="{{ $agent->nom }}" class="form-control">
 
               </div>
           </div>

@@ -52,6 +52,8 @@ Rapport TGMS-GATE \TOGO
                             </h6>
                         </div>
                     </div>
+
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                     <form class="mb-4" action="{{ route('recettes.trafics.search') }}" method="POST">
                         @csrf
                         <div class="row">
@@ -90,7 +92,7 @@ Rapport TGMS-GATE \TOGO
 
                                         <select name="vacation" id="vacation" class="form-control">
                                             <option value="" selected>Selectionnez</option>
-                                            
+
 
                                                 <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
                                             <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
@@ -101,7 +103,13 @@ Rapport TGMS-GATE \TOGO
                             <!-- année d'experience -->
                             <div class="form-group col-md-6">
                                 <label for="agent">Agent</label>
-                                        <input type="text" id="agent_voie" name="agent_voie" class="form-control">
+                                <select name="agent_voie" id="agent_voie" class="form-control">
+                                    @foreach ($agents as $agent)
+                                    <option value="{{ $agent->nom }}">{{ $agent->nom }}</option>
+
+                                    @endforeach
+                                </select>
+
                             </div>
                             <!-- pays residence -->
                         </div>
@@ -113,6 +121,9 @@ Rapport TGMS-GATE \TOGO
                             <div class="col-md-4"></div>
                         </div>
                     </form>
+
+                    @endif
+
                     <div class="card card-success">
 
                         <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal"
@@ -136,7 +147,11 @@ Rapport TGMS-GATE \TOGO
                                                 <th colspan="5">Recetes</th>
 
                                                 <th colspan="7">Trafic</th>
-                                                <th colspan="3"></th>
+
+                                                @if (Auth::user()->role  == "ADMIN") {
+                                                    <th colspan="3"></th>
+
+                                                @endif
 
                                                 <th></th>
                                             </tr>
@@ -162,9 +177,13 @@ Rapport TGMS-GATE \TOGO
                                         <th>Violation</th>
                                         <th>Total</th>
                                         <th>Observation</th>
-                                        <th>Enregister Par</th>
 
-                                        <th>Action</th>
+                                        @if (Auth::user()->role  == "ADMIN") {
+                                            <th>Enregister Par</th>
+                                            <th>Action</th>
+                                        @endif
+
+
                                     </tr>
                                     </thead>
 
@@ -174,7 +193,9 @@ Rapport TGMS-GATE \TOGO
 
 
                                         <tr>
-                                            <td>{{$recette->date}}</td>
+                                            <td>
+                                                {{ Carbon\Carbon::parse($recette->date)->format('d/m/Y') }}
+                                            </td>
                                             <td>{{$recette->site()->first()->libelle}}</td>
                                             <td>{{$recette->voie()->first()->libelle}}</td>
                                             <td>{{$recette->vacation}}</td>
@@ -192,9 +213,9 @@ Rapport TGMS-GATE \TOGO
                                             <td>{{$recette->violation}}</td>
                                             <td>{{$recette->total}}</td>
                                             <td>{{$recette->observation}}</td>
+                                            @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                             <td>{{$recette->user()->first()->name}}</td>
                                             <td>
-                                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                                 <a href="{{ route('recettes-trafics.edit',$recette->id) }}" class="btn btn-info">Modifier</a>
 
                                                 @if ($recette->manquant > 0 )
@@ -205,8 +226,9 @@ Rapport TGMS-GATE \TOGO
                                                 </form>
 
                                                 @endif
-                                                @endif
                                             </td>
+                                            @endif
+
 
                                         </tr>
                                     @endforeach

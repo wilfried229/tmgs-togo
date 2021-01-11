@@ -87,8 +87,11 @@ Rapport TGMS-GATE \TOGO
                                 <th>BESOINS</th>
                                 <th>PREUVE (N° DE FICHE D'INTERVENTION, image avant et après </th>
                                 <th>OBSERVATION</th>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <th>Enregister Par</th>
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -97,7 +100,11 @@ Rapport TGMS-GATE \TOGO
                             @foreach ($dysfonctionnments as $dysfon)
 
                             <tr>
-                                <td>{{ $dysfon->date }}</td>
+                                <td>
+
+                                    {{ Carbon\Carbon::parse($dysfon->date)->format('d/m/Y') }}
+
+                                </td>
                                 <td>{{ $dysfon->site()->first()->libelle }}</td>
                                 <td>{{ $dysfon->localisation }}</td>
                                 <td>{{ $dysfon->dysfonctionnement }}</td>
@@ -118,13 +125,15 @@ Rapport TGMS-GATE \TOGO
                                     </p>
                                 </td>
                                 <td>{{ $dysfon->observation  }}</td>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <td>{{ $dysfon->user()->first()->name ?? ""  }}</td>
 
                                 <td>
-                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('dysfonctionement.edit',$dysfon->id) }}" class="btn btn-info">Modifier</a>
-                                    @endif
+
                                 </td>
+                                @endif
                             </tr>
 
 

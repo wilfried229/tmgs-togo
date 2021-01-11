@@ -65,6 +65,8 @@ Rapport TGMS-GATE \TOGO
                 <form action="{{route('point-passage.store')}}" method="post" class="form">
 
                     @csrf
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
 
@@ -99,6 +101,34 @@ Rapport TGMS-GATE \TOGO
                         </div>
 
                     </div>
+
+                    @else
+
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+
+                            <label for="">Date</label>
+                            <input type="date" name="date" class="form-control" >
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+
+                            <label for="">Voie</label>
+
+                            <select class="form-control"  name="voie_id" id="voie_id">
+
+                                @foreach ($voies as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                                @endforeach
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                @endif
                     <br>
 
                     <div class="row">
@@ -109,19 +139,19 @@ Rapport TGMS-GATE \TOGO
                         </div>
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">08H à 16H</label>
+                            <label for="">08H à 14H</label>
                             <input type="number" name="vacation_6h" id="vacation_6h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                                <label for="">16H à 22H</label>
+                                <label for="">14H à 22H</label>
                             <input type="number" name="vacation_14h" id="vacation_14h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">22H à 08H</label>
+                            <label for="">22H à 06H</label>
                             <input type="number" name="vacation_20h" id="vacation_20h" class="form-control" required>
 
                             </div>
@@ -129,14 +159,12 @@ Rapport TGMS-GATE \TOGO
                     </div>
 
                     <br>
-
-
                  <br>
                     <div class="row">
 
                         <div class="col-lg-12">
 
-                            <h4>SOMMES TOTAL </h4>
+                            <h4>TOTAL : </h4>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
@@ -192,13 +220,13 @@ Rapport TGMS-GATE \TOGO
                         </div>
                     </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="submit" value="Enregistrer" class="btn btn-success">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" value="Enregistrer" class="btn btn-success">
 
-                </div>
-            </div>
-        </form>
+                        </div>
+                    </div>
+                 </form>
 
             </div>
         </div>

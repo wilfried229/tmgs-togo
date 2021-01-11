@@ -9,6 +9,7 @@ use App\Exports\UsersExport;
 use App\Models\Site;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -74,26 +75,32 @@ class UserController extends Controller
     {
         //
 
-        if ($request->password != $request->password_confirmation) {
-            # code...
+        try {
 
-            Session::flash('success', 'Mot de passe non identique');
+            if ($request->password != $request->password_confirmation) {
+                # code...
+
+                Session::flash('success', 'Mot de passe non identique');
+                return redirect()->back();
+            }
+
+            $user  = new User();
+            $user->name  = $request->name;
+            $user->email  = $request->email;
+            $user->password  = Hash::make($request->password);
+            $user->role  = $request->role;
+            $user->site_id  = $request->site_id;
+
+            $user->save();
+            Session::flash('success', 'Utilisateur ajoutée avec succès ');
 
             return redirect()->back();
+        } catch (\Exception $ex) {
+            //throw $th;
+            Session::flash('error', $ex->getMessage);
 
+            Log::info($ex->getMessage);
         }
-
-        $user  = new User();
-        $user->name  = $request->name;
-        $user->email  = $request->email;
-        $user->password  = Hash::make($request->password);
-        $user->role  = $request->role;
-        $user->site_id  = $request->site_id;
-
-        $user->save();
-        Session::flash('success', 'Utilisateur ajouté avec succès ');
-
-        return redirect()->back();
     }
 
     /**
@@ -116,6 +123,9 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user  = User::find($id);
+        $sites  = Site::all();
+        return view('users.update',compact('user','sites'));
     }
 
     /**
@@ -128,6 +138,31 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+
+            $user  = User::find($id);
+            $user->name  = $request->name;
+            $user->email  = $request->email;
+
+            if($request->password == null || $request->password == ""){
+                $user->password  = Hash::make($request->password);
+
+            }
+            $user->role  = $request->role;
+            $user->site_id  = $request->site_id;
+            $user->save();
+
+            Session::flash('success', 'Utilisateur modifiée avec succès ');
+
+            return back();
+        } catch (\Exception $ex) {
+            //throw $th;
+            Session::flash('error', $ex->getMessage);
+
+            Log::info($ex->getMessage);
+
+        }
+
     }
 
     /**
@@ -138,6 +173,21 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+
+        try {
+
+        $user  = User::find($id);
+        $user->delete();
+
+            Session::flash('success','Utilisateur supprimée succès ');
+
+            return back();
+
+        } catch (\Exception $ex) {
+            Session::flash('error', $ex->getMessage);
+
+            Log::info($ex->getMessage);
+        }
         //
     }
 }

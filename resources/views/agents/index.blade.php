@@ -1,6 +1,6 @@
 @extends('template')
 @section('title')
-Rapport TGMS-GATE \TOGO
+TGMS-GATE
 @endsection
 @section('style-css')
 
@@ -17,13 +17,14 @@ Rapport TGMS-GATE \TOGO
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Rapport TGMS-GATE \TOGO
+                        <h1 class="m-0 text-dark">
+                            TGMS-GATE
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item active">Utilisateur</li>
+                            <li class="breadcrumb-item active">Agent</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -37,20 +38,16 @@ Rapport TGMS-GATE \TOGO
                     <div class="row">
                         <div class="col-md-4">
                             <h6 class="element-header">
-                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
-                                    <a href="{{route('users.create')}}" class="btn btn-primary">Ajouter un
-                                        utilisateur </a>
                             </h6>
-
-                            @endif
-
                         </div>
                         <div class="col-md-4">
 
                         </div>
                         <div class="col-md-4">
                             <h6 class="element-header">
+
+                                <a class="btn btn-info" href="{{route('agent.create')}}"> Ajouter un agent</a>
                             </h6>
                         </div>
                     </div>
@@ -61,73 +58,41 @@ Rapport TGMS-GATE \TOGO
                            data-target="#ENCOModal" data-whatever="@getbootstrap">
 
 
-                            <h3>Liste des Utilisateurs</h3>
+                            <h3>Agents</h3>
 
                         </a><!-- /.card-header -->
 
                         <div class="card-body">
+
                             <div class="table-responsive">
                                 <table id="example1" class="table  estdata table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Nom Utilisateur</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Site</th>
+                                        <th data-target="date">Nom</th>
 
-                                        <th>Date de création</th>
-                                        @if (in_array(Auth::user()->role,['SUPERADMIN']))
-
-                                        <th>Action</th>
-                                        @endif
+                                        <th>Options</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>Nom Utilisateur</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Site</th>
+                                        <th>Nom</th>
 
-                                        <th>Date de création</th>
-                                        @if (in_array(Auth::user()->role,['SUPERADMIN']))
+                                        <th>Options</th>
 
-                                        <th>Action</th>
-                                        @endif
                                     </tr>
                                     </tfoot>
                                     <tbody>
 
-                                    @foreach ($users as $user)
+                                    @foreach($agents as $agent)
+
 
                                         <tr>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <th>{{$user->role}}</th>
-                                            <th>{{$user->site()->first()->libelle}}</th>
-                                            <th>{{$user->created_at}}</th>
+                                            <td>{{$agent->nom}}</td>
+                                        <th>
 
+                                            <a href="{{ route('agent.edit',$agent->id) }}" class="btn btn-info"> Modifier</a>
 
-
-                                                @if (in_array(Auth::user()->role,['SUPERADMIN']))
-                                                <td>
-                                                    <br>
-                                                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-info">Modifier </a>
-
-
-                                                    <a onclick="event.preventDefault(); document.getElementById('retirer-user-form-{{$user->id}}').submit(); return false;"
-                                                       class="btn btn-danger">Retirer </a>
-
-
-                                                    <form id="retirer-user-form-{{$user->id}}"
-                                                          action="{{route('users.destroy',$user->id)}}" method="POST"
-                                                          style="display: none;">
-                                                        {{ csrf_field() }}
-                                                        @method('DELETE')
-                                                    </form>
-
-                                            </td>
-                                            @endif
+                                        </th>
 
                                         </tr>
                                     @endforeach
@@ -137,14 +102,15 @@ Rapport TGMS-GATE \TOGO
                             </div>
 
                         </div>
-                        <!-- /.card-body -->
+
                     </div>
-                    <!-- /.row (main row) -->
-                </div><!-- /.container-fluid -->
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.row (main row) -->
+                <!-- /.container-fluid -->
 
 
                 <!--  modal ajout --->
-
 
             </section>
         @endsection

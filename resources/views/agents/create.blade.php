@@ -22,7 +22,7 @@ TGMS-GATE
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item active"> Voie</li>
+                            <li class="breadcrumb-item active"> Agent</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -45,11 +45,11 @@ TGMS-GATE
 
                         </div>
                         <div class="col-md-3">
-                            <a href="{{route('voie.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                            <a href="{{route('agent.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                         </div>
                     </div>
-                    <h4 class="element-header">voie</h4>
+                    <h4 class="element-header">Agent</h4>
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-md-12">
                     {{--      @include('partials.notification')--}}
@@ -58,21 +58,21 @@ TGMS-GATE
 
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="form-header">Ajouter une voie</h5>
+                            <h5 class="form-header">Ajouter un Agent</h5>
 
                         </div>
 
                         <div class="card-body">
-                            <form action="{{route('voie.store')}}" method="post" class="form">
+                            <form action="{{route('agent.store')}}" method="post" class="form">
 
                                 @csrf
 
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
 
-                                        <label for="">Titre</label>
+                                        <label for="">Nom</label>
 
-                                        <input type="text" id="libelle" name="libelle" class="form-control" required>
+                                        <input type="text" id="nom" name="nom" class="form-control" required>
                                     </div>
 
 

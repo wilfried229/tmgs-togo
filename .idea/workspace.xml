@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e3b2146-d977-4281-82a6-93d863b21b8e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tmgs-togo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tmgs-togo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PointPassageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PointPassageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PointPassage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PointPassage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_113532_create_point_passages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_113532_create_point_passages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pointPassage/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pointPassage/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pointPassage/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pointPassage/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pointPassageManuels/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pointPassageManuels/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DysfonctionnementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DysfonctionnementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PointRecapPayementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PointRecapPayementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PassageUhf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PassageUhf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_102556_create_voie_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_102556_create_voie_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dysfonct/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dysfonct/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/recap/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recap/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/recettes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recettes/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/voie/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/voie/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/voie/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/voie/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/voie/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/voie/update.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +146,7 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/mercuryseries/flashy" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lK8mHJ9ScG8PO2Vns9a3acwGDz" />
@@ -177,6 +183,7 @@
       <workItem from="1607510448615" duration="19555000" />
       <workItem from="1607591750247" duration="2999000" />
       <workItem from="1608130149646" duration="544000" />
+      <workItem from="1610355471893" duration="1138000" />
     </task>
     <servers />
   </component>

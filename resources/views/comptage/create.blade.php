@@ -15,13 +15,13 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">DYSFONCTIONNEMENT
+            <h1 class="m-0 text-dark">COMPTAGE
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> DYSFONCTIONNEMENT </li>
+              <li class="breadcrumb-item active"> COMPTAGE </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -66,38 +66,62 @@ Rapport TGMS-GATE \TOGO
 
                     @csrf
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
-                            <label for="">Date</label>
-                            <input type="date" name="date" class="form-control" >
-                        </div>
-                        <div class="col-lg-4 col-md-4">
+                     <div class="col-lg-4 col-md-4">
 
-                            <label for="">Sites</label>
+                        <label for="">Date</label>
+                        <input type="date" name="date" class="form-control" >
+                    </div>
+                    <div class="col-lg-4 col-md-4">
 
-                            <select class="form-control"  name="site_id" id="site_id">
+                        <label for="">Sites</label>
 
-                                @foreach ($sites as $s)
+                        <select class="form-control"  name="site_id" id="site_id">
 
-                            <option value="{{$s->id}}">{{$s->libelle}}</option>
-                                @endforeach
-                            </select>
+                            @foreach ($sites as $s)
 
-                        </div>
-                        <div class="col-lg-4 col-md-4">
+                        <option value="{{$s->id}}">{{$s->libelle}}</option>
+                            @endforeach
+                        </select>
 
-                            <label for="">Voie</label>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
 
-                            <select class="form-control"  name="voie_id" id="voie_id">
+                        <label for="">Voie</label>
 
-                                @foreach ($voies as $v)
-                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+                        <select class="form-control"  name="voie_id" id="voie_id">
 
-                                @endforeach
-                            </select>
+                            @foreach ($voies as $v)
+                        <option value="{{$v->id}}">{{$v->libelle}}</option>
 
-                        </div>
+                            @endforeach
+                        </select>
 
+                    </div>
+
+                     @else
+                     <div class="col-lg-6 col-md-6">
+
+                        <label for="">Date</label>
+                        <input type="date" name="date" class="form-control" >
+                    </div>
+
+                    <div class="col-lg-6 col-md-6   ">
+
+                        <label for="">Voie</label>
+
+                        <select class="form-control"  name="voie_id" id="voie_id">
+
+                            @foreach ($voies as $v)
+                        <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                            @endforeach
+                        </select>
+
+                    </div>
+
+                     @endif
                     </div>
                     <br>
 

@@ -32,8 +32,16 @@ class DysfonctionnementController extends Controller
      */
     public function create()
     {
-        $sites = Site::all();
-        $voies  = Voie::all();
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+            $voies  = Voie::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
+
         return view('dysfonct.create',compact('sites','voies'));
     }
 
@@ -68,7 +76,13 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->preuve_apres  = DysfonctionnementController::uploadImage($request->file('preuve_apres'),$path);
 
             $dysfonctionnment->observation = $request->observation;
-            $dysfonctionnment->site_id = $request->site_id;
+            if (Auth::user()->role  == "ADMIN") {
+                $dysfonctionnment->site_id = $request->site_id;
+
+            } else {
+                $site = Site::where('id',Auth::user()->site_id)->first('id');
+                $dysfonctionnment->site_id = $site->id;
+            }
             $dysfonctionnment->user_id = Auth::user()->id;
             $dysfonctionnment->save();
             flashy()->success("Enregistrement effectuée avec succès");
@@ -105,7 +119,14 @@ class DysfonctionnementController extends Controller
      */
     public function edit($id)
     {
-        $sites = Site::all();
+
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+        }
         $dysfonctionnment  = Dyfonctionnement::findOrFail($id);
         return  view('dysfonct.update',compact('dysfonctionnment','sites'));
     }
@@ -186,7 +207,7 @@ class DysfonctionnementController extends Controller
 
 
      /**
-     * Envoyer le mail de confirmation de compte après création de compte.
+     * upload.
      * @param $name
      */
     public static function uploadImage($image,$folder){

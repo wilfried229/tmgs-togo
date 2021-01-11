@@ -81,13 +81,13 @@
             </li>
 
 
-            <li class="nav-item">
+           {{--  <li class="nav-item">
                 <a href="{{route('point-recap.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-list"></i>
                     <p>POINT RECPITULATIF DES MODES DE PAIEMENT</p>
                 </a>
             </li>
-
+ --}}
             @endif
 
 
@@ -106,23 +106,31 @@
                     <p>Voie</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('agent.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Agent</p>
+                </a>
+            </li>
 
+
+
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="fa fa-user"></i>
+                        <p>Mon Profile </p>
+                    </a>
+
+                </li>
+
+            @endif
+            @if (in_array(Auth::user()->role,['SUPERADMIN','ADMIN']))
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="fa fa-users"></i>
                     <p>Utilisateurs</p>
                 </a>
             </li>
-
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-user"></i>
-                        <p>Mon Profile </p>
-
-                    </a>
-
-                </li>
-
             @endif
                 <li class="nav-item">
 

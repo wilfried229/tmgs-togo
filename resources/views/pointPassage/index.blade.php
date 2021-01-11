@@ -53,6 +53,8 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
+        @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
         <form class="mb-4" action="{{ route('passage.gate.search') }}" method="POST">
             @csrf
             <div class="row">
@@ -95,6 +97,7 @@ Rapport TGMS-GATE \TOGO
                 <div class="col-md-4"></div>
             </div>
         </form>
+        @endif
         <div class="card card-success">
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
@@ -118,18 +121,20 @@ Rapport TGMS-GATE \TOGO
                                     <th colspan="1"></th>
                                     <th colspan="2">SOMME TOTAL</th>
                                     <th colspan="3">INFORMATIONS DIVERSES </th>
+                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
 
                                     <th colspan="2"></th>
+                                    @endif
                                 </tr>
                             </tr>
                             <tr>
                                 <th data-target="date">DATE</th>
                                 <th data-target="site">SITE</th>
                                 <th data-target="voie">VOIE</th>
-                                <th> 08H-16H</th>
-                                <th> 16H-22H</th>
-                                <th> 22H-08H</th>
+                                <th> 08H-14H</th>
+                                <th> 14H-22H</th>
+                                <th> 22H-06H</th>
 
                                 <th>PASSAGE GATE</th>
 
@@ -140,8 +145,11 @@ Rapport TGMS-GATE \TOGO
                                 <th>CAS DE PAIEMENT ESPECE SUITE A UN  DYSFONCTIONNEMENT</th>
                                 <th>CAS DE PAIEMENT ESPECE _ DEFAUT DE PROVISION</th>
                                 <th>Observations</th>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <th>Enregister Par</th>
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -150,7 +158,10 @@ Rapport TGMS-GATE \TOGO
                             @foreach ($pointPassages as $point)
 
                             <tr>
-                                <td>{{ $point->date }}</td>
+                                <td>
+                                    {{ Carbon\Carbon::parse($point->date)->format('d/m/Y') }}
+
+                                </td>
                                 <td>{{ $point->voie()->first()->libelle }}</td>
                                 <td>{{ $point->site()->first()->libelle }}</td>
                                 <td>{{ $point->vacation_6h }}</td>
@@ -162,13 +173,14 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>
                                 <td>{{ $point->paiement_espece_dysfon }}</td>
                                 <td>{{ $point->observations }}</td>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                 <td>{{ $point->user()->first()->name ?? "" }}</td>
 
                                 <td>
-                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
-                                    @endif
                                 </td>
+                                @endif
+
                             </tr>
 
 

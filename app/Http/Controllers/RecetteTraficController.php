@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agents;
 use App\Models\RecetesTrafic;
 use App\Models\Site;
 use App\Models\Voie;
@@ -24,7 +25,9 @@ class RecetteTraficController extends Controller
         $recettes = RecetesTrafic::query()->orderByDesc('id')->get();
         $sites  = Site::all();
         $voies  = Voie::all();
-        return view('recettes.index',compact('recettes','voies','sites'));
+        $agents  = Agents::all();
+
+        return view('recettes.index',compact('recettes','voies','sites','agents'));
     }
 
     /**
@@ -36,9 +39,22 @@ class RecetteTraficController extends Controller
     {
         //
 
-        $sites  = Site::all();
-        $voies  = Voie::all();
-        return view('recettes.create',compact('sites','voies'));
+
+        $agents  = Agents::all();
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+            $voies  = Voie::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
+
+
+
+
+        return view('recettes.create',compact('sites','voies','agents'));
     }
 
     /**
@@ -54,10 +70,18 @@ class RecetteTraficController extends Controller
         try {
             $recetteTrafic = new  RecetesTrafic();
             $recetteTrafic->date = $request->date;
+            if (Auth::user()->role  == "ADMIN") {
+                $recetteTrafic->site_id = $request->site_id;
+
+            } else {
+                $site = Site::where('id',Auth::user()->site_id)->first('id');
+                $recetteTrafic->site_id = $site->id;
+            }
+
+
             $recetteTrafic->voie_id = $request->voie_id;
-            $recetteTrafic->site_id = $request->site_id;
             $recetteTrafic->vacation = $request->vacation;
-            $recetteTrafic->agent_voie = $request->agent_voie;
+            $recetteTrafic->agent_voie = Agents::where('nom',$request->agent_voie)->first()->nom;
             $recetteTrafic->montant = $request->montant;
             $recetteTrafic->recette_informatiser = $request->recette_informatiser;
             if (($request->montant - $request->recette_declarer) < 0) {
@@ -87,6 +111,8 @@ class RecetteTraficController extends Controller
             $recetteTrafic->violation = $request->violation;
             $recetteTrafic->total = ($request->vl + $request->mini_bus + $request->autocars_camion + $request->pl);
             $recetteTrafic->observation = $request->observation;
+
+
             $recetteTrafic->user_id = Auth::user()->id;
             $recetteTrafic->save();
             flashy()->success("Enregistrement effectué avec succès");

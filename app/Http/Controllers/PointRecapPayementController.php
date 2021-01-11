@@ -34,13 +34,6 @@ class PointRecapPayementController extends Controller
             array_push($passageGateAll,$gate);
         }
 
-
-        foreach($passageGateAll as $value){
-
-            dd($value);
-        }
-        dd($passageGateAll);
-
         $passageUhfAll =[];
         foreach ($passageUhf as $key => $uhf) {
             array_push($passageUhfAll,$uhf);
@@ -78,8 +71,7 @@ class PointRecapPayementController extends Controller
         }
   //  dd($passageUhfAll);
         $fusions  = array_interlace($passageManuelAll,$passageUhfAll,$passageGateAll);
-
-        dd($fusions);
+        //dd($fusions);
         $sites  = Site::all();
         $voies  = Voie::all();
         return view('recap.index',compact('fusions','voies','sites'));

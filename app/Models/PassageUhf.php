@@ -8,7 +8,7 @@ class PassageUhf extends Model
 {
     //
 
-    protected $table = "Passage_Uhfs";
+    protected $table = "passage_uhfs";
 
     protected $fillable =['date','voie_id','site_id','vacation_6h','vacation_14h', 'vacation_20h','passage_uhf',
         'somme_total_trafic','somme_total_recette_equialente','paiement_espece_defaut_provision','paiement_espece_dysfon',

@@ -150,7 +150,7 @@ Rapport TGMS-GATE \TOGO
                         <tbody>
 
                             @foreach ($fusions as $fusion)
- 
+
                             <tr>
 
                             <th>{{ $fusion['dateGate']  }} {{ $fusion['dateUhf']  }} {{ $fusion['dateManuel']  }}</th>
@@ -161,9 +161,9 @@ Rapport TGMS-GATE \TOGO
                             <td> {{ $fusion['trafis_uhf'] }}</td>
                             <td> {{ $fusion['recette_uhf'] }}</td>
                             <td> {{ $fusion['somme_total_trafic'] }}</td>
-                            <td>  {{ $fusion['somme_total_recette_equialente'] }}</td>
-                            <td> {{$fusion['somme_total_trafic']+$fusion['trafis_uhf']+$fusion['etaFinal_taficInformatiser']  }}</td>
-                            <td> {{$fusion['somme_total_recette_equialente']+ $fusion['etaFinal_recetteInformatiser']+ $fusion['recette_uhf'] }}</td>
+                            <td> {{ $fusion['somme_total_recette_equialente'] }}</td>
+                            <td> {{$fusion['somme_total_trafic']+$fusion['trafis_uhf']+$fusion['etaFinal_taficInformatiser']}} </td>
+                            <td> {{$fusion['somme_total_recette_equialente']+ $fusion['etaFinal_recetteInformatiser']+ $fusion['recette_uhf']}} </td>
 
                             </tr>
 

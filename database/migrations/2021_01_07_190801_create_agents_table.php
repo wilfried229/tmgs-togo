@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVoieTable extends Migration
+class CreateAgentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateVoieTable extends Migration
      */
     public function up()
     {
-        Schema::create('voie', function (Blueprint $table) {
+        Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
-            $table->unsignedBigInteger('site_id');
+            $table->string('nom');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateVoieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voie');
+        Schema::dropIfExists('agents');
     }
 }

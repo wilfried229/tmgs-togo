@@ -71,17 +71,21 @@ Rapport TGMS-GATE \TOGO
                             <label for="">Date</label>
                             <input type="date" name="date" class="form-control" >
                         </div>
+
+                        @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                         <div class="col-lg-6 col-md-6">
 
                             <label for="">Site </label>
                             <select class="form-control"  name="site_id" id="site_id">
 
-                                @foreach ($sites as $v)
-                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+                                @foreach ($sites as $s)
+                            <option value="{{$s->id}}">{{$s->libelle}}</option>
 
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Voie</label>
@@ -106,13 +110,62 @@ Rapport TGMS-GATE \TOGO
                             <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
 
                             </select>
-                    </div>
+
+                        </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">Identité percepteur</label>
-                            <input type="text" name="identite_percepteur" id="identite_percepteur" class="form-control" required>
+                            <label for="">Percepteur</label>
+
+                            <select name="identite_percepteur" id="identite_percepteur" class="form-control">
+                                @foreach ($agents as $agent)
+                                <option value="{{ $agent->nom }}">{{ $agent->nom }}</option>
+
+                                @endforeach
+                            </select>
                         </div>
+                        @else
+
+                        <div class="col-lg-6 col-md-6">
+
+                            <label for="">Voie</label>
+                            <select class="form-control"  name="voie_id" id="voie_id">
+
+                                @foreach ($voies as $v)
+                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                                @endforeach
+                            </select>
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+
+                            <label for="">Vacation </label>
+                            <select name="vacation" id="vacation" class="form-control">
+
+
+                                <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
+                            <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
+                            <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+
+                            <label for="">Percepteur</label>
+
+                            <select name="identite_percepteur" id="identite_percepteurS" class="form-control">
+                                @foreach ($agents as $agent)
+                                <option value="{{ $agent->nom }}">{{ $agent->nom }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+                        @endif
 
                     </div>
                     <br>
@@ -188,7 +241,7 @@ Rapport TGMS-GATE \TOGO
                         </div>
                     </div>
 
-                    
+
                     <br>
 
                     <div class="row">

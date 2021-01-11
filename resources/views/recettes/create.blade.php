@@ -67,6 +67,9 @@ Rapport TGMS-GATE \TOGO
 
                                 @csrf
 
+
+                                @if (Auth::user()->role  == "ADMIN" )
+
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
 
@@ -102,6 +105,32 @@ Rapport TGMS-GATE \TOGO
 
                                     </div>
                                 </div>
+                                @else
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+
+                                        <label for="">Date</label>
+
+                                        <input type="date" id="date" name="date" class="form-control" required>
+                                    </div>
+
+
+                                    <div class="col-lg-6 col-md-6">
+
+                                        <label for="">Voie</label>
+                                        <select name="voie_id" id="voie_id" class="form-control">
+
+                                            @foreach ($voies as $voie)
+                                            <option value="{{ $voie->id }}">{{ $voie->libelle }}</option>
+
+                                            @endforeach
+                                        </select>
+
+
+                                    </div>
+                                </div>
+                                @endif
+
                                 <br>
 
                                 <div class="row">
@@ -112,7 +141,7 @@ Rapport TGMS-GATE \TOGO
                                         <select name="vacation" id="vacation" class="form-control">
 
 
-                                                <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
+                                            <option value="{{ env('TYPE_VACATION_06H')}}">{{ env('TYPE_VACATION_06H')}}</option>
                                             <option value="{{ env('TYPE_VACATION_14H')}}">{{ env('TYPE_VACATION_14H')}}</option>
                                             <option value="{{ env('TYPE_VACATION_20H')}}">{{ env('TYPE_VACATION_20H')}}</option>
 
@@ -123,7 +152,12 @@ Rapport TGMS-GATE \TOGO
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Agent</label>
-                                        <input type="text" id="agent_voie" name="agent_voie" class="form-control" required>
+                                        <select name="agent_voie" id="agent_voie" class="form-control">
+                                            @foreach ($agents as $agent)
+                                            <option value="{{ $agent->nom }}">{{ $agent->nom }}</option>
+
+                                            @endforeach
+                                        </select>
 
                                     </div>
                                     <div class="col-lg-4 col-md-4">
@@ -191,26 +225,22 @@ Rapport TGMS-GATE \TOGO
 
                                 <br>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4">
+                                    <div class="col-lg-6 col-md-6">
 
                                         <label for="">Nombre Exempté</label>
                                         <input type="number" name="nbre_exempte" id="nbre_exempte" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-4 col-md-4">
+                                    <div class="col-lg-6 col-md-6">
 
                                         <label for="">Violation</label>
                                         <input type="number" name="violation" id="violation" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-4 col-md-4">
 
-                                        <label for="">total</label>
-                                        <input type="number" name="total" id="total" class="form-control" required>
-                                    </div>
 
                                     <div class="col-lg-12 col-md-12">
                                         <label for="">Observation</label>
 
-                                        <textarea name="observation" id="observation" cols="30" rows="10" class="form-control" required></textarea>
+                                        <textarea name="observation" id="observation" cols="30" rows="10" class="form-control"></textarea>
                                     </div>
 
                                 </div>

@@ -46,9 +46,8 @@ Rapport TGMS-GATE \TOGO
 
             </div>
             <div class="col-md-3">
-            <a href="{{route('users.list')}}" class="btn btn-primary">Retour vers la liste</a>
-
-                </div>
+            <a href="{{route('users.index')}}" class="btn btn-primary">Retour vers la liste</a>
+            </div>
         </div>
         <h4 class="element-header"> Utilisateur</h4>
         <hr>
@@ -58,11 +57,9 @@ Rapport TGMS-GATE \TOGO
             </div>
         </div>
 
-
         <div class="card">
             <div class="card-header">
                 <h5 class="form-header">Modification de  {{$user->name}} </h5>
-
             </div>
             <div class="card-body">
                 <form action="{{route('users.update',$user->id)}}" method="post" class="form">
@@ -87,43 +84,30 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-12 col-md-4">
                             <label for="">Role</label>
 
+
                             <select name="role" id="role" class="form-control">
-                                <option value="AGENT" @if ($user->role == "AGENT")
-                                    selected
-                                @endif>AGENT</option>
-                                <option value="ADMINISTRATEUR"@if ($user->role == "ADMINISTRATEUR")
-                                    selected
-                                @endif
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="PERCEPTEUR">PERCEPTEUR</option>
+                                <option value="SAFER">SAFER</option>
 
-                                >ADMINISTRATEUR</option>
-                                <option value="RH"@if ($user->role == "RH")
-                                    selected
-                                @endif>RH</option>
-                                <option value="ARH"@if ($user->role == "ARH")
-                                    selected
-                                @endif>ARH</option>
-
-                                <option value="GAP"
-                                @if ($user->role == "GAP")
-                                    selected
-                                @endif
-                                >GAP</option>
-                                <option value="GTP"
-                                @if ($user->role == "GTP")
-                                    selected
-                                @endif>GTP</option>
-                                <option value="DT"
-                                @if ($user->role == "DT")
-                                    selected
-                                @endif>DT</option>
-                                <option value="DAF"
-                                @if ($user->role == "DAF")
-                                    selected
-                                @endif>DAF</option>
                             </select>
                         </div>
+                        <div class="col-lg-12 col-md-12">
+                            <label for="">Site</label>
 
+                            <select name="site_id" id="site_id" class="form-control">
+                                @foreach ($sites as $site)
+                                            <option value="{{ $site->id }}">{{ $site->libelle }}</option>
 
+                                @endforeach
+                             </select>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for=""> Password</label>
+
+                        <input type="password" name="password" id="password"  class="form-control">
+                        </div>
                     </div>
                     <br>
 

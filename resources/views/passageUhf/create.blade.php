@@ -66,36 +66,59 @@ Rapport TGMS-GATE \TOGO
 
                     @csrf
                     <div class="row">
+
+                        @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Date</label>
                             <input type="date" name="date" class="form-control" >
                         </div>
-                        <div class="col-lg-4 col-md-4">
+                      <div class="col-lg-4 col-md-4">
 
-                            <label for="">Sites</label>
+                        <label for="">Sites</label>
 
-                            <select class="form-control"  name="site_id" id="site_id">
+                        <select class="form-control"  name="site_id" id="site_id">
 
-                                @foreach ($sites as $s)
-                            <option value="{{$s->id}}">{{$s->libelle}}</option>
-                                @endforeach
-                            </select>
+                            @foreach ($sites as $s)
+                        <option value="{{$s->id}}">{{$s->libelle}}</option>
+                            @endforeach
+                        </select>
 
-                        </div>
-                        <div class="col-lg-4 col-md-4">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
 
-                            <label for="">Voie</label>
+                        <label for="">Voie</label>
 
-                            <select class="form-control"  name="voie_id" id="voie_id">
+                        <select class="form-control"  name="voie_id" id="voie_id">
 
-                                @foreach ($voies as $v)
-                            <option value="{{$v->id}}">{{$v->libelle}}</option>
+                            @foreach ($voies as $v)
+                        <option value="{{$v->id}}">{{$v->libelle}}</option>
 
-                                @endforeach
-                            </select>
+                            @endforeach
+                        </select>
 
-                        </div>
+                    </div>
+                      @else
+
+                      <div class="col-lg-6 col-md-6">
+
+                        <label for="">Date</label>
+                        <input type="date" name="date" class="form-control" >
+                    </div>
+                      <div class="col-lg-6 col-md-6">
+
+                        <label for="">Voie</label>
+
+                        <select class="form-control"  name="voie_id" id="voie_id">
+
+                            @foreach ($voies as $v)
+                        <option value="{{$v->id}}">{{$v->libelle}}</option>
+
+                            @endforeach
+                        </select>
+
+                    </div>
+                      @endif
 
                     </div>
                     <br>
@@ -108,19 +131,19 @@ Rapport TGMS-GATE \TOGO
                         </div>
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">08H à 16H</label>
+                            <label for="">08H à 14H</label>
                             <input type="number" name="vacation_6h" id="vacation_6h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                                <label for="">16H à 22H</label>
+                                <label for="">14H à 22H</label>
                             <input type="number" name="vacation_14h" id="vacation_14h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">22H à 08H</label>
+                            <label for="">22H à 06H</label>
                             <input type="number" name="vacation_20h" id="vacation_20h" class="form-control" required>
 
                             </div>
@@ -135,7 +158,7 @@ Rapport TGMS-GATE \TOGO
 
                         <div class="col-lg-12">
 
-                            <h4>SOMMES TOTAL </h4>
+                            <h4>TOTAL : </h4>
                         </div>
 
                         <div class="col-lg-4 col-md-4">

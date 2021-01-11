@@ -55,7 +55,13 @@ class ComptageController extends Controller
             $comptage  = new  Comptage();
             $comptage->date = $request->date;
             $comptage->voie_id = $request->voie_id;
-            $comptage->site_id = $request->site_id;
+            if (Auth::user()->role  == "ADMIN") {
+                $comptage->site_id = $request->site_id;
+
+            } else {
+                $site = Site::where('id',Auth::user()->site_id)->first('id');
+                $comptage->site_id = $site->id;
+            }
             $comptage->vacation = $request->vacation;
             $comptage->nbre_passageManuel = $request->nbre_passageManuel;
             $comptage->nbre_passageSysteme = $request->nbre_passageSysteme;
@@ -121,7 +127,13 @@ class ComptageController extends Controller
         $comptage  = Comptage::findOrFail($id);
         $comptage->date = $request->date;
         $comptage->voie_id = $request->voie_id;
-        $comptage->site_id = $request->site_id;
+        if (Auth::user()->role  == "ADMIN") {
+            $comptage->site_id = $request->site_id;
+
+        } else {
+            $site = Site::where('id',Auth::user()->site_id)->first('id');
+            $comptage->site_id = $site->id;
+        }
         $comptage->vacation = $request->vacation;
         $comptage->nbre_passageManuel = $request->nbre_passageManuel;
         $comptage->nbre_passageSysteme = $request->nbre_passageSysteme;

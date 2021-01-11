@@ -54,9 +54,10 @@ Rapport TGMS-GATE \TOGO
             </div>
 
             <div class="col-lg-12">
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
                 <form class="mb-4" action="{{ route('comptage.search') }}" method="POST">
-                    
+
                     @csrf
                     <div class="row">
                         <!-- secteur d'activité -->
@@ -112,6 +113,8 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-md-4"></div>
                     </div>
                 </form>
+
+                @endif
             </div>
         </div>
         <div class="card card-success">
@@ -140,8 +143,11 @@ Rapport TGMS-GATE \TOGO
                                 <th>MONTANT MANUEL EN FCFA</th>
                                 <th>MONTANT INFORMATISÉ EN FCFA</th>
                                 <th>OBSERVATIONS</th>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <th>Enregister Par</th>
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -150,7 +156,10 @@ Rapport TGMS-GATE \TOGO
                             @foreach ($comptages as $comp)
 
                             <tr>
-                                <td>{{ $comp->date }}</td>
+                                <td>
+                                    {{ Carbon\Carbon::parse($comp->date)->format('d/m/Y') }}
+
+                                </td>
                                 <td>{{ $comp->site()->first()->libelle }}</td>
                                 <td>{{ $comp->voie()->first()->libelle }}</td>
                                 <td>{{ $comp->vacation }}</td>
@@ -159,13 +168,15 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $comp->montantManuel }}</td>
                                 <td>{{ $comp->montantInformatiser }}</td>
                                 <td>{{ $comp->observation }}</td>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <td>{{ $comp->user()->first()->name ?? "" }}</td>
 
                                 <td>
-                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('comptage.edit',$comp->id) }}" class="btn btn-info">Modifier</a>
-                                    @endif
                                 </td>
+                                @endif
+
                             </tr>
 
 

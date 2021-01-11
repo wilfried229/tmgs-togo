@@ -52,6 +52,8 @@ Rapport TGMS-GATE \TOGO
                     </h6>
             </div>
         </div>
+        @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
         <form class="mb-4" action="{{ route('passage.manuel.search') }}" method="POST">
             @csrf
             <div class="row">
@@ -111,6 +113,7 @@ Rapport TGMS-GATE \TOGO
                 <div class="col-md-4"></div>
             </div>
         </form>
+        @endif
         <div class="card card-success">
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
@@ -156,9 +159,12 @@ Rapport TGMS-GATE \TOGO
                                 <th>Trafic (Informatisé + manuel)</th>
                                 <th>Recette (Informatisé + manuel)</th>
                                 <th>observations</th>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <th>Enregister Par</th>
 
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -167,7 +173,9 @@ Rapport TGMS-GATE \TOGO
 
                             <tr>
 
-                                <td>{{ $f->date }}</td>
+                                <td>
+                                    {{ Carbon\Carbon::parse($f->date)->format('d/m/Y') }}
+                                </td>
                                 <td>{{ $f->site()->first()->libelle }}</td>
                                 <td>{{ $f->voie()->first()->libelle }}</td>
                                 <td>{{ $f->vacation }}</td>
@@ -183,14 +191,16 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $f->etaFinal_recetteInformatiser }}</td>
                                 <td>{{ $f->etaFinal_taficInformatiser }}</td>
                                 <td>{{ $f->observation }}</td>
+                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                 <td>{{ $f->user()->first()->name ?? "" }}</td>
 
 
                                 <td>
-                                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
                                     <a href="{{ route('point-passage-manuel.edit',$f->id) }}" class="btn btn-info">Modifier</a>
-                                    @endif
+
                                 </td>
+                                @endif
 
 
 

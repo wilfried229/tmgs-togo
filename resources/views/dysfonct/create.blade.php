@@ -150,16 +150,16 @@ Rapport TGMS-GATE \TOGO
 
                         <div class="col-lg-6 col-md-6">
                             <label for="">PREUVE   (N° DE FICHE D'INTERVENTION, image avant ) </label>
-                            <input type="file" name="preuve_avant" id="preuve_avant" class="form-control" required>
+                            <input type="file" name="preuve_avant" id="preuve_avant" class="form-control">
                             <br>
                             <label for="">PREUVE   (N° DE FICHE D'INTERVENTION, image après ) </label>
 
 
-                            <input type="file" name="preuve_apres" id="preuve_apres" class="form-control" required>
+                            <input type="file" name="preuve_apres" id="preuve_apres" class="form-control">
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <label for="Observations">Observations</label>
-                            <textarea name="observation" id="observation" cols="30" rows="10" class="form-control" required></textarea>
+                            <textarea name="observation" id="observation" cols="30" rows="10" class="form-control"></textarea>
 
                         </div>
                     </div>

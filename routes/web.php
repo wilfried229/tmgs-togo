@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
-    Route::resource('users','UserController');
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resources([
@@ -28,7 +27,9 @@ Route::group(['middleware' => ['auth']], function() {
         'point-passage-manuel'=> 'PointPassageManuelController',
         'site' =>'SiteController',
         'voie' => 'VoieController',
-        'point-recap' =>'PointRecapPayementController'
+        'point-recap' =>'PointRecapPayementController',
+        'agent' => 'AgentsController',
+        'users' =>'UserController'
     ]);
 
     Route::post('recettes-trafics/search','RecetteTraficController@searchRecettesByAllRequest')->name('recettes.trafics.search');
@@ -40,10 +41,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::post('comptage/search','ComptageController@searchComptageByAllRequest')->name('comptage.search');
 
+    Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
 
 });
 
-Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
 Route::get('file-import-export', 'UserController@fileImportExport');
 Route::post('file-import', 'UserController@fileImport')->name('file-import');
 Route::get('file-export', 'UserController@fileExport')->name('file-export');

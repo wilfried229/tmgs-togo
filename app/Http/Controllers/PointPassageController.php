@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agents;
 use App\Models\PointPassage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,9 +39,18 @@ class PointPassageController extends Controller
     {
         //
 
-        $sites = Site::all();
-        $voies  = Voie::all();
-        return view('pointPassage.create',compact('voies','sites'));
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+            $voies  = Voie::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
+        $agents  = Agents::all();
+
+        return view('pointPassage.create',compact('voies','sites','agents'));
     }
 
     /**
@@ -57,7 +67,13 @@ class PointPassageController extends Controller
             $pointPassage = new PointPassage();
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id = $request->voie_id;
-            $pointPassage->site_id = $request->site_id;
+            if (Auth::user()->role  == "ADMIN") {
+                $pointPassage->site_id = $request->site_id;
+
+            } else {
+                $site = Site::where('id',Auth::user()->site_id)->first('id');
+                $pointPassage->site_id = $site->id;
+            }
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
@@ -111,8 +127,15 @@ class PointPassageController extends Controller
     {
 
         $pointPassage = PointPassage::findOrFail($id);
-        $sites = Site::all();
-        $voies  = Voie::all();
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+            $voies  = Voie::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
         return view('pointPassage.update',compact('pointPassage','voies','sites'));
     }
 
@@ -130,7 +153,13 @@ class PointPassageController extends Controller
             $pointPassage = PointPassage::find($id);
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id = $request->voie_id;
-            $pointPassage->site_id = $request->site_id;
+            if (Auth::user()->role  == "ADMIN") {
+                $pointPassage->site_id = $request->site_id;
+
+            } else {
+                $site = Site::where('id',Auth::user()->site_id)->first('id');
+                $pointPassage->site_id = $site->id;
+            }
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;

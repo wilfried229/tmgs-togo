@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agents;
 use App\Models\PointPassageMaunel;
 use App\Models\Voie;
 use App\Models\Site;
@@ -34,9 +35,19 @@ class PointPassageManuelController extends Controller
     public function create()
     {
         //
-        $sites  = Site::all();
-        $voies  = Voie::all();
-        return view('pointPassageManuels.create',compact('sites','voies'));
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+            $voies  = Voie::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->get();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
+
+        $agents  = Agents::all();
+
+        return view('pointPassageManuels.create',compact('sites','voies','agents'));
     }
 
     /**
@@ -52,9 +63,15 @@ class PointPassageManuelController extends Controller
             $pointPassage = new  PointPassageMaunel();
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
-            $pointPassage->site_id  = $request->site_id;
+            if (Auth::user()->role  == "ADMIN") {
+                $pointPassage->site_id = $request->site_id;
+
+            } else {
+                $site = Site::where('id',Auth::user()->site_id)->first('id');
+                $pointPassage->site_id = $site->id;
+            }
             $pointPassage->vacation = $request->vacation;
-            $pointPassage->identite_percepteur  = $request->identite_percepteur;
+            $pointPassage->identite_percepteur  = Agents::where('nom',$request->identite_percepteur)->first()->nom;
             $pointPassage->point_traf_info_mode_manuel  = $request->point_traf_info_mode_manuel;
             $pointPassage->solde_recette_info_mode_manuel  = $request->solde_recette_info_mode_manuel;
             $pointPassage->heure_debutComptage  = $request->heure_debutComptage;
@@ -106,8 +123,15 @@ class PointPassageManuelController extends Controller
     {
         //
         $pointPassageManuel =PointPassageMaunel::find($id);
-        $sites = Site::all();
-        $voies  = Voie::all();
+        if (Auth::user()->role  == "ADMIN") {
+            # code...
+            $sites  = Site::all();
+            $voies  = Voie::all();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
         return view('pointPassageManuels.update',compact('pointPassageManuel','sites','voies'));
     }
 
