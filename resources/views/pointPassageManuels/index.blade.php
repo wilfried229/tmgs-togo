@@ -132,7 +132,7 @@ Rapport TGMS-GATE \TOGO
                             <tr>
                                 <th colspan="5"></th>
                                 <th colspan="2">ETAT AVANT PASSAGE EN MODE MANUEL</th>
-                                <th colspan="2"></th>
+                                <th colspan="2">HEURE DE COMPTAGE</th>
                                 <th colspan="2">RESULTAT ISSU DU COMPTAGE MANUEL </th>
 
                                 <th colspan="2">ETAT DONNEES INFORMATISEES ENREGISTREES APRES PASSAGES EN MODE MANUEL</th>
@@ -150,8 +150,8 @@ Rapport TGMS-GATE \TOGO
 
                                 <th data-target="point_traf_info_mode_manuel">Point de trafic informatisée en mode manuel Informatisée</th>
                                 <th data-target="solde_recette_info_mode_manuel">Solde Recette informatisé Mode manuel</th>
-                                <th>Heure Debut Comptage</th>
-                                <th>Heure fin Comptage</th>
+                                <th> Debut </th>
+                                <th> fin </th>
                                 <th>Trafic compté manuellement</th>
                                 <th>Equivalent recette en FCFA  </th>
                                 <th>Trafic Informatisé </th>
