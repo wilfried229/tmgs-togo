@@ -43,12 +43,12 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
 
-});
-
-Route::get('file-import-export', 'UserController@fileImportExport');
-Route::post('file-import', 'UserController@fileImport')->name('file-import');
-Route::get('file-export', 'UserController@fileExport')->name('file-export');
+    Route::get('file-import-export', 'UserController@fileImportExport');
+    Route::post('file-import', 'UserController@fileImport')->name('file-import');
+    Route::get('file-export', 'UserController@fileExport')->name('file-export');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+});
+
+

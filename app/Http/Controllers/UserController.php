@@ -144,9 +144,8 @@ class UserController extends Controller
             $user->name  = $request->name;
             $user->email  = $request->email;
 
-            if($request->password == null || $request->password == ""){
+            if($request->password != null || $request->password != ""){
                 $user->password  = Hash::make($request->password);
-
             }
             $user->role  = $request->role;
             $user->site_id  = $request->site_id;

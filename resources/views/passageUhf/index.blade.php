@@ -162,8 +162,9 @@ Rapport TGMS-GATE \TOGO
                                     {{ Carbon\Carbon::parse($point->date)->format('d/m/Y') }}
 
                                 </td>
-                                <td>{{ $point->voie()->first()->libelle }}</td>
                                 <td>{{ $point->site()->first()->libelle }}</td>
+
+                                <td>{{ $point->voie()->first()->libelle }}</td>
                                 <td>{{ $point->vacation_6h }}</td>
                                 <td>{{ $point->vacation_14h }}</td>
                                 <td>{{ $point->vacation_20h }}</td>

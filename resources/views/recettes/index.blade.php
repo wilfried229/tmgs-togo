@@ -148,8 +148,11 @@ Rapport TGMS-GATE \TOGO
 
                                                 <th colspan="7">Trafic</th>
 
-                                                @if (Auth::user()->role  == "ADMIN") {
+                                                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                                     <th colspan="3"></th>
+                                                    @else
+                                                    <th colspan="1"></th>
 
                                                 @endif
 
@@ -178,7 +181,8 @@ Rapport TGMS-GATE \TOGO
                                         <th>Total</th>
                                         <th>Observation</th>
 
-                                        @if (Auth::user()->role  == "ADMIN") {
+                                        @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
                                             <th>Enregister Par</th>
                                             <th>Action</th>
                                         @endif
@@ -214,7 +218,7 @@ Rapport TGMS-GATE \TOGO
                                             <td>{{$recette->total}}</td>
                                             <td>{{$recette->observation}}</td>
                                             @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
-                                            <td>{{$recette->user()->first()->name}}</td>
+                                            <td>{{$recette->user()->first()->name ?? ""}}</td>
                                             <td>
                                                 <a href="{{ route('recettes-trafics.edit',$recette->id) }}" class="btn btn-info">Modifier</a>
 

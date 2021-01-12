@@ -20,7 +20,14 @@ class DysfonctionnementController extends Controller
     public function index()
     {
 
-        $dysfonctionnments  = Dyfonctionnement::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            $dysfonctionnments  = Dyfonctionnement::query()->orderByDesc('id')->get();
+            # code...
+        } else {
+            # code...
+            $dysfonctionnments  = Dyfonctionnement::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
+        }
+
 
         return  view('dysfonct.index',compact('dysfonctionnments'));
     }

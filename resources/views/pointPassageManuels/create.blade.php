@@ -48,7 +48,7 @@ Rapport TGMS-GATE \TOGO
 
                 </div>
         </div>
-        <h4 class="element-header">POINT MENSUEL DES PASSAGES EN MODE MANUEL</h4>
+        <h4 class="element-header"> PASSAGES EN MODE MANUEL</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -57,7 +57,6 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Point des passages en mode manuel</h5>
 
             </div>
 

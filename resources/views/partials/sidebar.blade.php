@@ -124,7 +124,7 @@
                 </li>
 
             @endif
-            @if (in_array(Auth::user()->role,['SUPERADMIN','ADMIN']))
+            @if (in_array(Auth::user()->role,['SUPERADMIN']))
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="fa fa-users"></i>

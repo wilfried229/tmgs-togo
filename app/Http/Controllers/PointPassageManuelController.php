@@ -21,9 +21,16 @@ class PointPassageManuelController extends Controller
     public function index()
     {
 
-        $pointPassageManuels = PointPassageMaunel::all();
         $sites  = Site::all();
         $voies  = Voie::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            # code...
+            $pointPassageManuels = PointPassageMaunel::query()->orderByDesc('id')->get();
+
+        } else {
+            # code...
+            $pointPassageManuels = PointPassageMaunel::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
+        }
         return view('pointPassageManuels.index',compact('pointPassageManuels','sites','voies'));
     }
 

@@ -20,10 +20,18 @@ class PassageUhfController extends Controller
      */
     public function index()
     {
-        //
-        $passageUhfs = PassageUhf::all();
         $sites  = Site::all();
         $voies  = Voie::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            # code...
+        $passageUhfs = PassageUhf::query()->orderByDesc('id')->get();
+
+        } else {
+            # code...
+            $passageUhfs = PassageUhf::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
+        }
+        //
+
         return view('passageUhf.index',compact('passageUhfs','sites','voies'));
     }
 

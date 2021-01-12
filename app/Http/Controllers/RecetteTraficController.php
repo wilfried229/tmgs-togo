@@ -22,11 +22,17 @@ class RecetteTraficController extends Controller
     {
         //
 
-        $recettes = RecetesTrafic::query()->orderByDesc('id')->get();
         $sites  = Site::all();
         $voies  = Voie::all();
         $agents  = Agents::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            # code...
+            $recettes = RecetesTrafic::query()->orderByDesc('id')->get();
 
+        } else {
+            # code...
+            $recettes = RecetesTrafic::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
+        }
         return view('recettes.index',compact('recettes','voies','sites','agents'));
     }
 

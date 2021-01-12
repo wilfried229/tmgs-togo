@@ -21,9 +21,17 @@ class PointPassageController extends Controller
     public function index()
     {
 
-        $pointPassages = PointPassage::all();
         $sites  = Site::all();
         $voies  = Voie::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            # code...
+            $pointPassages = PointPassage::query()->orderByDesc('id')->get();
+
+
+        } else {
+            # code...
+            $pointPassages = PointPassage::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
+        }
         return view('pointPassage.index',compact('pointPassages','sites','voies'));
     }
 

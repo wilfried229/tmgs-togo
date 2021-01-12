@@ -22,9 +22,19 @@ class ComptageController extends Controller
     {
         //
 
-        $comptages  = Comptage::all();
         $sites  = Site::all();
         $voies  = Voie::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+
+            $comptages  = Comptage::query()->orderByDesc('id')->get();
+
+        } else {
+            # code...
+             $comptages  = Comptage::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
+
+        }
+
+
 
         return  view('comptage.index',compact('comptages','voies','sites'));
     }
