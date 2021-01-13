@@ -64,7 +64,6 @@ class AgentsController extends Controller
     {
         //
         
-
         return view('agents.update',compact('agents'));
     }
 
