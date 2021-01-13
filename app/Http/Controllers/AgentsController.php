@@ -74,9 +74,12 @@ class AgentsController extends Controller
      * @param  \App\Models\Agents  $agents
      * @return \Illuminate\Http\Response
      */
-    public function edit(Agents $agents)
+    public function edit($id)
     {
         //
+
+        $agent  = Agents::find($id);
+        return view('agents.update',compact('agent'));
     }
 
     /**
@@ -86,9 +89,14 @@ class AgentsController extends Controller
      * @param  \App\Models\Agents  $agents
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Agents $agents)
+    public function update(Request $request, $id)
     {
         //
+        $agent  = Agents::find($id);
+        $agent->nom = $request->nom;
+        $agent= update();
+        return back();
+
     }
 
     /**
