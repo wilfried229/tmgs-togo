@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agents;
+use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -28,7 +29,8 @@ class AgentsController extends Controller
     public function create()
     {
         //
-        return view('agents.create');
+        $sites  = Site::all();
+        return view('agents.create',compact('sites'));
     }
 
     /**
@@ -43,12 +45,15 @@ class AgentsController extends Controller
             //code...
             $agent  = new Agents();
             $agent->nom  = $request->nom;
+            $agent->site_id = $request->site_id;
             $agent->save();
-
+            flashy()->success("Enregistrement effectuée avec succès");
             return back();
         } catch (\Exception $ex) {
             //throw $th;
             Log::error($ex->getMessage());
+            flashy()->error("Error de modification");
+
         }
 
         //
@@ -63,8 +68,8 @@ class AgentsController extends Controller
     public function show(Agents $agents)
     {
         //
-        
-        return view('agents.update',compact('agents'));
+
+        return view('agents.update');
     }
 
     /**
@@ -78,7 +83,9 @@ class AgentsController extends Controller
         //
 
         $agent  = Agents::find($id);
-        return view('agents.update',compact('agent'));
+        $sites  = Site::all();
+
+        return view('agents.update',compact('agent','sites'));
     }
 
     /**
@@ -91,10 +98,24 @@ class AgentsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $agent  = Agents::find($id);
-        $agent->nom = $request->nom;
-        $agent= update();
-        return back();
+        try {
+            //code...
+            $agent  = Agents::find($id);
+            $agent->nom = $request->nom;
+            $agent->site_id = $request->site_id;
+            $agent->update();
+
+            flashy()->success("Modification effectuée avec succès");
+
+            return back();
+
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
+
+            flashy()->error("Error de modification");
+        }
+
 
     }
 

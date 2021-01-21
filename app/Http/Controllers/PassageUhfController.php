@@ -44,7 +44,7 @@ class PassageUhfController extends Controller
     {
         //
 
-        if (Auth::user()->role  == "ADMIN") {
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
             $sites  = Site::all();
             $voies  = Voie::all();
@@ -73,7 +73,7 @@ class PassageUhfController extends Controller
             $pointPassage = new PassageUhf();
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id = $request->voie_id;
-            if (Auth::user()->role  == "ADMIN") {
+            if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
                 $pointPassage->site_id = $request->site_id;
 
             } else {
@@ -84,11 +84,12 @@ class PassageUhfController extends Controller
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
-            $pointPassage->passage_uhf= $request->passage_uhf;
+           // $pointPassage->passage_uhf= $request->passage_uhf;
 
-            $pointPassage->somme_total_trafic = $request->somme_total_trafic;
+           $pointPassage->somme_total_trafic = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h);
 
-            $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
+           $pointPassage->somme_total_recette_equialente = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h)*300;
+
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
 
@@ -132,7 +133,8 @@ class PassageUhfController extends Controller
     {
         //
         $passageUhf = PassageUhf::findOrFail($id);
-        if (Auth::user()->role  == "ADMIN") {
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+
             # code...
             $sites  = Site::all();
             $voies  = Voie::all();
@@ -159,23 +161,21 @@ class PassageUhfController extends Controller
             $pointPassage = PassageUhf::find($id);
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id = $request->voie_id;
-            if (Auth::user()->role  == "ADMIN") {
+            if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
                 $pointPassage->site_id = $request->site_id;
-
             } else {
                 $site = Site::where('id',Auth::user()->site_id)->first('id');
                 $pointPassage->site_id = $site->id;
             }
+
+
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
-            $pointPassage->passage_uhf= $request->passage_uhf;
-
-            $pointPassage->somme_total_trafic = $request->somme_total_trafic;
-            $pointPassage->somme_total_recette_equialente = $request->somme_total_recette_equialente;
+            $pointPassage->somme_total_trafic = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h);
+            $pointPassage->somme_total_recette_equialente = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h)*300;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
-
             $pointPassage->observations = $request->observations;
             $pointPassage->update();
 
@@ -217,28 +217,19 @@ class PassageUhfController extends Controller
                 $voie  = $request->input('voie_id');
 
                 if ($date != null) {
-                    # code...
                     $passage->where("date", "=", $date);
-
                 }
-
-
                 if ($site != null) {
                     # code...
                     $passage->where("site_id", "=", $site);
-
                 }
-
-
 
                 if ($voie != null) {
                     # code...
                     $passage->where("voie_id", "=", $voie);
-
                 }
 
                 $passageUhfs =  $passage->get(['point_passages.*']);
-
                 session()->flashInput($request->all());
 
             }

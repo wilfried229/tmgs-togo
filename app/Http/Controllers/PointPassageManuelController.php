@@ -42,7 +42,7 @@ class PointPassageManuelController extends Controller
     public function create()
     {
         //
-        if (Auth::user()->role  == "ADMIN") {
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
             $sites  = Site::all();
             $voies  = Voie::all();
@@ -70,7 +70,7 @@ class PointPassageManuelController extends Controller
             $pointPassage = new  PointPassageMaunel();
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
-            if (Auth::user()->role  == "ADMIN") {
+            if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
                 $pointPassage->site_id = $request->site_id;
 
             } else {

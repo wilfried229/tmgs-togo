@@ -39,7 +39,7 @@ class DysfonctionnementController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->role  == "ADMIN") {
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
             $sites  = Site::all();
             $voies  = Voie::all();
@@ -83,7 +83,7 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->preuve_apres  = DysfonctionnementController::uploadImage($request->file('preuve_apres'),$path);
 
             $dysfonctionnment->observation = $request->observation;
-            if (Auth::user()->role  == "ADMIN") {
+            if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
                 $dysfonctionnment->site_id = $request->site_id;
 
             } else {

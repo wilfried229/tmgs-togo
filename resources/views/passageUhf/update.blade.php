@@ -142,34 +142,7 @@ Rapport TGMS-GATE \TOGO
 
 
                  <br>
-                    <div class="row">
-
-                        <div class="col-lg-12">
-
-                            <h4>SOMMES TOTAL </h4>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-
-                            <label for="">TRAFIC</label>
-                            <input type="number" value="{{ $passageUhf->somme_total_trafic }}"  name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
-                        </div>
-
-
-                        <div class="col-lg-6 col-md-6">
-
-                           <label for="">PASSAGE GATE </label>
-                           <input type="number" value="{{ $passageUhf->passage_uhf }}"  name="type_passage_online" id="type_passage_online" class="form-control" required>
-                        </div>
-
-
-
-                        <div class="col-lg-6 col-md-6">
-
-                                <label for="">RECETTE EQUIVALENTE   </label>
-                            <input type="number" value="{{ $passageUhf->somme_total_recette_equialente }}" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
-                        </div>
-
-                    </div>
+                   
 
                     <br>
                     <div class="row">

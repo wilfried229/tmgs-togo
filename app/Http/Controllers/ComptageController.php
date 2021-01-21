@@ -65,7 +65,7 @@ class ComptageController extends Controller
             $comptage  = new  Comptage();
             $comptage->date = $request->date;
             $comptage->voie_id = $request->voie_id;
-            if (Auth::user()->role  == "ADMIN") {
+            if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
                 $comptage->site_id = $request->site_id;
 
             } else {

@@ -15,13 +15,12 @@ Rapport TGMS-GATE \TOGO
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Point Passage
+            <h1 class="m-0 text-dark">Points Passage GATE   ({{ $sites->libelle ?? ""  }})
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active"> Point Passage </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -48,7 +47,6 @@ Rapport TGMS-GATE \TOGO
 
                 </div>
         </div>
-        <h4 class="element-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h4>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
                 @include('partials.notification')
@@ -57,7 +55,7 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Ajouter un point journalier passage</h5>
+                <h4 class="form-header">Ajouter un point journalier passage ({{ $sites->libelle ?? "" }})</h4>
 
             </div>
 
@@ -68,25 +66,13 @@ Rapport TGMS-GATE \TOGO
                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Date</label>
                             <input type="date" name="date" class="form-control" >
                         </div>
-                        <div class="col-lg-4 col-md-4">
 
-                            <label for="">Sites</label>
-
-                            <select class="form-control"  name="site_id" id="site_id">
-
-                                @foreach ($sites as $s)
-
-                            <option value="{{$s->id}}">{{$s->libelle}}</option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Voie</label>
 
@@ -139,19 +125,19 @@ Rapport TGMS-GATE \TOGO
                         </div>
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">08H à 14H</label>
+                            <label for="">06H à 14H</label>
                             <input type="number" name="vacation_6h" id="vacation_6h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                                <label for="">14H à 22H</label>
+                                <label for="">14H à 20H</label>
                             <input type="number" name="vacation_14h" id="vacation_14h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">22H à 06H</label>
+                            <label for="">20H à 06H</label>
                             <input type="number" name="vacation_20h" id="vacation_20h" class="form-control" required>
 
                             </div>
@@ -159,33 +145,6 @@ Rapport TGMS-GATE \TOGO
                     </div>
 
                     <br>
-                 <br>
-                    <div class="row">
-
-                        <div class="col-lg-12">
-
-                            <h4>TOTAL : </h4>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">PASSAGE GATE </label>
-                            <input type="number" name="passage_gate" id="passage_gate" class="form-control" required>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">TRAFIC</label>
-                            <input type="number" name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                                <label for="">RECETTE EQUIVALENTE   </label>
-                            <input type="number" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
-                        </div>
-
-                    </div>
 
                     <br>
                     <div class="row">

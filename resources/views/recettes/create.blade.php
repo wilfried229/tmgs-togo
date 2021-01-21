@@ -82,10 +82,11 @@ Rapport TGMS-GATE \TOGO
 
                                         <label for="">Site</label>
 
-                                        <select name="site_id" id="site_id" class="form-control">
+                                        <input type="hidden" name="site_id" value="{{ $site->id }}">
+                                        <select disabled class="form-control">
 
-                                            @foreach ($sites as $site)
-                                            <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+                                            @foreach ($sites as $sit)
+                                            <option value="{{ $sit->id }}">{{ $sit->libelle }}</option>
 
                                             @endforeach
                                         </select>

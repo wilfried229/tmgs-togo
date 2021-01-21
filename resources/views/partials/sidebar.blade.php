@@ -35,15 +35,33 @@
             </li>
 
 
-            @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','PERCEPTEUR','SAFER']))
+
             <li class="nav-item">
-                <a href="{{route('recettes-trafics.index')}}" class="nav-link">
+                <a
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                href="{{route('recettes.trafics.site')}}"
+                @else
+                href="{{route('recettes-trafics.index')}}"
+
+
+                @endif
+              class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Recettes/Trafics</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('point-passage.index')}}" class="nav-link">
+                <a
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                href="{{route('passage.gate.site')}}"
+                @else
+                href="{{route('point-passage.index')}}"
+
+
+                @endif
+                 class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Point de passage GATE</p>
                 </a>
@@ -64,7 +82,7 @@
                 </a>
             </li>
 
-            @endif
+
             @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','PERCEPTEUR']))
 
             <li class="nav-item">

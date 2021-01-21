@@ -116,15 +116,11 @@ Rapport TGMS-GATE \TOGO
                                 <tr>
                                     <th colspan="3"></th>
                                     <th colspan="3">TRAFIC PAR VACATION</th>
-
                                     <th colspan="1"></th>
                                     <th colspan="2">SOMME TOTAL</th>
                                     <th colspan="3">INFORMATIONS DIVERSES </th>
                                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
-
-
                                     <th colspan="2"></th>
-
                                     @endif
                                 </tr>
                             </tr>
@@ -135,10 +131,6 @@ Rapport TGMS-GATE \TOGO
                                 <th> 08H-14H</th>
                                 <th> 14H-22H</th>
                                 <th> 22H-06H</th>
-
-                                <th>PASSAGE UHF</th>
-
-
                                 <th>TRAFIC</th>
                                 <th>RECETTE EQUIVALENTE</th>
 
@@ -168,7 +160,6 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->vacation_6h }}</td>
                                 <td>{{ $point->vacation_14h }}</td>
                                 <td>{{ $point->vacation_20h }}</td>
-                                <td>{{ $point->passage_uhf }}</td>
                                 <td>{{ $point->somme_total_trafic }}</td>
                                 <td>{{ $point->somme_total_recette_equialente }}</td>
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>

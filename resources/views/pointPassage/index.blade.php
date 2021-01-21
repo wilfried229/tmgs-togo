@@ -1,4 +1,5 @@
 
+
 @extends('template')
 @section('title')
 Rapport TGMS-GATE \TOGO
@@ -60,21 +61,16 @@ Rapport TGMS-GATE \TOGO
             <div class="row">
                 <!-- secteur d'activité -->
                 <div class="form-group col-md-4">
-                    <label for="date">Date</label>
-                  <input type="date" name="date" id="date" class="form-control">
+                    <label for="date">Date de début</label>
+                  <input type="date" name="date_debut" id="date_debut" class="form-control">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="date">Date de fin</label>
+                  <input type="date" name="date_fin" id="date_fin" class="form-control">
                 </div>
                 <!-- niveau etude -->
-                <div class="form-group col-md-4">
-                    <label for="site">Site</label>
-                    <select name="site_id" id="site_id" class="form-control">
-                        <option value="" selected>Selectionnez</option>
 
-                        @foreach ($sites as $site)
-                        <option value="{{ $site->id }}">{{ $site->libelle }}</option>
-
-                        @endforeach
-                    </select>
-                </div>
                 <!-- sexe -->
                 <div class="form-group col-md-4">
                     <label for="">Voie</label>
@@ -102,7 +98,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT</h5>
+                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT  ({{ $site ?? "" }})</h5>
 
 
             </a><!-- /.card-header -->
@@ -136,9 +132,6 @@ Rapport TGMS-GATE \TOGO
                                 <th> 14H-22H</th>
                                 <th> 22H-06H</th>
 
-                                <th>PASSAGE GATE</th>
-
-
                                 <th>TRAFIC</th>
                                 <th>RECETTE EQUIVALENTE</th>
 
@@ -167,7 +160,6 @@ Rapport TGMS-GATE \TOGO
                                 <td>{{ $point->vacation_6h }}</td>
                                 <td>{{ $point->vacation_14h }}</td>
                                 <td>{{ $point->vacation_20h }}</td>
-                                <td>{{ $point->passage_gate }}</td>
                                 <td>{{ $point->somme_total_trafic }}</td>
                                 <td>{{ $point->somme_total_recette_equialente }}</td>
                                 <td>{{ $point->paiement_espece_defaut_provision }}</td>

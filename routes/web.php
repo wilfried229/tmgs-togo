@@ -47,8 +47,19 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('file-import', 'UserController@fileImport')->name('file-import');
     Route::get('file-export', 'UserController@fileExport')->name('file-export');
 
-Auth::routes();
+
+    Route::get('recettes/trafics/site','RecetteTraficController@site')->name('recettes.trafics.site');
+    Route::get('recettes/trafics/{site}','RecetteTraficController@recettesbySite')->name('recettes.trafics.site.liste');
+
+    Route::get('passage-uhf/site','PassageUhfController@site')->name('passage.ufh.site');
+
+    Route::get('passage-gate/site','PointPassageController@site')->name('passage.gate.site');
+    Route::get('passage/gate/{site}','PointPassageController@passageGatebySite')->name('passage.gate.list.site');
+
+    Route::get('passage-manuel/site','PointPassageManuelController@site')->name('passage.manauel.site');
+    Route::get('comptage/site','ComptageController@site')->name('comptage.site');
+
 
 });
 
-
+Auth::routes();

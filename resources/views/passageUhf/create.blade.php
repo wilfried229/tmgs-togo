@@ -131,19 +131,19 @@ Rapport TGMS-GATE \TOGO
                         </div>
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">08H à 14H</label>
+                            <label for="">06H à 14H</label>
                             <input type="number" name="vacation_6h" id="vacation_6h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                                <label for="">14H à 22H</label>
+                                <label for="">14H à 20H</label>
                             <input type="number" name="vacation_14h" id="vacation_14h" class="form-control" required>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
-                            <label for="">22H à 06H</label>
+                            <label for="">20 à 06H</label>
                             <input type="number" name="vacation_20h" id="vacation_20h" class="form-control" required>
 
                             </div>
@@ -152,34 +152,6 @@ Rapport TGMS-GATE \TOGO
 
                     <br>
 
-
-                 <br>
-                    <div class="row">
-
-                        <div class="col-lg-12">
-
-                            <h4>TOTAL : </h4>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">PASSAGE UHF </label>
-                            <input type="number" name="passage_uhf" id="passage_uhf" class="form-control" required>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                            <label for="">TRAFIC</label>
-                            <input type="number" name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-
-                                <label for="">RECETTE EQUIVALENTE   </label>
-                            <input type="number" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
-                        </div>
-
-                    </div>
 
                     <br>
                     <div class="row">

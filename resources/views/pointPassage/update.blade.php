@@ -57,7 +57,7 @@ Rapport TGMS-GATE \TOGO
 
         <div class="card">
             <div class="card-header">
-                <h5 class="form-header">Modification point journalier passage {{ $pointPassage->id }}</h5>
+                <h5 class="form-header">Modification point journalier passage N° ({{ $pointPassage->id }})</h5>
 
             </div>
 
@@ -67,30 +67,13 @@ Rapport TGMS-GATE \TOGO
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Date</label>
                             <input type="date" value="{{ $pointPassage->date }}" name="date" class="form-control" >
                         </div>
-                        <div class="col-lg-4 col-md-4">
 
-                            <label for="">Sites</label>
-
-                            <select class="form-control"  name="site_id" id="site_id">
-
-                                @foreach ($sites as $s)
-
-
-                                <option value="{{$s->id}}" @if ($s->id == $pointPassage->site_id )
-                                    selected
-
-                                    @endif >{{$s->libelle}}</option>
-
-                                @endforeach
-                            </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Voie</label>
 
@@ -142,34 +125,7 @@ Rapport TGMS-GATE \TOGO
 
 
                  <br>
-                    <div class="row">
 
-                        <div class="col-lg-12">
-
-                            <h4>SOMMES TOTAL </h4>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-
-                            <label for="">TRAFIC</label>
-                            <input type="number" value="{{ $pointPassage->somme_total_trafic }}"  name="somme_total_trafic" id="somme_total_trafic" class="form-control" required>
-                        </div>
-
-
-                        <div class="col-lg-6 col-md-6">
-
-                           <label for="">PASSAGE GATE </label>
-                           <input type="number" value="{{ $pointPassage->passage_gate }}"  name="passage_gate" id="passage_gate" class="form-control" required>
-                        </div>
-
-
-
-                        <div class="col-lg-6 col-md-6">
-
-                                <label for="">RECETTE EQUIVALENTE   </label>
-                            <input type="number" value="{{ $pointPassage->somme_total_recette_equialente }}" name="somme_total_recette_equialente" id="somme_total_recette_equialente" class="form-control" required>
-                        </div>
-
-                    </div>
 
                     <br>
                     <div class="row">

@@ -68,13 +68,22 @@ TGMS-GATE
                                 @csrf
 
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12">
+                                    <div class="col-lg-4 col-md-4">
 
                                         <label for="">Nom</label>
 
                                         <input type="text" id="nom" name="nom" class="form-control" required>
                                     </div>
+                                    <div class="col-lg-4 col-md-4">
 
+                                        <label for="">Site</label>
+                                        <select name="site" id="site" class="form-control">
+                                            @foreach ($sites as $site)
+                                            <option value="{{ $site->id }}">{{ $agent->libelle }}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
 
                                 </div>
                                 <br>
