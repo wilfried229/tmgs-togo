@@ -19,7 +19,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark">
-                     Passage Gate
+                     Passage UHF
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -51,7 +51,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ route('passage.gate.list.site',$site->libelle) }}" class="small-box-footer">Cliquer ici <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('passage.uhf.list.site',$site->libelle) }}" class="small-box-footer">Cliquer ici <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

@@ -44,7 +44,7 @@ Rapport TGMS-GATE \TOGO
 
             </div>
             <div class="col-md-3">
-                <a href="{{route('point-passage.index')}}"  class="btn btn-primary">Retour vers la liste</a>
+                <a href="{{route('point-passage-manuel.index')}}"  class="btn btn-primary">Retour vers la liste</a>
 
                 </div>
         </div>
@@ -87,22 +87,7 @@ Rapport TGMS-GATE \TOGO
                             </select>
 
                         </div>
-                        <div class="col-lg-4 col-md-4">
 
-                            <label for="">Site </label>
-                            <select class="form-control"  name="site_id" id="site_id">
-
-                                @foreach ($sites as $s)
-
-
-                                <option value="{{$s->id}}"  @if ($s->id == $pointPassageManuel->site_id )
-                                    selected
-
-                                    @endif >{{$s->libelle}}</option>
-
-                                @endforeach
-                            </select>
-                        </div>
 
                         <div class="col-lg-4 col-md-4">
 
@@ -155,28 +140,34 @@ Rapport TGMS-GATE \TOGO
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Trafic compté manuellement</label>
-                            <textarea class="form-control" name="trafic_compteManu" id="trafic_compteManu" cols="30" rows="10">{{$pointPassageManuel->trafic_compteManu}}</textarea>
+
+                            <input type="number" name="trafic_compteManu" id="trafic_compteManu" value="{{$pointPassageManuel->trafic_compteManu}}" class="form-control">
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Equivalent recette en FCFA</label>
-                            <textarea class="form-control" name="equipRecette" id="equipRecette" cols="30" rows="10">{{$pointPassageManuel->equipRecette}}</textarea>
+                            <input type="number" name="equipRecette" id="equipRecette" value="{{$pointPassageManuel->equipRecette}}" class="form-control">
+
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Etat données du trafic informatiser</label>
-                            <textarea  class="form-control" name="etaDonne_taficInformatiser" id="etaDonne_taficInformatiser" cols="30" rows="10">{{$pointPassageManuel->etaDonne_taficInformatiser}}</textarea>
+
+                            <input type="number" name="etaDonne_taficInformatiser" id="etaDonne_taficInformatiser" value="{{$pointPassageManuel->etaDonne_taficInformatiser}}" class="form-control">
+
                         </div>
 
                         <div class="col-lg-4 col-md-4">
 
                             <label for="">Etat données de recette informatiser</label>
-                            <textarea  class="form-control" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" cols="30" rows="10">{{$pointPassageManuel->etaDonne_recetteInformatiser}}</textarea>
+
+                            <input type="number" name="etaDonne_recetteInformatiser" id="etaDonne_recetteInformatiser" value="{{$pointPassageManuel->etaDonne_recetteInformatiser}}" class="form-control">
+
                         </div>
 
-                        
+
 
 
 

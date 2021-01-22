@@ -79,7 +79,7 @@ TGMS-GATE
                                         <label for="">Site</label>
                                         <select name="site" id="site" class="form-control">
                                             @foreach ($sites as $site)
-                                            <option value="{{ $site->id }}">{{ $agent->libelle }}</option>
+                                            <option value="{{ $site->id }}">{{ $site->libelle }}</option>
 
                                             @endforeach
                                         </select>

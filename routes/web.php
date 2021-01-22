@@ -51,12 +51,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('recettes/trafics/site','RecetteTraficController@site')->name('recettes.trafics.site');
     Route::get('recettes/trafics/{site}','RecetteTraficController@recettesbySite')->name('recettes.trafics.site.liste');
 
-    Route::get('passage-uhf/site','PassageUhfController@site')->name('passage.ufh.site');
+    Route::get('passage-uhf/site','PassageUhfController@site')->name('passage.uhf.site');
+    Route::get('passage/uhf/{site}','PassageUhfController@passageGatebySite')->name('passage.uhf.list.site');
+
 
     Route::get('passage-gate/site','PointPassageController@site')->name('passage.gate.site');
     Route::get('passage/gate/{site}','PointPassageController@passageGatebySite')->name('passage.gate.list.site');
 
-    Route::get('passage-manuel/site','PointPassageManuelController@site')->name('passage.manauel.site');
+    Route::get('passage-manuel/site','PointPassageManuelController@site')->name('passage.manuel.site');
+    Route::get('passage/manuel/{site}','PointPassageManuelController@passageGatebySite')->name('passage.manuel.list.site');
+
+
     Route::get('comptage/site','ComptageController@site')->name('comptage.site');
 
 

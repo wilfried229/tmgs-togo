@@ -47,7 +47,16 @@
                     <div class="icon">
                       <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                    href="{{route('passage.gate.site')}}"
+                    @else
+                    href="{{route('point-passage.index')}}"
+
+
+                      @endif
+                    class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->
@@ -62,7 +71,16 @@
                     <div class="icon">
                       <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                    href="{{route('recettes.trafics.site')}}"
+                    @else
+                    href="{{route('recettes-trafics.index')}}"
+
+
+                    @endif
+                    class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->
@@ -77,7 +95,16 @@
                     <div class="icon">
                       <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                        href="{{route('passage.uhf.site')}}"
+                        @else
+                        href="{{route('point-passage-uhf.index')}}"
+
+
+                        @endif
+                        class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->

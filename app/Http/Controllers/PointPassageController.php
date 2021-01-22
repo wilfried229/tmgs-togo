@@ -58,7 +58,7 @@ class PointPassageController extends Controller
 
             $sites = Site::where('libelle',session('site'))->first();
             $voies  = Voie::where('site_id',$sites->id)->get();
-        $pointPassages = PointPassage::query()->orderByDesc('id')->get();
+            $pointPassages = PointPassage::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
 
 
         } else {
@@ -201,7 +201,8 @@ class PointPassageController extends Controller
             $pointPassage->voie_id = $request->voie_id;
             if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
 
-                $pointPassage->site_id = $request->site_id;
+                $sites = Site::where('libelle',session('site'))->first();
+                $pointPassage->site_id = $sites->id;
 
             } else {
                 $site = Site::where('id',Auth::user()->site_id)->first('id');

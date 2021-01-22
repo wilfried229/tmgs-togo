@@ -67,14 +67,16 @@ TGMS-GATE
                 @csrf
                 @method('PUT')
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
+                  <label for="">Nom</label>
                   <input type="text" name="nom" value="{{ $agent->nom }}" class="form-control">
 
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
+                  <label for="">Site de Vacation</label>
                 <select name="site" id="site" class="form-control">
                     @foreach ($sites as $site)
-                    <option value="{{ $site->id }}" @if($site->id == $agent->site_id) checked @endif>{{ $agent->libelle }}</option>
+                    <option value="{{ $site->id }}" @if($site->id == $agent->site_id) checked @endif>{{ $site->libelle }}</option>
 
                     @endforeach
                 </select>

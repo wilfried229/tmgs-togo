@@ -13,6 +13,37 @@ use Exception;
 
 class PassageUhfController extends Controller
 {
+
+    public function passageGatebySite($site){
+
+        session()->get('site');
+        session()->put('site', $site);
+        $sites = Site::where('libelle',$site)->first();
+        $agents  = Agents::where('site_id',$sites->id)->get();
+        $voies  = Voie::where('site_id',$sites->id)->get();
+
+
+        $passageUhfs = PassageUhf::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
+
+        return view('passageUhf.index',compact('passageUhfs','sites','voies','site'));
+
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function site()
+    {
+
+        session()->forget(['site']);
+        $sites = Site::all();
+        return view('passageUhf.site',compact('sites'));
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -20,19 +51,27 @@ class PassageUhfController extends Controller
      */
     public function index()
     {
-        $sites  = Site::all();
-        $voies  = Voie::all();
+
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
-        $passageUhfs = PassageUhf::query()->orderByDesc('id')->get();
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+            $passageUhfs = PassageUhf::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
+
+            $site  = session('site');
 
         } else {
+            $sites  = Site::all();
+            $voies  = Voie::all();
             # code...
+            $siteU  = Site::where('site_id',Auth::user()->site_id)->first();
+            $site = $siteU->libelle;
+
             $passageUhfs = PassageUhf::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
         }
         //
 
-        return view('passageUhf.index',compact('passageUhfs','sites','voies'));
+        return view('passageUhf.index',compact('passageUhfs','sites','site','voies'));
     }
 
     /**
@@ -46,8 +85,8 @@ class PassageUhfController extends Controller
 
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
-            $sites  = Site::all();
-            $voies  = Voie::all();
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
         } else {
             # code...
             $sites  = Site::where('id',Auth::user()->site_id)->first();
@@ -74,7 +113,8 @@ class PassageUhfController extends Controller
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id = $request->voie_id;
             if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
-                $pointPassage->site_id = $request->site_id;
+                $sites = Site::where('libelle',session('site'))->first();
+                $pointPassage->site_id = $sites->id;
 
             } else {
                 $site = Site::where('id',Auth::user()->site_id)->first('id');
@@ -136,8 +176,10 @@ class PassageUhfController extends Controller
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
 
             # code...
-            $sites  = Site::all();
-            $voies  = Voie::all();
+            # code...
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+
         } else {
             # code...
             $sites  = Site::where('id',Auth::user()->site_id)->first();
@@ -211,14 +253,17 @@ class PassageUhfController extends Controller
             if ($request->isMethod('POST')) {
                 # code...
                 $passage = PassageUhf::query();
-
-                $date  = $request->input('date');
+                $from = $request->input('date_debut');
+                $to =$request->input('date_fin');
                 $site  = $request->input('site_id');
                 $voie  = $request->input('voie_id');
 
-                if ($date != null) {
-                    $passage->where("date", "=", $date);
+                if ($from != null || $to != null) {
+                    # code...
+                    $passage->whereBetween("date",[$from, $to]);
+
                 }
+
                 if ($site != null) {
                     # code...
                     $passage->where("site_id", "=", $site);
@@ -229,8 +274,13 @@ class PassageUhfController extends Controller
                     $passage->where("voie_id", "=", $voie);
                 }
 
-                $passageUhfs =  $passage->get(['point_passages.*']);
+                $passageUhfs =  $passage->get(['passage_uhfs.*']);
                 session()->flashInput($request->all());
+
+                $sites = Site::where('libelle',session('site'))->first();
+                $voies  = Voie::where('site_id',$sites->id)->get();
+
+                $site = $sites->libelle;
 
             }
 

@@ -68,24 +68,13 @@ Rapport TGMS-GATE \TOGO
                     <div class="row">
 
                         @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Date</label>
                             <input type="date" name="date" class="form-control" >
                         </div>
-                      <div class="col-lg-4 col-md-4">
 
-                        <label for="">Sites</label>
-
-                        <select class="form-control"  name="site_id" id="site_id">
-
-                            @foreach ($sites as $s)
-                        <option value="{{$s->id}}">{{$s->libelle}}</option>
-                            @endforeach
-                        </select>
-
-                    </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-6 col-md-6">
 
                         <label for="">Voie</label>
 

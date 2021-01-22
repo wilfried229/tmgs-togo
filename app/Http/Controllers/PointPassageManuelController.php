@@ -13,6 +13,40 @@ use Illuminate\Support\Facades\Log;
 
 class PointPassageManuelController extends Controller
 {
+
+
+    public function passageGatebySite($site){
+
+        session()->get('site');
+        session()->put('site', $site);
+        $sites = Site::where('libelle',$site)->first();
+        $agents  = Agents::where('site_id',$sites->id)->get();
+        $voies  = Voie::where('site_id',$sites->id)->get();
+
+
+        $pointPassageManuels = PointPassageMaunel::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
+
+        return view('pointPassageManuels.index',compact('pointPassageManuels','sites','voies','agents'));
+
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function site()
+    {
+
+        session()->forget(['site']);
+        $sites = Site::all();
+
+        return view('pointPassageManuels.site',compact('sites'));
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,17 +55,25 @@ class PointPassageManuelController extends Controller
     public function index()
     {
 
-        $sites  = Site::all();
-        $voies  = Voie::all();
+
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
-            $pointPassageManuels = PointPassageMaunel::query()->orderByDesc('id')->get();
+
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+            $agents  = Agents::where('site_id',$sites->id)->get();
+
+            $pointPassageManuels = PointPassageMaunel::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
 
         } else {
             # code...
+            $sites  = Site::where('site_id',Auth::user()->site_id)->first();
+            $voies  = Voie::all();
+        $agents  = Agents::where('site_id',$sites->id)->get();
+
             $pointPassageManuels = PointPassageMaunel::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
         }
-        return view('pointPassageManuels.index',compact('pointPassageManuels','sites','voies'));
+        return view('pointPassageManuels.index',compact('pointPassageManuels','sites','voies','agents'));
     }
 
     /**
@@ -44,15 +86,20 @@ class PointPassageManuelController extends Controller
         //
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
-            $sites  = Site::all();
-            $voies  = Voie::all();
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+
+        $agents  = Agents::where('site_id',$sites->id)->get();
+
         } else {
             # code...
             $sites  = Site::where('id',Auth::user()->site_id)->get();
             $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+            $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
+
         }
 
-        $agents  = Agents::all();
+
 
         return view('pointPassageManuels.create',compact('sites','voies','agents'));
     }
@@ -71,7 +118,8 @@ class PointPassageManuelController extends Controller
             $pointPassage->date  = $request->date;
             $pointPassage->voie_id  = $request->voie_id;
             if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
-                $pointPassage->site_id = $request->site_id;
+                $sites = Site::where('libelle',session('site'))->first();
+                $pointPassage->site_id = $sites->id;
 
             } else {
                 $site = Site::where('id',Auth::user()->site_id)->first('id');
@@ -132,14 +180,18 @@ class PointPassageManuelController extends Controller
         $pointPassageManuel =PointPassageMaunel::find($id);
         if (Auth::user()->role  == "ADMIN") {
             # code...
-            $sites  = Site::all();
-            $voies  = Voie::all();
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+        $agents  = Agents::where('site_id',$sites->id)->get();
+
         } else {
             # code...
             $sites  = Site::where('id',Auth::user()->site_id)->first();
             $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+            $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
+
         }
-        return view('pointPassageManuels.update',compact('pointPassageManuel','sites','voies'));
+        return view('pointPassageManuels.update',compact('pointPassageManuel','sites','voies','agents'));
     }
 
     /**
@@ -217,34 +269,30 @@ class PointPassageManuelController extends Controller
         try {
 
             $pointPassageManuels= [];
-            $sites  = Site::all();
-            $voies  = Voie::all();
+
 
             if ($request->isMethod('POST')) {
                 # code...
                 $passage = PointPassageMaunel::query();
-
-                $date  = $request->input('date');
+                $from = $request->input('date_debut');
+                $to =$request->input('date_fin');
                 $site  = $request->input('site_id');
                 $voie  = $request->input('voie_id');
 
                 $vacation  = $request->input('vacation');
                 $agent  = $request->input('identite_percepteur');
 
-                if ($date != null) {
+                if ($from != null || $to != null) {
                     # code...
-                    $passage->where("date", "=", $date);
+                    $passage->whereBetween("date",[$from, $to]);
 
                 }
-
 
                 if ($site != null) {
                     # code...
                     $passage->where("site_id", "=", $site);
 
                 }
-
-
 
                 if ($voie != null) {
                     # code...
@@ -267,7 +315,11 @@ class PointPassageManuelController extends Controller
                 $pointPassageManuels =  $passage->get(['point_passage_manuelle.*']);
 
                 session()->flashInput($request->all());
+                $sites = Site::where('libelle',session('site'))->first();
+                $voies  = Voie::where('site_id',$sites->id)->get();
+                $agents  = Agents::where('site_id',$sites->id)->get();
 
+                $site = $sites->libelle;
             }
 
 

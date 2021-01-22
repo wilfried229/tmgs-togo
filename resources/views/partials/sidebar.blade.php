@@ -69,14 +69,32 @@
 
 
             <li class="nav-item">
-                <a href="{{route('point-passage-uhf.index')}}" class="nav-link">
+                <a
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                href="{{route('passage.uhf.site')}}"
+                @else
+                href="{{route('point-passage-uhf.index')}}"
+
+
+                @endif
+                class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Point de passage UHF</p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="{{route('point-passage-manuel.index')}}" class="nav-link">
+                <a
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                href="{{route('passage.manuel.site')}}"
+                @else
+                href="{{route('point-passage-manuel.index')}}"
+
+                @endif
+
+               class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Point de passage Manuel</p>
                 </a>
@@ -86,7 +104,15 @@
             @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','PERCEPTEUR']))
 
             <li class="nav-item">
-                <a href="{{route('dysfonctionement.index')}}" class="nav-link">
+                <a
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                href="{{route('passage.uhf.site')}}"
+                @else
+                href="{{route('dysfonctionement.index')}}"
+
+                @endif
+                class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>DYSFONCTIONNEMENT</p>
                 </a>

@@ -59,21 +59,16 @@ Rapport TGMS-GATE \TOGO
             <div class="row">
                 <!-- secteur d'activité -->
                 <div class="form-group col-md-4">
-                    <label for="date">Date</label>
-                  <input type="date" name="date" id="date" class="form-control">
+                    <label for="date">Date de début</label>
+                  <input type="date" name="date_debut" id="date_debut" class="form-control">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="date">Date de fin</label>
+                  <input type="date" name="date_fin" id="date_fin" class="form-control">
                 </div>
                 <!-- niveau etude -->
-                <div class="form-group col-md-4">
-                    <label for="site">Site</label>
-                    <select name="site_id" id="site_id" class="form-control">
-                        <option value="" selected>Selectionnez</option>
 
-                        @foreach ($sites as $site)
-                        <option value="{{ $site->id }}">{{ $site->libelle }}</option>
-
-                        @endforeach
-                    </select>
-                </div>
                 <!-- sexe -->
                 <div class="form-group col-md-4">
                     <label for="">Voie</label>
@@ -100,7 +95,13 @@ Rapport TGMS-GATE \TOGO
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Agent</label>
-                        <input type="text" name="identite_percepteur" id="identite_percepteur" class="form-control">
+                    <select name="identite_percepteur" id="identite_percepteur" class="form-control">
+
+                        @foreach ($agents as $agent)
+                        <option value="{{ $agent->nom }}">{{ $agent->nom }}</option>
+
+                        @endforeach
+                    </select>
                </div>
 
                 <!-- pays residence -->
@@ -118,7 +119,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">Liste des points de passage Manuel </h5>
+                <h5 class="form-header">Liste des points de passage Manuel ({{ $sites->libelle ?? " " }}) </h5>
 
 
             </a><!-- /.card-header -->
