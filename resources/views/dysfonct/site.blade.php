@@ -19,7 +19,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark">
-                     Passge Gate
+                    DYSFONCTIONNEMENT
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -42,7 +42,7 @@
                     <!-- ./col -->
                     <div class="col-lg-4 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-info">
+                        <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><sup style="font-size: 20px"></sup>{{ $site->libelle }}</h3>
 
@@ -51,7 +51,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ route('passage.gate.list.site',$site->libelle) }}" class="small-box-footer">Cliquer ici <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('dysfonct.list.site',$site->libelle) }}" class="small-box-footer">Cliquer ici <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

@@ -97,7 +97,8 @@ Rapport TGMS-GATE \TOGO
 
                             <select name="site_id" id="site_id" class="form-control">
                                 @foreach ($sites as $site)
-                                            <option value="{{ $site->id }}">{{ $site->libelle }}</option>
+
+                                            <option value="{{ $site->id }}" @if($user->site_id == $site->id)  checked @endif>{{ $site->libelle }}</option>
 
                                 @endforeach
                              </select>

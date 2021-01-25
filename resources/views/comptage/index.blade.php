@@ -62,21 +62,16 @@ Rapport TGMS-GATE \TOGO
                     <div class="row">
                         <!-- secteur d'activité -->
                         <div class="form-group col-md-3">
-                            <label for="date">Date</label>
-                          <input type="date" name="date" id="date" class="form-control">
+                            <label for="date">Date de début</label>
+                          <input type="date" name="date_debut" id="date_debut" class="form-control">
                         </div>
-                        <!-- niveau etude -->
+
                         <div class="form-group col-md-3">
-                            <label for="site">Site</label>
-                            <select name="site_id" id="site_id" class="form-control">
-                                <option value="" selected>Selectionnez</option>
-
-                                @foreach ($sites as $site)
-                                <option value="{{ $site->id }}">{{ $site->libelle }}</option>
-
-                                @endforeach
-                            </select>
+                            <label for="date">Date De fin</label>
+                          <input type="date" name="date_fin" id="date_fin" class="form-control">
                         </div>
+
+
                         <!-- sexe -->
                         <div class="form-group col-md-3">
                             <label for="">Voie</label>

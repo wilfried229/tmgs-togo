@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agents;
 use App\Models\Comptage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +14,36 @@ use MercurySeries\Flashy\Flashy;
 
 class ComptageController extends Controller
 {
+
+
+    public function passageGatebySite($site){
+
+        session()->get('site');
+        session()->put('site', $site);
+        $sites = Site::where('libelle',$site)->first();
+        $agents  = Agents::where('site_id',$sites->id)->get();
+        $voies  = Voie::where('site_id',$sites->id)->get();
+        $comptages  = Comptage::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
+
+        return  view('comptage.index',compact('comptages','voies','sites'));
+
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function site()
+    {
+
+        $sites = Site::all();
+
+        session()->forget(['site']);
+        return view('comptage.site',compact('sites'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +57,11 @@ class ComptageController extends Controller
         $voies  = Voie::all();
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
 
-            $comptages  = Comptage::query()->orderByDesc('id')->get();
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+
+            $comptages  = Comptage::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
+
 
         } else {
             # code...
@@ -46,8 +81,17 @@ class ComptageController extends Controller
      */
     public function create()
     {
-        $sites = Site::all();
-        $voies  = Voie::all();
+
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            # code...
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
+
         return  view('comptage.create',compact('sites','voies'));
         //
     }
@@ -66,7 +110,8 @@ class ComptageController extends Controller
             $comptage->date = $request->date;
             $comptage->voie_id = $request->voie_id;
             if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
-                $comptage->site_id = $request->site_id;
+                $sites = Site::where('libelle',session('site'))->first();
+                $comptage->site_id = $sites->id;
 
             } else {
                 $site = Site::where('id',Auth::user()->site_id)->first('id');
@@ -117,8 +162,18 @@ class ComptageController extends Controller
     {
 
         $comptage  = Comptage::findOrFail($id);
-        $sites = Site::all();
-        $voies  = Voie::all();
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+
+            # code...
+            # code...
+            $sites = Site::where('libelle',session('site'))->first();
+            $voies  = Voie::where('site_id',$sites->id)->get();
+
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+        }
         return  view('comptage.update',compact('comptage','sites','voies'));
     }
 
@@ -138,7 +193,9 @@ class ComptageController extends Controller
         $comptage->date = $request->date;
         $comptage->voie_id = $request->voie_id;
         if (Auth::user()->role  == "ADMIN") {
-            $comptage->site_id = $request->site_id;
+            $sites = Site::where('libelle',session('site'))->first();
+            $comptage->site_id = $sites->id;
+
 
         } else {
             $site = Site::where('id',Auth::user()->site_id)->first('id');
@@ -203,17 +260,18 @@ class ComptageController extends Controller
                 # code...
                 $comptage = Comptage::query();
 
-                $date  = $request->input('date');
+                $from = $request->input('date_debut');
+                $to =$request->input('date_fin');
                 $site  = $request->input('site_id');
                 $voie  = $request->input('voie_id');
 
                 $vacation  = $request->input('vacation');
 
-                if ($date != null) {
+                if ($from != null || $to != null) {
                     # code...
-                    $comptage->where("date", "=", $date);
-                }
+                    $comptage->whereBetween("date",[$from, $to]);
 
+                }
 
 
                 if ($site != null) {
@@ -235,6 +293,12 @@ class ComptageController extends Controller
 
 
                 session()->flashInput($request->all());
+
+                $sites = Site::where('libelle',session('site'))->first();
+                $voies  = Voie::where('site_id',$sites->id)->get();
+
+                $site = $sites->libelle;
+
             }
 
 

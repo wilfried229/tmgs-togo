@@ -12,6 +12,37 @@ use Illuminate\Support\Facades\File;
 
 class DysfonctionnementController extends Controller
 {
+
+
+    public function passageGatebySite($site){
+
+        session()->get('site');
+        session()->put('site', $site);
+        $sites = Site::where('libelle',$site)->first();
+
+
+        $dysfonctionnments = Dyfonctionnement::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
+
+        return view('dysfonct.index',compact('dysfonctionnments','sites'));
+
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function site()
+    {
+
+        $sites = Site::all();
+
+        session()->forget(['site']);
+        return view('dysfonct.site',compact('sites'));
+    }
+
+
     /**
      * Display a listing of the resource.
      *

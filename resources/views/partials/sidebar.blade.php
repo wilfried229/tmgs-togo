@@ -107,7 +107,7 @@
                 <a
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
 
-                href="{{route('passage.uhf.site')}}"
+                href="{{route('dysfonct.site')}}"
                 @else
                 href="{{route('dysfonctionement.index')}}"
 
@@ -118,7 +118,16 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('comptage.index')}}" class="nav-link">
+                <a
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                    href="{{route('compt.site')}}"
+                @else
+                href="{{route('comptage.index')}}"
+
+
+                @endif
+              class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>COMPATGE CONTRADITOIRE</p>
                 </a>
