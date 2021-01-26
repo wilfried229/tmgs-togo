@@ -65,9 +65,10 @@ class RecetteTraficController extends Controller
         } else {
             # code...
 
-            $sites  = Site::all();
-            $voies  = Voie::all();
-            $agents  = Agents::all();
+
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+            $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
             $recettes = RecetesTrafic::where('site_id',Auth::user()->site_id)->orderByDesc('id')->get();
         }
         return view('recettes.index',compact('recettes','voies','sites','agents'));
@@ -83,7 +84,6 @@ class RecetteTraficController extends Controller
         //
 
 
-        $agents  = Agents::all();
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
             # code...
 
@@ -96,6 +96,8 @@ class RecetteTraficController extends Controller
             # code...
             $sites  = Site::where('id',Auth::user()->site_id)->first();
             $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+            $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
+
         }
 
 
@@ -200,9 +202,26 @@ class RecetteTraficController extends Controller
     {
         //
         $recetteTrafic = RecetesTrafic::find($id);
-        $sites  = Site::all();
-        $voies  = Voie::all();
-        return view('recettes.update',compact('recetteTrafic','sites','voies'));
+
+
+        if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            # code...
+
+            $site = Site::where('libelle',session('site'))->first();
+            $sites = Site::where('libelle',session('site'))->get();
+
+                $agents  = Agents::where('site_id',$site->id)->get();
+                $voies  = Voie::where('site_id',$site->id)->get();
+        } else {
+            # code...
+            $sites  = Site::where('id',Auth::user()->site_id)->first();
+            $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+            $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
+
+        }
+
+
+        return view('recettes.update',compact('agents','recetteTrafic','sites','voies'));
     }
 
     /**
@@ -304,6 +323,7 @@ class RecetteTraficController extends Controller
                 $vacation  = $request->input('vacation');
                 $agent  = $request->input('agent');
 
+
                 if ($from != null || $to != null) {
                     # code...
                     $recetteTrafic->whereBetween("date",  [$from, $to]);
@@ -330,13 +350,17 @@ class RecetteTraficController extends Controller
                     $recetteTrafic->where("agent_voie", "=", $agent);
                 }
 
+                $site = Site::where('libelle',session('site'))->first();
+
+                $recetteTrafic->where("site_id",$site->id);
+
                 $recettes =  $recetteTrafic->get(['recettes_trafics.*']);
 
                 session()->flashInput($request->all());
 
-                $site = Site::where('libelle',session('site'))->first();
                 $agents  = Agents::where('site_id',$site->id)->get();
                 $voies  = Voie::where('site_id',$site->id)->get();
+
             }
 
 

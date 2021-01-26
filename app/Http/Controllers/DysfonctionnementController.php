@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Voie;
 use App\Models\Site;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -264,4 +265,46 @@ class DysfonctionnementController extends Controller
         }
     }
 
+
+
+    public function searchDysfonctByAllRequest(Request $request){
+
+        try {
+
+            $dysfonctionnments = [];
+
+            if ($request->isMethod('POST')) {
+                # code...
+                $dysfonctionnment = Dyfonctionnement::query();
+
+                $from = $request->input('date_debut');
+                $to =$request->input('date_fin');
+
+
+                if ($from != null || $to != null) {
+                    # code...
+                    $dysfonctionnment->whereBetween("date",  [$from, $to]);
+
+                }
+
+                $sites = Site::where('libelle',session('site'))->first();
+
+                $dysfonctionnment->where("site_id",$sites->id);
+
+                $dysfonctionnments =  $dysfonctionnment->get(['dyfonctionnement.*']);
+
+                session()->flashInput($request->all());
+
+
+            }
+
+
+        return  view('dysfonct.index',compact('dysfonctionnments'))->with($request->all());
+
+        } catch (Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
+            abort(500);
+        }
+    }
 }

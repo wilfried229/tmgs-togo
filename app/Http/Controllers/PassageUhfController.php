@@ -274,10 +274,14 @@ class PassageUhfController extends Controller
                     $passage->where("voie_id", "=", $voie);
                 }
 
+
+                $sites = Site::where('libelle',session('site'))->first();
+
+                $passage->where("site_id",$sites->id);
+
                 $passageUhfs =  $passage->get(['passage_uhfs.*']);
                 session()->flashInput($request->all());
 
-                $sites = Site::where('libelle',session('site'))->first();
                 $voies  = Voie::where('site_id',$sites->id)->get();
 
                 $site = $sites->libelle;

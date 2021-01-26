@@ -11,5 +11,5 @@ class Voie extends Model
 
     protected $table = "voie";
 
-    protected $fillable =['libelle'];
+    protected $fillable =['libelle','site_id'];
 }

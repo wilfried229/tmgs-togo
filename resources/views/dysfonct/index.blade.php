@@ -52,8 +52,39 @@ Rapport TGMS-GATE \TOGO
                 <h6 class="element-header">
                     </h6>
             </div>
+
+            <div class="col-lg-12">
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
+
+                <form class="mb-4" action="{{ route('dysfonction.search') }}" method="POST">
+
+                    @csrf
+                    <div class="row">
+                        <!-- secteur d'activité -->
+                        <div class="form-group col-md-6">
+                            <label for="date">Date de début</label>
+                          <input type="date" name="date_debut" id="date_debut" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="date">Date De fin</label>
+                          <input type="date" name="date_fin" id="date_fin" class="form-control">
+                        </div>
+                        <!-- pays residence -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            <input class="btn btn-success" type="submit" value="Rechercher">
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </form>
+
+                @endif
+            </div>
         </div>
-        <div class="card card-success">
+        <div class="card card-success fixedRight">
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 

@@ -86,12 +86,18 @@ class PointPassageController extends Controller
             # code...
             $sites = Site::where('libelle',session('site'))->first();
             $voies  = Voie::where('site_id',$sites->id)->get();
+            $agents  = Agents::where('site_id',$sites->id)->get();
+
+
         } else {
             # code...
             $sites  = Site::where('id',Auth::user()->site_id)->first();
             $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
+            $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
+
+
         }
-        $agents  = Agents::all();
+
 
         return view('pointPassage.create',compact('voies','sites','agents'));
     }
@@ -284,18 +290,20 @@ class PointPassageController extends Controller
 
                 }
 
-
-
                 if ($voie != null) {
                     # code...
                     $passage->where("voie_id", "=", $voie);
 
                 }
 
+                $sites = Site::where('libelle',session('site'))->first();
+
+                $passage->where("site_id",$sites->id);
+
+
                 $pointPassages =  $passage->get(['point_passages.*']);
 
                 session()->flashInput($request->all());
-                $sites = Site::where('libelle',session('site'))->first();
                 $voies  = Voie::where('site_id',$sites->id)->get();
 
                 $site = $sites->libelle;

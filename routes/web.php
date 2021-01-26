@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::post('comptage/search','ComptageController@searchComptageByAllRequest')->name('comptage.search');
 
+    Route::post('dysfonct-ionement/search','DysfonctionnementController@searchDysfonctByAllRequest')->name('dysfonction.search');
+
+
     Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
 
     Route::get('file-import-export', 'UserController@fileImportExport');

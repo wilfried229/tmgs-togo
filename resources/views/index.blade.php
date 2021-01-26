@@ -48,15 +48,17 @@
                       <i class="ion ion-bag"></i>
                     </div>
                     <a
+
                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
 
-                    href="{{route('passage.gate.site')}}"
+                    href="{{route('recettes.trafics.site')}}"
                     @else
-                    href="{{route('point-passage.index')}}"
+                    href="{{route('recettes-trafics.index')}}"
 
 
-                      @endif
-                    class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    @endif
+
+                    class="small-box-footer">Cliquez ici <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->
@@ -74,13 +76,13 @@
                     <a
                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
 
-                    href="{{route('recettes.trafics.site')}}"
+                    href="{{route('passage.gate.site')}}"
                     @else
-                    href="{{route('recettes-trafics.index')}}"
+                    href="{{route('point-passage.index')}}"
 
 
-                    @endif
-                    class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      @endif
+                    class="small-box-footer">Cliquez ici <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->
@@ -104,7 +106,7 @@
 
 
                         @endif
-                        class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        class="small-box-footer">Cliquez ici <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->
@@ -119,7 +121,15 @@
                     <div class="icon">
                       <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a
+                    @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+                    href="{{route('compt.site')}}"
+                @else
+                href="{{route('comptage.index')}}"
+
+
+                @endif class="small-box-footer">Cliquez ici <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
                 <!-- ./col -->

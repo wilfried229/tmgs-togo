@@ -289,6 +289,9 @@ class ComptageController extends Controller
                     $comptage->where("vacation", "=", $vacation);
                 }
 
+                $sites = Site::where('libelle',session('site'))->first();
+
+                $comptage->where("site_id",$sites->id);
                 $comptages =  $comptage->get(['comptage_contraditoire.*']);
 
 

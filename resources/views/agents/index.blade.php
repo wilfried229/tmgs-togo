@@ -90,7 +90,7 @@ TGMS-GATE
 
                                         <tr>
                                             <td>{{$agent->nom}}</td>
-                                            <td>{{$agent->site()->libelle}}</td>
+                                            <td>{{$agent->site()->libelle ?? "PAS DE SITE ATTRIBUER"}}</td>
                                         <th>
 
                                             <a href="{{ route('agent.edit',$agent->id) }}" class="btn btn-info"> Modifier</a>

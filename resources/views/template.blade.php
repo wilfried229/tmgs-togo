@@ -22,7 +22,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-info elevation-4" style="">
+  <aside class="main-sidebar sidebar-dark-info elevation-4 " style="">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
 

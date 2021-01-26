@@ -103,7 +103,7 @@ class AgentsController extends Controller
             $agent  = Agents::find($id);
             $agent->nom = $request->nom;
             $agent->site_id = $request->site_id;
-            $agent->update();
+            $agent->save();
 
             flashy()->success("Modification effectuée avec succès");
 

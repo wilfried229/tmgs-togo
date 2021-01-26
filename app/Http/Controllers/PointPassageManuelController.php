@@ -312,10 +312,14 @@ class PointPassageManuelController extends Controller
                     $passage->where("identite_percepteur", "=", $agent);
                 }
 
+                $sites = Site::where('libelle',session('site'))->first();
+
+                $passage->where("site_id",$sites->id);
+
+
                 $pointPassageManuels =  $passage->get(['point_passage_manuelle.*']);
 
                 session()->flashInput($request->all());
-                $sites = Site::where('libelle',session('site'))->first();
                 $voies  = Voie::where('site_id',$sites->id)->get();
                 $agents  = Agents::where('site_id',$sites->id)->get();
 

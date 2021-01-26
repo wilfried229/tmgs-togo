@@ -124,8 +124,14 @@ Rapport TGMS-GATE \TOGO
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Agent</label>
-                                        <input type="text" id="agent_voie" value="{{ $recetteTrafic->agent_voie }}" name="agent_voie" class="form-control" required>
+                                        <select name="agent_voie" id="agent_voie" class="form-control">
+                                            @foreach ($agents as $agent)
+                                            <option value="{{ $agent->nom }}" @if ($agent->nom == $recetteTrafic->agent_voie)
+                                                checked
+                                            @endif>{{ $agent->nom }}</option>
 
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="col-lg-4 col-md-4">
 

@@ -74,7 +74,7 @@ TGMS-GATE
               </div>
               <div class="col-md-6">
                   <label for="">Site de Vacation</label>
-                <select name="site" id="site" class="form-control">
+                <select name="site_id" id="site_id" class="form-control">
                     @foreach ($sites as $site)
                     <option value="{{ $site->id }}" @if($site->id == $agent->site_id) checked @endif>{{ $site->libelle }}</option>
 
