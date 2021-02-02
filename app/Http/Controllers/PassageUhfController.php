@@ -10,9 +10,18 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Voie;
 use App\Models\Site;
 use Exception;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PassageUhfExport;
 class PassageUhfController extends Controller
 {
+
+     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileExport()
+    {
+        return Excel::download(new PassageUhfExport(), 'passageuhf.xlsx');
+    }
 
     public function passageGatebySite($site){
 

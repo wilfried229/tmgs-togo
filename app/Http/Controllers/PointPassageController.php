@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PassageGateExport;
 use App\Models\Agents;
 use App\Models\PointPassage;
 use Illuminate\Http\Request;
@@ -10,9 +11,19 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Voie;
 use App\Models\Site;
 use Exception;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PointPassageController extends Controller
 {
+
+     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileExport()
+    {
+        return Excel::download(new PassageGateExport(), 'passageGate.xlsx');
+    }
+
 
 
     public function passageGatebySite($site){
@@ -299,10 +310,7 @@ class PointPassageController extends Controller
                 $sites = Site::where('libelle',session('site'))->first();
 
                 $passage->where("site_id",$sites->id);
-
-
                 $pointPassages =  $passage->get(['point_passages.*']);
-
                 session()->flashInput($request->all());
                 $voies  = Voie::where('site_id',$sites->id)->get();
 

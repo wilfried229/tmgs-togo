@@ -104,7 +104,7 @@ Rapport TGMS-GATE \TOGO
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             <th>{{$user->role}}</th>
-                                            <th>{{$user->site()->first()->libelle}}</th>
+                                            <th>{{$user->site()->first()->libelle ?? ''}}</th>
                                             <th>{{$user->created_at}}</th>
 
 

@@ -122,9 +122,9 @@ Rapport TGMS-GATE \TOGO
                                 <th data-target="date">DATE</th>
                                 <th data-target="site">SITE</th>
                                 <th data-target="voie">VOIE</th>
-                                <th> 08H-14H</th>
-                                <th> 14H-22H</th>
-                                <th> 22H-06H</th>
+                                <th> 06H-14H</th>
+                                <th> 14H-20H</th>
+                                <th> 20H-06H</th>
                                 <th>TRAFIC</th>
                                 <th>RECETTE EQUIVALENTE</th>
 
@@ -228,7 +228,7 @@ Rapport TGMS-GATE \TOGO
                 "lengthMenu": "Afficher _MENU_ données par Page",
                 "zeroRecords": "Aucun résultat",
                 "info": "Page _PAGE_ sur _PAGES_",
-                "infoEmpty": "Aucun  données trouvée",
+                "infoEmpty": "Aucun  donnée trouvée",
                 "infoFiltered": "(sur les _MAX_ données",
                 "infoPostFix":    "",
                 "thousands":      ",",

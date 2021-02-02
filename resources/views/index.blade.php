@@ -244,6 +244,7 @@
                 <!-- right col -->
               </div>
               <!-- /.row (main row) -->
+              
             </div><!-- /.container-fluid -->
           </section>
         @endsection

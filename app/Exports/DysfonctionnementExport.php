@@ -2,22 +2,18 @@
 
 namespace App\Exports;
 
-use App\User;
+use App\Models\Dyfonctionnement;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class UsersExport implements FromCollection
+class DysfonctionnementExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return User::all();
-    }
-
-    public static function testExport(){
-
-        return User::all();
+        //
+        return Dyfonctionnement::all();
 
     }
 }

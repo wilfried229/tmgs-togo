@@ -10,10 +10,19 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PassageManuelExport;
 
 class PointPassageManuelController extends Controller
 {
 
+     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileExport()
+    {
+        return Excel::download(new PassageManuelExport(), 'passageManuel.xlsx');
+    }
 
     public function passageGatebySite($site){
 

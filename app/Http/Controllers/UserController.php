@@ -97,9 +97,9 @@ class UserController extends Controller
             return redirect()->back();
         } catch (\Exception $ex) {
             //throw $th;
-            Session::flash('error', $ex->getMessage);
+            Session::flash('error', $ex->getMessage());
 
-            Log::info($ex->getMessage);
+            Log::info($ex->getMessage());
         }
     }
 
@@ -156,9 +156,9 @@ class UserController extends Controller
             return back();
         } catch (\Exception $ex) {
             //throw $th;
-            Session::flash('error', $ex->getMessage);
+            Session::flash('error', $ex->getMessage());
 
-            Log::info($ex->getMessage);
+            Log::info($ex->getMessage());
 
         }
 
@@ -183,9 +183,9 @@ class UserController extends Controller
             return back();
 
         } catch (\Exception $ex) {
-            Session::flash('error', $ex->getMessage);
+            Session::flash('error', $ex->getMessage());
 
-            Log::info($ex->getMessage);
+            Log::info($ex->getMessage());
         }
         //
     }

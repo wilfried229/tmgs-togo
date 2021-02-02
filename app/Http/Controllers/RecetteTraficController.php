@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RecettesExport;
+use App\Imports\RecettesImport;
 use App\Models\Agents;
 use App\Models\RecetesTrafic;
 use App\Models\Site;
@@ -10,9 +12,38 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RecetteTraficController extends Controller
 {
+
+
+      /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileImportExport()
+    {
+        return view('file-import-all');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new RecettesImport(), $request->file('file_recettes')->store('temp'));
+
+            flashy()->success("Recettes importés avec succès");
+
+            return back();
+        }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */    public function fileExport()
+    {
+        return Excel::download(new RecettesExport(), 'recettes.xlsx');
+    }
 
     public function recettesbySite($site){
 
@@ -97,6 +128,7 @@ class RecetteTraficController extends Controller
             $sites  = Site::where('id',Auth::user()->site_id)->first();
             $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
             $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
+            $site = Site::where('id',Auth::user()->site_id)->first();
 
         }
 

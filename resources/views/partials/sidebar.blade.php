@@ -167,6 +167,20 @@
             </li>
 
 
+            <li class="nav-item">
+                <a href="{{route('file-export.all')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Export DATA</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{route('import')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Import DATA</p>
+                </a>
+            </li>
+
 
                 <li class="nav-item">
                     <a href="" class="nav-link">

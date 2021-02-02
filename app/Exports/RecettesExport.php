@@ -2,22 +2,19 @@
 
 namespace App\Exports;
 
-use App\User;
+use App\Models\RecetesTrafic;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class UsersExport implements FromCollection
+class RecettesExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return User::all();
+        //
+        return RecetesTrafic::all();
     }
 
-    public static function testExport(){
 
-        return User::all();
-
-    }
 }

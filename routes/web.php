@@ -46,9 +46,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get("payement-manquant/{id}",'RecetteTraficController@payerManquant')->name('payement.manquant');
 
-    Route::get('file-import-export', 'UserController@fileImportExport');
-    Route::post('file-import', 'UserController@fileImport')->name('file-import');
-    Route::get('file-export', 'UserController@fileExport')->name('file-export');
 
 
     Route::get('recettes/trafics/site','RecetteTraficController@site')->name('recettes.trafics.site');
@@ -62,7 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('passage/gate/{site}','PointPassageController@passageGatebySite')->name('passage.gate.list.site');
 
     Route::get('passage-manuel/site','PointPassageManuelController@site')->name('passage.manuel.site');
-    Route::get('passage/manuel/{site}','PointPassageManuelController@passageGatebySite')->name('passage.manuel.list.site');
+    Route::get('passage/manuel/{site}','PointPassageManuelConPointPassageControllertroller@passageGatebySite')->name('passage.manuel.list.site');
 
     Route::get('compt/site','ComptageController@site')->name('compt.site');
 
@@ -73,7 +70,28 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('dysfon-ctionement/{site}','DysfonctionnementController@passageGatebySite')->name('dysfonct.list.site');
 
 
+    Route::get('file-import-export', 'UserController@fileImportExport')->name('import');
+    Route::post('file-import', 'UserController@fileImport')->name('file-import');
+    Route::get('file-export', 'UserController@fileExport')->name('file-export');
 
+
+    Route::get('file-import-export-all', 'RecetteTraficController@fileImportExport')->name('file-export.all');
+
+    Route::get('file-export-recettes', 'RecetteTraficController@fileExport')->name('file-export.recettes');
+    Route::post('file-import-recettes', 'RecetteTraficController@fileImport')->name('file-Import.recettes');
+
+    Route::get('file-export-gate', 'PointPassageController@fileExport')->name('file-export.gate');
+
+    Route::get('file-export-uhf', 'PassageUhfController@fileExport')->name('file-export.uhf');
+
+    Route::get('file-export-manuel', 'PointPassageManuelController@fileExport')->name('file-export.manuel');
+
+    Route::get('file-export-dysfonc', 'DysfonctionnementController@fileExport')->name('file-export.disfonct');
+
+    Route::get('file-export-comptage', 'ComptageController@fileExport')->name('file-export.comptage');
+
+
+    Route::get('chatsJs','ChatJsController@recettes');
 });
 
 Auth::routes();

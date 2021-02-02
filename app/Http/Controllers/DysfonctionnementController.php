@@ -10,9 +10,20 @@ use App\Models\Site;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Exports\DysfonctionnementExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DysfonctionnementController extends Controller
 {
+
+     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileExport()
+    {
+        return Excel::download(new DysfonctionnementExport(), 'dysfonction.xlsx');
+    }
+
 
 
     public function passageGatebySite($site){

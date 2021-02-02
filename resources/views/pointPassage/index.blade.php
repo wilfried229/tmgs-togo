@@ -128,9 +128,9 @@ Rapport TGMS-GATE \TOGO
                                 <th data-target="date">DATE</th>
                                 <th data-target="site">SITE</th>
                                 <th data-target="voie">VOIE</th>
-                                <th> 08H-14H</th>
-                                <th> 14H-22H</th>
-                                <th> 22H-06H</th>
+                                <th> 06H-14H</th>
+                                <th> 14H-20H</th>
+                                <th> 20H-06H</th>
 
                                 <th>TRAFIC</th>
                                 <th>RECETTE EQUIVALENTE</th>

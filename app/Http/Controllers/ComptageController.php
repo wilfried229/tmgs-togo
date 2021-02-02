@@ -11,10 +11,20 @@ use App\Models\Site;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use MercurySeries\Flashy\Flashy;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ComptagesExport;
 
 class ComptageController extends Controller
 {
 
+    
+     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileExport()
+    {
+        return Excel::download(new ComptagesExport(), 'comptage.xlsx');
+    }
 
     public function passageGatebySite($site){
 
