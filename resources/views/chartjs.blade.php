@@ -1,59 +1,144 @@
-
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-12 ">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                    <canvas id="canvas" height="280" width="600"></canvas>
+                   
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
-    var url = "{{url('/chatsJs')}}";
-    var voies = new Array();
-    var Labels = new Array();
-    var montants = new Array();
-    $(document).ready(function(){
-      $.get(url, function(response){
-        response.forEach(function(data){
-            voies.push(data.vacation);
-            Labels.push(data.site_id);
-            montants.push(data.recette_informatiser);
+    var voieSites = <?php echo $voieSites; ?>;
+
+var recetesVoiesWeek1 = <?php echo $recetesVoiesWeek1; ?>;
+var recetesVoiesWeek2 = <?php echo $recetesVoiesWeek2; ?>;
+var recetesVoiesWeek3 = <?php echo $recetesVoiesWeek3; ?>;
+var recetesVoiesWeek4 = <?php echo $recetesVoiesWeek4; ?>;
+
+
+    var barChartData1 = {
+        labels: voieSites,
+        datasets: [{
+            label: 'Voie',
+            backgroundColor: "blue",
+            data: recetesVoiesWeek1
+        }]
+    };
+
+    var barChartData2 = {
+        labels: voieSites,
+        datasets: [{
+            label: 'Voie',
+            backgroundColor: "blue",
+            data: recetesVoiesWeek2
+        }]
+    };
+    var barChartData3 = {
+        labels: voieSites,
+        datasets: [{
+            label: 'Voie',
+            backgroundColor: "blue",
+            data: recetesVoiesWeek3
+        }]
+    };
+
+    var barChartData4 = {
+        labels: voieSites,
+        datasets: [{
+            label: 'Voie',
+            backgroundColor: "blue",
+            data: recetesVoiesWeek4
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        var ctx2 = document.getElementById("canvas2").getContext("2d");
+
+        var ctx3 = document.getElementById("canvas3").getContext("2d");
+        var ctx4 = document.getElementById("canvas4").getContext("2d");
+
+
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData1,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Recettes / Voie'
+                }
+            }
         });
 
-console.log(voies);
-        var ctx = document.getElementById("canvas").getContext('2d');
-            var myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                  labels:voies,
-                  datasets: [{
-                      label: 'Infosys Price',
-                      data: montants,
-                      borderWidth: 1
-                  }]
-              },
-              options: {
-                  scales: {
-                      yAxes: [{
-                          ticks: {
-                              beginAtZero:true
-                          }
-                      }]
-                  }
-              }
-          });
-      });
-    });
-    </script>
+        window.myBar = new Chart(ctx2, {
+            type: 'bar',
+            data: barChartData2,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Recettes / Voie'
+                }
+            }
+        });
+        window.myBar = new Chart(ctx3, {
+            type: 'bar',
+            data: barChartData3,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Recettes / Voie'
+                }
+            }
+        });
+        window.myBar = new Chart(ctx4, {
+            type: 'bar',
+            data: barChartData4,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Recettes / Voie'
+                }
+            }
+        });
+    };
+</script>
 @endsection

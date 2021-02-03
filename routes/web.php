@@ -91,7 +91,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('file-export-comptage', 'ComptageController@fileExport')->name('file-export.comptage');
 
 
-    Route::get('chatsJs','ChatJsController@recettes');
+    Route::post('chatsJs','ChatJsController@recettes')->name('statistique-recette.chart');;
+    Route::get('statistique-recette','ChatJsController@statistiqueRecette')->name('statistique-recette.view');
+
 });
 
 Auth::routes();

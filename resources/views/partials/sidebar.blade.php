@@ -33,8 +33,21 @@
                     <p>Accueil</p>
                 </a>
             </li>
+            @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
+
+            <li class="nav-item">
+                <a
+
+                href="{{route('statistique-recette.view')}}"
 
 
+
+              class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Statistiques Recettes</p>
+                </a>
+            </li>
+            @endif
 
             <li class="nav-item">
                 <a

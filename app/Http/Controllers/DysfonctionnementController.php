@@ -31,8 +31,6 @@ class DysfonctionnementController extends Controller
         session()->get('site');
         session()->put('site', $site);
         $sites = Site::where('libelle',$site)->first();
-
-
         $dysfonctionnments = Dyfonctionnement::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
 
         return view('dysfonct.index',compact('dysfonctionnments','sites'));
@@ -64,7 +62,8 @@ class DysfonctionnementController extends Controller
     {
 
         if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
-            $dysfonctionnments  = Dyfonctionnement::query()->orderByDesc('id')->get();
+            $sites = Site::where('libelle',session('site'))->first();
+            $dysfonctionnments  = Dyfonctionnement::query()->where('site_id',$sites->id)->orderByDesc('id')->get();
             # code...
         } else {
             # code...
