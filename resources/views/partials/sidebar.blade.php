@@ -37,11 +37,7 @@
 
             <li class="nav-item">
                 <a
-
                 href="{{route('statistique-recette.view')}}"
-
-
-
               class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Statistiques Recettes</p>
@@ -205,6 +201,19 @@
 
             @endif
             @if (in_array(Auth::user()->role,['SUPERADMIN']))
+            <li class="nav-item">
+                <a href="{{route('file-export.all')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Export DATA</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{route('import')}}" class="nav-link">
+                    <i class="nav-icon fa fa-edit"></i>
+                    <p>Import DATA</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="fa fa-users"></i>
