@@ -156,6 +156,10 @@ Rapport TGMS-GATE \TOGO
                                             </tr>
                                         </tr>
                                     <tr>
+                                        @if (in_array(Auth::user()->email,['wilfyoung229@gmail.com','mathilde.berena@hotmail.fr']))
+
+                                        <th>Suppression</th>
+                                        @endif
                                         <th data-target="date">Date</th>
                                         <th data-target="site">Site</th>
                                         <th data-target="voie">Voie</th>
@@ -178,7 +182,6 @@ Rapport TGMS-GATE \TOGO
                                         <th>Observation</th>
 
                                         @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
-
                                             <th>Enregister Par</th>
                                             <th>Action</th>
                                         @endif
@@ -193,7 +196,15 @@ Rapport TGMS-GATE \TOGO
 
 
                                         <tr>
-                                            <td>
+                                            @if (in_array(Auth::user()->email,['wilfyoung229@gmail.com','mathilde.berena@hotmail.fr']))
+                                            <td> <a  onclick="event.preventDefault(); document.getElementById('delete-{{$recette->id}}').submit(); return false;"   class="btn btn-danger">Supprimer </a>
+                                                <form id="delete-{{$recette->id}}" action="{{route('recettes-trafics.destroy',$recette->id)}}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                    @method('DELETE')
+                                                </form></td>
+
+                                        @endif
+                                        <td>
                                                 {{ Carbon\Carbon::parse($recette->date)->format('d/m/Y') }}
                                             </td>
                                             <td>{{$recette->site()->first()->libelle}}</td>
@@ -224,6 +235,8 @@ Rapport TGMS-GATE \TOGO
                                                     {{ csrf_field() }}
                                                     @method('GET')
                                                 </form>
+
+
 
                                                 @endif
                                             </td>

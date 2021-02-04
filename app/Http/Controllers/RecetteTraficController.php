@@ -310,6 +310,20 @@ class RecetteTraficController extends Controller
      */
     public function destroy($id)
     {
+        try {
+            //code...
+            $recetteTrafic = RecetesTrafic::find($id);
+            $recetteTrafic->delete();
+            flashy()->success("Recette supprimée avec succès");
+
+            return back();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            flashy()->error("supprimer avec echoue");
+
+            return back();
+        }
         //
     }
 
