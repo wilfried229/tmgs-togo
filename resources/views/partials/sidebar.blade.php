@@ -73,12 +73,7 @@
                       <p>Passage Gate</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="forms/editors.html" class="nav-link">
-                      <i class="fa fa-circle-o nav-icon"></i>
-                      <p>Passage UHF</p>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
 
