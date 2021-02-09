@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PointPassage;
 use App\Models\RecetesTrafic;
 use App\Models\Site;
 use App\Models\Voie;
@@ -13,6 +14,42 @@ class ChatJsController extends Controller
 {
     //
 
+    public function statistiquePassageGate(){
+
+
+        $sites = Site::all();
+        return view('statistique-passage-Gate',compact('sites'));
+
+    }
+
+    public function passageGate(Request $request){
+        $voies = Voie::where('site_id',$request->site_id)->get();
+
+        $dateTime = new DateTime($request->month);
+        $month = $dateTime->format('m');
+        $year =$dateTime->format('y');
+        $start_date = "01-".$request->month."-".$year;
+        $start_time = strtotime($start_date);
+        $end_time = strtotime("+1 month", $start_time);
+        $sommeGate = [];
+        for($i=$start_time; $i<$end_time; $i+=86400)
+        {
+           $list[] = date('d', $i);
+           $gate = PointPassage::whereDay('date', date('d', $i))
+           ->select('somme_total_trafic','site_id')->sum('somme_total_trafic');
+           array_push($sommeGate,$gate);
+        }
+
+        //dd($sommeGate);
+        $site = Site::where('id',$request->site_id)->first();
+        $periode  = $request->month;
+        //return view('index');
+        return view('chatj-passage-gate',compact('site','periode'))
+        ->with('list',json_encode($list,JSON_NUMERIC_CHECK))
+        ->with('sommeGate',json_encode($sommeGate,JSON_NUMERIC_CHECK));
+
+
+    }
     public function statistiqueRecette(){
 
 
@@ -21,6 +58,42 @@ class ChatJsController extends Controller
 
     }
 
+    public function statistiqueTrafics(){
+
+        $sites = Site::all();
+        return view('statistique-trafics',compact('sites'));
+    }
+
+    public function trafics(Request $request){
+
+     //   $daysOfMonth;
+
+
+        $dateTime = new DateTime($request->month);
+        $month = $dateTime->format('m');
+        $year =$dateTime->format('y');
+        $start_date = "01-".$request->month."-".$year;
+        $start_time = strtotime($start_date);
+        $end_time = strtotime("+1 month", $start_time);
+        $traficsMonth = [];
+        for($i=$start_time; $i<$end_time; $i+=86400)
+        {
+           $list[] = date('d', $i);
+           $Trafics = RecetesTrafic::whereDay('date', date('d', $i))
+           ->select('total','site_id')->sum('total');
+           array_push($traficsMonth,$Trafics);
+        }
+
+        //dd($traficsMonth);
+        $site = Site::where('id',$request->site_id)->first();
+        $periode  = $request->month;
+        //return view('index');
+        return view('chatj-trafics',compact('site','periode'))
+        ->with('list',json_encode($list,JSON_NUMERIC_CHECK))
+        ->with('traficsMonth',json_encode($traficsMonth,JSON_NUMERIC_CHECK));
+
+
+    }
     public function recettes(Request $request){
 
         $voies = Voie::where('site_id',$request->site_id)->get();

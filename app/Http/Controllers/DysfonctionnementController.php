@@ -125,7 +125,7 @@ class DysfonctionnementController extends Controller
             $dysfonctionnment->preuve_apres  = DysfonctionnementController::uploadImage($request->file('preuve_apres'),$path);
 
             $dysfonctionnment->observation = $request->observation;
-            if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN'])){
+            if (in_array(Auth::user()->role,['ADMIN','SUP ERADMIN'])){
                 $dysfonctionnment->site_id = $request->site_id;
 
             } else {

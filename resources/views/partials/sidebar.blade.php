@@ -35,25 +35,61 @@
             </li>
             @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
 
-            <li class="nav-item">
-                <a
-                href="{{route('statistique-recette.view')}}"
-              class="nav-link">
-                    <i class="nav-icon fa fa-edit"></i>
-                    <p>Statistiques Recettes</p>
+            <li class="nav-item has-treeview">
+
+
+                <a href="#" class="nav-link">
+                    <p>
+                    <i class="fa fa-angle-left right"></i>
+
+                    Statistiques
+                    <i class="fa fa-angle-left right"></i>
+                  </p>
                 </a>
-            </li>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a
+                    href="{{route('statistique-recette.view')}}"
+                  class="nav-link">
+                        <i class="nav-icon fa fa-edit"></i>
+                        <p> Recettes</p>
+                    </a>
+
+                  </li>
+
+                  <li class="nav-item">
+                    <a
+                    href="{{route('statistique-trafics.view')}}"
+                  class="nav-link">
+                        <i class="nav-icon fa fa-edit"></i>
+                        <p> Trafics</p>
+                    </a>
+
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('statistique-passage-gate.view') }}" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>Passage Gate</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="forms/editors.html" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>Passage UHF</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
             @endif
 
             <li class="nav-item">
                 <a
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
-
                 href="{{route('recettes.trafics.site')}}"
                 @else
                 href="{{route('recettes-trafics.index')}}"
-
-
                 @endif
               class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
@@ -67,8 +103,6 @@
                 href="{{route('passage.gate.site')}}"
                 @else
                 href="{{route('point-passage.index')}}"
-
-
                 @endif
                  class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
@@ -80,12 +114,9 @@
             <li class="nav-item">
                 <a
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
-
                 href="{{route('passage.uhf.site')}}"
                 @else
                 href="{{route('point-passage-uhf.index')}}"
-
-
                 @endif
                 class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
@@ -96,13 +127,10 @@
             <li class="nav-item">
                 <a
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
-
                 href="{{route('passage.manuel.site')}}"
                 @else
                 href="{{route('point-passage-manuel.index')}}"
-
                 @endif
-
                class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
                     <p>Point de passage Manuel</p>
@@ -111,15 +139,12 @@
 
 
             @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','PERCEPTEUR']))
-
             <li class="nav-item">
                 <a
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
-
                 href="{{route('dysfonct.site')}}"
                 @else
                 href="{{route('dysfonctionement.index')}}"
-
                 @endif
                 class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>
@@ -129,12 +154,9 @@
             <li class="nav-item">
                 <a
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN','SAFER']))
-
                     href="{{route('compt.site')}}"
                 @else
                 href="{{route('comptage.index')}}"
-
-
                 @endif
               class="nav-link">
                     <i class="nav-icon fa fa-edit"></i>

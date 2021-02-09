@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('passage/gate/{site}','PointPassageController@passageGatebySite')->name('passage.gate.list.site');
 
     Route::get('passage-manuel/site','PointPassageManuelController@site')->name('passage.manuel.site');
-    Route::get('passage/manuel/{site}','PointPassageManuelConPointPassageControllertroller@passageGatebySite')->name('passage.manuel.list.site');
+    Route::get('passage/manuel/{site}','PointPassageManuelController@passageGatebySite')->name('passage.manuel.list.site');
 
     Route::get('compt/site','ComptageController@site')->name('compt.site');
 
@@ -91,8 +91,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('file-export-comptage', 'ComptageController@fileExport')->name('file-export.comptage');
 
 
-    Route::post('chatsJs','ChatJsController@recettes')->name('statistique-recette.chart');;
+    Route::post('chatsJs','ChatJsController@recettes')->name('statistique-recette.chart');
     Route::get('statistique-recette','ChatJsController@statistiqueRecette')->name('statistique-recette.view');
+    Route::get('statistique-trafics','ChatJsController@statistiqueTrafics')->name('statistique-trafics.view');
+    Route::post('statistique-trafics-post','ChatJsController@trafics')->name('statistique-trafics.chart');
+
+    Route::get('statistique-passage-gate','ChatJsController@statistiquePassageGate')->name('statistique-passage-gate.view');
+    Route::post('statistique-passage-gate-post','ChatJsController@passageGate')->name('statistique.passageGate');
+
 
 });
 
