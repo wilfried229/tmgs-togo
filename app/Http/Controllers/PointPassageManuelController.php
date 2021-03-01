@@ -24,6 +24,18 @@ class PointPassageManuelController extends Controller
         return Excel::download(new PassageManuelExport(), 'passageManuel.xlsx');
     }
 
+
+     /**
+     * @return \Illuminate\Support\Collection
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new PointPassageMaunel(), $request->file('file_passage_manuel')->store('temp'));
+
+            flashy()->success("Passage manuel importés avec succès");
+
+            return back();
+        }
     public function passageGatebySite($site){
 
         session()->get('site');

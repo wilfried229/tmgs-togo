@@ -25,6 +25,18 @@ class PointPassageController extends Controller
     }
 
 
+     /**
+     * @return \Illuminate\Support\Collection
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new PointPassage(), $request->file('file_recettes')->store('temp'));
+
+            flashy()->success("Passage importés avec succès");
+
+            return back();
+        }
+
 
     public function passageGatebySite($site){
 

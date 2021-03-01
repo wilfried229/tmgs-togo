@@ -23,6 +23,19 @@ class PassageUhfController extends Controller
         return Excel::download(new PassageUhfExport(), 'passageuhf.xlsx');
     }
 
+     /**
+     * @return \Illuminate\Support\Collection
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new PassageUhf(), $request->file('file_recettes')->store('temp'));
+
+            flashy()->success("Passage UHF importés avec succès");
+
+            return back();
+        }
+
+        
     public function passageGatebySite($site){
 
         session()->get('site');

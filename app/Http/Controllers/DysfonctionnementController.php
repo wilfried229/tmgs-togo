@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Exports\DysfonctionnementExport;
+use App\Imports\DysfonctionnementImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DysfonctionnementController extends Controller
@@ -23,6 +24,18 @@ class DysfonctionnementController extends Controller
     {
         return Excel::download(new DysfonctionnementExport(), 'dysfonction.xlsx');
     }
+
+     /**
+     * @return \Illuminate\Support\Collection
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new DysfonctionnementImport(), $request->file('file_dysfonct')->store('disfonct'));
+
+            flashy()->success("Dysfonctionnement importés avec succès");
+
+            return back();
+        }
 
 
 

@@ -85,10 +85,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('file-export-uhf', 'PassageUhfController@fileExport')->name('file-export.uhf');
 
     Route::get('file-export-manuel', 'PointPassageManuelController@fileExport')->name('file-export.manuel');
+    Route::post('file-import-manuel', 'PointPassageManuelController@fileImport')->name('file-import.manuel');
 
     Route::get('file-export-dysfonc', 'DysfonctionnementController@fileExport')->name('file-export.disfonct');
+    Route::post('file-import-dysfonc', 'DysfonctionnementController@fileImport')->name('file-import.disfonct');
 
     Route::get('file-export-comptage', 'ComptageController@fileExport')->name('file-export.comptage');
+    Route::post('file-import-comptage', 'ComptageController@fileImport')->name('file-import.comptage');
 
 
     Route::post('chatsJs','ChatJsController@recettes')->name('statistique-recette.chart');

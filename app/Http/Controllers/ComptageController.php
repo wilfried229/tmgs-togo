@@ -17,7 +17,7 @@ use App\Exports\ComptagesExport;
 class ComptageController extends Controller
 {
 
-    
+
      /**
      * @return \Illuminate\Support\Collection
      */
@@ -25,6 +25,19 @@ class ComptageController extends Controller
     {
         return Excel::download(new ComptagesExport(), 'comptage.xlsx');
     }
+
+
+     /**
+     * @return \Illuminate\Support\Collection
+        */
+        public function fileImport(Request $request)
+        {
+            Excel::import(new Comptage(), $request->file('file_comptage')->store('temp'));
+
+            flashy()->success("Comptage importés avec succès");
+
+            return back();
+        }
 
     public function passageGatebySite($site){
 
