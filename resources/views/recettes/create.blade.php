@@ -178,49 +178,79 @@ Rapport TGMS-GATE \TOGO
 
                                 <fieldset>
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-4">
+                                        <div class="col-lg-6 col-md-6">
 
                                             <label for="">Recettes Informatisée</label>
                                             <input type="number" name="recette_informatiser" id="recette_informatiser" class="form-control" required>
                                         </div>
-                                        <div class="col-lg-4 col-md-4">
+                                        <div class="col-lg-6 col-md-6">
 
                                             <label for="">Recettes Déclarée</label>
                                             <input type="number" name="recette_declarer" id="recette_declarer" class="form-control" required>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4">
-
-                                            <label for="">VL</label>
-                                            <input type="number" name="vl" id="vl" class="form-control" required>
-                                        </div>
 
                                     </div>
                                     <br>
 
                                 </fieldset>
 
-
                                 <br>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4">
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">2 Roues</label>
+                                        <input type="number" name="roues2" id="roues2" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Tricycle</label>
+                                        <input type="number" name="tricycle" id="tricycle" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+
+                                        <label for="">VL</label>
+                                        <input type="number" name="vl" value="{{ old("vl",$recetteTrafic->vl ?? '')  }}" id="vl" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
 
                                         <label for="">mini_bus</label>
                                         <input type="number" name="mini_bus" id="mini_bus" class="form-control" required>
                                     </div>
-
-                                    <div class="col-lg-4 col-md-4">
+                                    <div class="col-lg-2 col-md-2">
 
                                         <label for="">Autocars camion</label>
                                         <input type="number" name="autocars_camion" id="autocars_camion" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-4 col-md-4">
 
-                                        <label for="">PL</label>
-                                        <input type="number" name="pl" id="pl" class="form-control" required>
+
+                                </div>
+
+                                <br>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 2 Essieux</label>
+                                        <input type="number" name="pl_2essieux" id="pl_2essieux" class="form-control" required>
                                     </div>
 
+                                    <div class="col-lg-3 col-md-3">
 
+                                        <label for="">Pl 3 Essieux</label>
+                                        <input type="number" name="pl_3essieux" id="pl_3essieux" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 4 Essieux</label>
+                                        <input type="number" name="pl_4essieux" id="pl_4essieux" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 5 Essieux</label>
+                                        <input type="number" name="pl_5essieux" id="pl_5essieux" class="form-control" required>
+                                    </div>
 
                                 </div>
 

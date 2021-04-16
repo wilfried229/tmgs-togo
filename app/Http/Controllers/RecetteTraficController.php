@@ -187,10 +187,17 @@ class RecetteTraficController extends Controller
             $recetteTrafic->vl = $request->vl;
             $recetteTrafic->mini_bus = $request->mini_bus;
             $recetteTrafic->autocars_camion = $request->autocars_camion;
-            $recetteTrafic->pl = $request->pl;
+            $recetteTrafic->tricycle = $request->tricycle;
+            $recetteTrafic->roues2 = $request->roues2;
+
+            $recetteTrafic->pl_2essieux = $request->pl_2essieux;
+            $recetteTrafic->pl_3essieux = $request->pl_3essieux;
+            $recetteTrafic->pl_4essieux = $request->pl_4essieux;
+            $recetteTrafic->pl_5essieux = $request->pl_5essieux;
+
             $recetteTrafic->nbre_exempte = $request->nbre_exempte;
             $recetteTrafic->violation = $request->violation;
-            $recetteTrafic->total = ($request->vl + $request->mini_bus + $request->autocars_camion + $request->pl);
+            $recetteTrafic->total = ($request->vl + $request->mini_bus + $request->autocars_camion + $request->tricycle +  $request->roues2 + $request->pl_2essieux+ $request->pl_3essieux+ $request->pl_4essieux + $request->pl_5essieux);
             $recetteTrafic->observation = $request->observation;
 
 
@@ -206,7 +213,6 @@ class RecetteTraficController extends Controller
             abort(500);
             flashy()->error("Opération non éffectuée ");
             return back();
-
 
         }
 
@@ -280,7 +286,12 @@ class RecetteTraficController extends Controller
             $recetteTrafic->vl = $request->vl;
             $recetteTrafic->mini_bus = $request->mini_bus;
             $recetteTrafic->autocars_camion = $request->autocars_camion;
-            $recetteTrafic->pl = $request->pl;
+            $recetteTrafic->tricycle = $request->tricycle;
+            $recetteTrafic->roues2 = $request->roues2;
+            $recetteTrafic->pl_2essieux = $request->pl_2essieux;
+            $recetteTrafic->pl_3essieux = $request->pl_3essieux;
+            $recetteTrafic->pl_4essieux = $request->pl_4essieux;
+            $recetteTrafic->pl_5essieux = $request->pl_5essieux;
             $recetteTrafic->nbre_exempte = $request->nbre_exempte;
             $recetteTrafic->violation = $request->violation;
             $recetteTrafic->total = $request->total;
@@ -392,16 +403,12 @@ class RecetteTraficController extends Controller
 
 
                 if ($agent != null) {
-                    # code...
                     $recetteTrafic->where("agent_voie", "=", $agent);
                 }
 
                 $site = Site::where('libelle',session('site'))->first();
-
                 $recetteTrafic->where("site_id",$site->id);
-
                 $recettes =  $recetteTrafic->get(['recettes_trafics.*']);
-
                 session()->flashInput($request->all());
 
                 $agents  = Agents::where('site_id',$site->id)->get();

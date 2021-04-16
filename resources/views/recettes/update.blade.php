@@ -175,68 +175,93 @@ Rapport TGMS-GATE \TOGO
                                             <label for="">Suplus</label>
                                             <input type="number" name="supplus" value="{{ $recetteTrafic->supplus }}" id="supplus" class="form-control" required>
                                         </div>
-                                        <div class="col-lg-4 col-md-4">
 
-                                            <label for="">VL</label>
-                                            <input type="number" name="vl" value="{{ $recetteTrafic->vl }}" id="vl" class="form-control" required>
-                                        </div>
 
-                                        <div class="col-lg-4 col-md-4">
-
-                                            <label for="">mini_bus</label>
-                                            <input type="number" name="mini_bus" value="{{ $recetteTrafic->mini_bus }}" id="mini_bus" class="form-control" required>
-                                        </div>
 
                                     </div>
                                 </fieldset>
 
-
-                                <br>
                                 <div class="row">
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">2 Roues</label>
+                                        <input type="number" name="roues2" id="roues2" value="{{ old("vl",$recetteTrafic->roues2 ?? '')  }}"  class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Tricycle</label>
+                                        <input type="number" name="tricycle" id="tricycle" value="{{ old("vl",$recetteTrafic->tricycle ?? '')  }}"  class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+
+                                        <label for="">VL</label>
+                                        <input type="number" name="vl" value="{{ old("vl",$recetteTrafic->vl ?? '')  }}" id="vl" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+
+                                        <label for="">mini_bus</label>
+                                        <input type="number" name="mini_bus" value="{{ $recetteTrafic->mini_bus }}" id="mini_bus" class="form-control" required>
+                                    </div>
+
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Autocars camion</label>
                                         <input type="number" name="autocars_camion" value="{{ $recetteTrafic->autocars_camion }}" id="autocars_camion" class="form-control" required>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-
-                                        <label for="">PL</label>
-                                        <input type="number" name="pl" value="{{ $recetteTrafic->pl }}" id="pl" class="form-control" required>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4">
-
-                                        <label for="">Nombre Exempté</label>
-                                        <input type="number" name="nbre_exempte" value="{{ $recetteTrafic->nbre_exempte }}" id="nbre_exempte" class="form-control" required>
                                     </div>
 
                                 </div>
 
                                 <br>
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-3 col-md-3">
 
+                                        <label for="">Pl 2 Essieux</label>
+                                        <input type="number" name="pl_2essieux" value="{{ $recetteTrafic->pl_2essieux }}" id="pl_2essieux" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 3 Essieux</label>
+                                        <input type="number" name="pl_3essieux" value="{{ $recetteTrafic->pl_3essieux }}"  id="pl_3essieux" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3">
+                                        <label for="">Pl 4 Essieux</label>
+                                        <input type="number" name="pl_4essieux" id="pl_4essieux" value="{{ $recetteTrafic->pl_4essieux }}" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+                                        <label for="">Pl 5 Essieux</label>
+                                        <input type="number" name="pl_5essieux" id="pl_5essieux" value="{{ $recetteTrafic->pl_5essieux }}" class="form-control" required>
+                                    </div>
+
+                                </div>
+
+
+                                <br>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4">
+                                        <label for="">Nombre Exempté</label>
+                                        <input type="number" name="nbre_exempte" value="{{ $recetteTrafic->nbre_exempte }}" id="nbre_exempte" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
                                         <label for="">Violation</label>
                                         <input type="number" name="violation" value="{{ $recetteTrafic->violation }}" id="violation" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
-
+                                    <div class="col-lg-4 col-md-4">
                                         <label for="">total</label>
                                         <input type="number" name="total" value="{{ $recetteTrafic->total }}" id="total" class="form-control" required>
                                     </div>
 
                                     <div class="col-lg-12 col-md-12">
                                         <label for="">Observation</label>
-
                                         <textarea name="observation"  id="observation" cols="30" rows="10" class="form-control">{{ $recetteTrafic->observation }}</textarea>
                                     </div>
-
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <input type="submit" value="Modifier" class="btn btn-success">
-
                                     </div>
                                 </div>
                             </form>

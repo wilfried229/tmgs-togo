@@ -32,7 +32,7 @@ class CreateRecettesTraficsTable extends Migration
             $table->string('vl');
             $table->string('mini_bus');
             $table->string('autocars_camion');
-            $table->string('pl');
+            $table->string('pl')->nullable();
             $table->string('nbre_exempte');
             $table->string('violation');
             $table->string('total');

@@ -157,7 +157,6 @@ Rapport TGMS-GATE \TOGO
                                         </tr>
                                     <tr>
                                         @if (in_array(Auth::user()->email,['wilfyoung229@gmail.com','mathilde.berena@hotmail.fr']))
-
                                         <th>Suppression</th>
                                         @endif
                                         <th data-target="date">Date</th>
@@ -165,9 +164,7 @@ Rapport TGMS-GATE \TOGO
                                         <th data-target="voie">Voie</th>
                                         <th data-target="vacation">Vacation</th>
                                         <th data-target="agent">Agent</th>
-
                                         <th data-target="montant">Montant Coupon</th>
-
                                         <th data-target="recette_information">Recette Informatisée</th>
                                         <th data-target="recette_declarer">Recette déclarée</th>
                                         <th>Manquant</th>
@@ -175,7 +172,12 @@ Rapport TGMS-GATE \TOGO
                                         <th>Vl</th>
                                         <th>Mini bus</th>
                                         <th>Autocars camion</th>
-                                        <th>Pl</th>
+                                        <th>2 Roues</th>
+                                        <th>Tricycle</th>
+                                        <th>Pl 2 Essieux</th>
+                                        <th>Pl 3 Essieux</th>
+                                        <th>Pl 4 Essieux</th>
+                                        <th>Pl 5 Essieux et plus</th>
                                         <th>Nombre exempté</th>
                                         <th>Violation</th>
                                         <th>Total</th>
@@ -219,7 +221,12 @@ Rapport TGMS-GATE \TOGO
                                             <td>{{$recette->vl}}</td>
                                             <td>{{$recette->mini_bus}}</td>
                                             <td>{{$recette->autocars_camion}}</td>
-                                            <td>{{$recette->pl}}</td>
+                                            <td>{{$recette->roues2}}</td>
+                                            <td>{{$recette->tricycle}}</td>
+                                            <td>{{$recette->pl_2essieux}}</td>
+                                            <td>{{$recette->pl_3essieux}}</td>
+                                            <td>{{$recette->pl_4essieux}}</td>
+                                            <td>{{$recette->pl_5essieux}}</td>
                                             <td>{{$recette->nbre_exempte}}</td>
                                             <td>{{$recette->violation}}</td>
                                             <td>{{$recette->total}}</td>
