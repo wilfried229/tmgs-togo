@@ -183,8 +183,6 @@ class ChatJsController extends Controller
         ->with('recetesVoiesWeek2',json_encode($recetesVoiesWeek2,JSON_NUMERIC_CHECK))
         ->with('recetesVoiesWeek3',json_encode($recetesVoiesWeek3,JSON_NUMERIC_CHECK))
         ->with('recetesVoiesWeek4',json_encode($recetesVoiesWeek4,JSON_NUMERIC_CHECK));
-
-
     	//return view('chatjs')->with('voies',json_encode($voies,JSON_BIGINT_AS_STRING))->with('montants',json_encode($montants,JSON_NUMERIC_CHECK));
 
     }

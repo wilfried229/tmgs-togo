@@ -80,8 +80,6 @@ class AgentsController extends Controller
      */
     public function edit($id)
     {
-        //
-
         $agent  = Agents::find($id);
         $sites  = Site::all();
 
