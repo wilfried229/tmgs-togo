@@ -21,6 +21,10 @@ class AddRecettesToRecettesTrafics extends Migration
             $table->string('pl_3essieux');
             $table->string('pl_4essieux');
             $table->string('pl_5essieux');
+            $table->string('pl_6essieux');
+            $table->string('pl_7essieux');
+            $table->string('pl_8essieux');
+            $table->string('pl_9essieux');
 
         });
     }

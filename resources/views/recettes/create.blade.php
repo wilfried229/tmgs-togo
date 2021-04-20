@@ -251,6 +251,28 @@ Rapport TGMS-GATE \TOGO
                                         <label for="">Pl 5 Essieux</label>
                                         <input type="number" name="pl_5essieux" id="pl_5essieux" class="form-control" required>
                                     </div>
+                                    
+                                    <div class="col-lg-3 col-md-3">
+                                    <label for="">Pl 6 Essieux</label>
+                                        <input type="number" name="pl_6essieux" id="pl_6essieux" class="form-control" required>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 7 Essieux</label>
+                                        <input type="number" name="pl_7essieux" id="pl_7essieux" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 8 Essieux</label>
+                                        <input type="number" name="pl_8essieux" id="pl_8essieux" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3">
+
+                                        <label for="">Pl 9 Essieux</label>
+                                        <input type="number" name="pl_9essieux" id="pl_9essieux" class="form-control" required>
+                                    </div>
 
                                 </div>
 

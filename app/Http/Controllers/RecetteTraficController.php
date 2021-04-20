@@ -147,7 +147,7 @@ class RecetteTraficController extends Controller
     public function store(Request $request)
     {
         //
-
+        
         try {
             $recetteTrafic = new  RecetesTrafic();
             $recetteTrafic->date = $request->date;
@@ -194,10 +194,15 @@ class RecetteTraficController extends Controller
             $recetteTrafic->pl_3essieux = $request->pl_3essieux;
             $recetteTrafic->pl_4essieux = $request->pl_4essieux;
             $recetteTrafic->pl_5essieux = $request->pl_5essieux;
+            $recetteTrafic->pl_6essieux = $request->pl_6essieux;
+            $recetteTrafic->pl_7essieux = $request->pl_7essieux;
+            $recetteTrafic->pl_8essieux = $request->pl_8essieux;
+            $recetteTrafic->pl_9essieux = $request->pl_9essieux;
 
             $recetteTrafic->nbre_exempte = $request->nbre_exempte;
             $recetteTrafic->violation = $request->violation;
-            $recetteTrafic->total = ($request->vl + $request->mini_bus + $request->autocars_camion + $request->tricycle +  $request->roues2 + $request->pl_2essieux+ $request->pl_3essieux+ $request->pl_4essieux + $request->pl_5essieux);
+            $recetteTrafic->total = ($request->vl + $request->mini_bus + $request->autocars_camion + $request->tricycle +  $request->roues2 + $request->pl_2essieux+ $request->pl_3essieux+ $request->pl_4essieux + 
+            $request->pl_5essieux  + $request->pl_6essieux+ $request->pl_7essieux+ $request->pl_8essieux+ $request->pl_9essieux);
             $recetteTrafic->observation = $request->observation;
 
 
@@ -292,6 +297,10 @@ class RecetteTraficController extends Controller
             $recetteTrafic->pl_3essieux = $request->pl_3essieux;
             $recetteTrafic->pl_4essieux = $request->pl_4essieux;
             $recetteTrafic->pl_5essieux = $request->pl_5essieux;
+            $recetteTrafic->pl_6essieux = $request->pl_6essieux;
+            $recetteTrafic->pl_7essieux = $request->pl_7essieux;
+            $recetteTrafic->pl_8essieux = $request->pl_8essieux;
+            $recetteTrafic->pl_9essieux = $request->pl_9essieux;
             $recetteTrafic->nbre_exempte = $request->nbre_exempte;
             $recetteTrafic->violation = $request->violation;
             $recetteTrafic->total = $request->total;
