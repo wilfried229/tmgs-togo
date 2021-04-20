@@ -177,7 +177,11 @@ Rapport TGMS-GATE \TOGO
                                         <th>Pl 2 Essieux</th>
                                         <th>Pl 3 Essieux</th>
                                         <th>Pl 4 Essieux</th>
-                                        <th>Pl 5 Essieux et plus</th>
+                                        <th>Pl 5 Essieux</th>
+                                        <th>Pl 6 Essieux</th>
+                                        <th>Pl 7 Essieux</th>
+                                        <th>Pl 8 Essieux</th>
+                                        <th>Pl 9 Essieux</th>
                                         <th>Nombre exempté</th>
                                         <th>Violation</th>
                                         <th>Total</th>
@@ -227,6 +231,10 @@ Rapport TGMS-GATE \TOGO
                                             <td>{{$recette->pl_3essieux}}</td>
                                             <td>{{$recette->pl_4essieux}}</td>
                                             <td>{{$recette->pl_5essieux}}</td>
+                                            <td>{{$recette->pl_6essieux}}</td>
+                                            <td>{{$recette->pl_7essieux}}</td>
+                                            <td>{{$recette->pl_8essieux}}</td>
+                                            <td>{{$recette->pl_9essieux}}</td>
                                             <td>{{$recette->nbre_exempte}}</td>
                                             <td>{{$recette->violation}}</td>
                                             <td>{{$recette->total}}</td>
