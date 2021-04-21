@@ -158,22 +158,14 @@ class ChatJsController extends Controller
 
         $recetesVoiesWeek4  =  [];
         foreach ($voies as $key => $value) {
-
             $recetesVoie = RecetesTrafic::where('voie_id',$value->id)->whereBetween('date', [$mondayWeek4,$sundayWeek4])
             ->select('recette_informatiser','voie_id','site_id')->sum('recette_informatiser');
             array_push($recetesVoiesWeek4,$recetesVoie);
         }
-
-
-
-
-
         $voieSites = [];
         foreach ($voies as $key => $value) {
-            # code...
             array_push($voieSites,$value['libelle']);
         }
-
 
         $site = Site::where('id',$request->site_id)->first();
         $periode  = $request->month;

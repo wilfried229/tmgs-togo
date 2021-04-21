@@ -68,7 +68,7 @@ Rapport TGMS-GATE \TOGO
                                 @csrf
 
 
-                                @if (Auth::user()->role  == "ADMIN" )
+                                @if (Auth::user()->role  == "ADMIN" || Auth::user()->role  == "SUPERADMIN"  )
 
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">

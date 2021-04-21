@@ -77,7 +77,7 @@ TGMS-GATE
                                     <div class="col-lg-4 col-md-4">
 
                                         <label for="">Site</label>
-                                        <select name="site_id" id="site_id" class="form-control">
+                                        <select name="site_id" id="site_id" class="form-control" required>
                                             @foreach ($sites as $site)
                                             <option value="{{ $site->id }}">{{ $site->libelle }}</option>
 

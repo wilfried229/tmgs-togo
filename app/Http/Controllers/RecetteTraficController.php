@@ -125,7 +125,7 @@ class RecetteTraficController extends Controller
                 $voies  = Voie::where('site_id',$site->id)->get();
         } else {
             # code...
-            $sites  = Site::where('id',Auth::user()->site_id)->first();
+           $sites  = Site::where('id',Auth::user()->site_id)->first();
             $voies  = Voie::where('site_id',Auth::user()->site_id)->get();
             $agents  = Agents::where('site_id',Auth::user()->site_id)->get();
             $site = Site::where('id',Auth::user()->site_id)->first();
@@ -205,6 +205,7 @@ class RecetteTraficController extends Controller
             $request->pl_5essieux  + $request->pl_6essieux+ $request->pl_7essieux+ $request->pl_8essieux+ $request->pl_9essieux);
             $recetteTrafic->observation = $request->observation;
 
+           // dd($recetteTrafic);
 
             $recetteTrafic->user_id = Auth::user()->id;
             $recetteTrafic->save();
