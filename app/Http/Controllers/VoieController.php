@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use Illuminate\Http\Request;
 use App\Models\Voie;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +29,8 @@ class VoieController extends Controller
     public function create()
     {
         //
-        return view('voie.create');
+        $sites = Site::all();
+        return view('voie.create',compact('sites'));
     }
 
     /**
@@ -44,6 +46,7 @@ class VoieController extends Controller
             //code...
         $voie  = new Voie();
         $voie->libelle = $request->libelle;
+        $voie->site_id = $request->site_id;
         $voie->save();
 
         return back();
@@ -67,7 +70,6 @@ class VoieController extends Controller
      */
     public function show($id)
     {
-        //
         return view('voie.show');
     }
 
@@ -81,7 +83,9 @@ class VoieController extends Controller
     {
         //
         $voie = voie::find($id);
-        return view('voie.update',compact('voie'));
+        $sites = Site::all();
+
+        return view('voie.update',compact('voie','sites'));
     }
 
     /**
@@ -98,6 +102,7 @@ class VoieController extends Controller
             //code...
         $voie  = Voie::find($id);
         $voie->libelle = $request->libelle;
+        $voie->site_id = $request->site_id;
         $voie->save();
 
         return back();
@@ -105,7 +110,6 @@ class VoieController extends Controller
         } catch (\Exception $ex) {
             //throw $th;
             Log::info($ex->getMessage());
-
             abort(500);
         }
     }

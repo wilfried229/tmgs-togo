@@ -75,7 +75,6 @@ TGMS-GATE
                                         <input type="text" id="libelle" name="libelle" class="form-control" required>
                                     </div>
 
-                                  
                                 </div>
                                 <br>
                                 <div class="row">

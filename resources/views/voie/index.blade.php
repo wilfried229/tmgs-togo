@@ -68,16 +68,17 @@ TGMS-GATE
                                 <table id="example1" class="table  estdata table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th data-target="date">titre</th>
-
+                                        <th data-target="date">Titre</th>
+                                        <th>Site</th>    
+        
                                         <th>Options</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>titre</th>
-
-                                        <th>Options</th>
+                                        <th>Titre</th>
+                                        <th>Site</th>    
+                                    <th>Options</th>
 
                                     </tr>
                                     </tfoot>
@@ -88,6 +89,8 @@ TGMS-GATE
 
                                         <tr>
                                             <td>{{$voie->libelle}}</td>
+                                            <td>{{$voie->site()->first()->libelle}}</td>
+
                                         <th>
 
                                             <a href="{{ route('voie.edit',$voie->id) }}" class="btn btn-info"> Modifier</a>
