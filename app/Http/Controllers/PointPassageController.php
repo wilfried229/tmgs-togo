@@ -154,7 +154,9 @@ class PointPassageController extends Controller
 
             $pointPassage->somme_total_trafic = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h);
 
-            $pointPassage->somme_total_recette_equialente = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h)*300;
+            ///$pointPassage->somme_total_recette_equialente = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h)*$request->passage_gate;
+
+            $pointPassage->somme_total_recette_equialente =$request->passage_gate;
 
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
@@ -240,10 +242,11 @@ class PointPassageController extends Controller
             $pointPassage->vacation_6h = $request->vacation_6h;
             $pointPassage->vacation_14h = $request->vacation_14h;
             $pointPassage->vacation_20h = $request->vacation_20h;
+            //$pointPassage->passage_gate= $request->passage_gate;
             $pointPassage->somme_total_trafic = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h);
 
-            $pointPassage->somme_total_recette_equialente = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h)*300;
-
+            //$pointPassage->somme_total_recette_equialente = ($request->vacation_6h +$request->vacation_14h +$request->vacation_20h)*$request->passage_gate;
+            $pointPassage->somme_total_recette_equialente =$request->passage_gate;
             $pointPassage->paiement_espece_defaut_provision = $request->paiement_espece_defaut_provision;
             $pointPassage->paiement_espece_dysfon = $request->paiement_espece_dysfon;
 

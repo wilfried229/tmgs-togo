@@ -67,13 +67,13 @@ Rapport TGMS-GATE \TOGO
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-4">
 
                             <label for="">Date</label>
                             <input type="date" value="{{ $pointPassage->date }}" name="date" class="form-control" >
                         </div>
 
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-4">
 
                             <label for="">Voie</label>
 
@@ -89,7 +89,13 @@ Rapport TGMS-GATE \TOGO
                             </select>
 
                         </div>
+                        <div class="col-lg-4 col-md-4">
 
+                            <label for="">Recette equivalente</label>
+
+                                <input type="number" name="passage_gate" class="form-control" value="{{$pointPassage->passage_gate }}">
+
+                        </div>
                     </div>
                     <br>
 
