@@ -35,12 +35,17 @@ class ChatJsController extends Controller
         for($i=$start_time; $i<$end_time; $i+=86400)
         {
            $list[] = date('d', $i);
+
+        //dd($list);
+
            $gate = PointPassage::whereDay('date', date('d', $i))
-           ->select('somme_total_trafic','site_id')->sum('somme_total_trafic');
+           ->whereMonth('date','=',$month)->where('site_id',"=",$request->site_id)
+           ->select('somme_total_recette_equialente','site_id')->sum('somme_total_recette_equialente');
            array_push($sommeGate,$gate);
         }
-
-        //dd($sommeGate);
+       // $gats = PointPassage::whereDay('date','=', 03)->whereMonth('date','=',$month)->where('site_id',"=",1)
+       // ->get();
+        //dd($gats);
         $site = Site::where('id',$request->site_id)->first();
         $periode  = $request->month;
         //return view('index');
@@ -80,11 +85,17 @@ class ChatJsController extends Controller
         {
            $list[] = date('d', $i);
            $Trafics = RecetesTrafic::whereDay('date', date('d', $i))
+           ->whereMonth('date','=',$month)->where('site_id',"=",$request->site_id)
            ->select('total','site_id')->sum('total');
            array_push($traficsMonth,$Trafics);
         }
 
+       // $Trafics = RecetesTrafic::whereDay('date', date('d', $i))
+        //->whereMonth('date','=',$month)->where('site_id',"=",$request->site_id)
+        //->get();
         //dd($traficsMonth);
+
+
         $site = Site::where('id',$request->site_id)->first();
         $periode  = $request->month;
         //return view('index');
@@ -113,7 +124,9 @@ class ChatJsController extends Controller
         $recetesVoiesWeek1  =  [];
         foreach ($voies as $key => $value) {
 
-            $recetesVoie = RecetesTrafic::where('voie_id',$value->id)->whereBetween('date', [$mondayWeek1,$sundayWeek1])
+            $recetesVoie = RecetesTrafic::where('voie_id',$value->id)
+            ->whereBetween('date', [$mondayWeek1,$sundayWeek1])
+
             ->select('recette_informatiser','voie_id','site_id')->sum('recette_informatiser');
             array_push($recetesVoiesWeek1,$recetesVoie);
         }
@@ -146,6 +159,7 @@ class ChatJsController extends Controller
         $recetesVoiesWeek3  =  [];
         foreach ($voies as $key => $value) {
             $recetesVoie = RecetesTrafic::where('voie_id',$value->id)->whereBetween('date', [$mondayWeek3,$sundayWeek3])
+
             ->select('recette_informatiser','voie_id','site_id')->sum('recette_informatiser');
             array_push($recetesVoiesWeek3,$recetesVoie);
         }

@@ -98,7 +98,7 @@ Rapport TGMS-GATE \TOGO
 
             <a class="btn btn-block btn-success" href="#" style="font-size: 17px;" data-toggle="modal" data-target="#ENCOModal" data-whatever="@getbootstrap">
 
-                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT  ({{ $site ?? "" }})</h5>
+                <h5 class="form-header">POINT JOURNALIER DES PASSAGES _ PREPAIEMENT  ({{ $site ?? "" }}) // Total RECETTE EQUIVALENTE: {{ $pointPassages->sum('somme_total_recette_equialente') }} / TRAFIC : {{ $pointPassages->sum('somme_total_trafic') }}</h5>
 
 
             </a><!-- /.card-header -->

@@ -35,7 +35,6 @@ Rapport TGMS-GATE \TOGO
 
             </div>
 
-
             <div class="col-md-3">
 
             </div>
@@ -66,13 +65,13 @@ Rapport TGMS-GATE \TOGO
                     @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']))
 
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Date</label>
                             <input type="date" name="date" class="form-control" >
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
 
                             <label for="">Voie</label>
 
@@ -85,13 +84,13 @@ Rapport TGMS-GATE \TOGO
                             </select>
 
                         </div>
-                        <div class="col-lg-4 col-md-4">
+            {{--             <div class="col-lg-4 col-md-4">
 
                             <label for="">Recette equivalente</label>
 
                                 <input type="number" name="passage_gate" class="form-control" value="">
 
-                        </div>
+                        </div> --}}
 
                     </div>
 
