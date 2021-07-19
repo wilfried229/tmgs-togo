@@ -46,6 +46,10 @@ class RecettesImport implements ToModel
             'created_at'    => $row[31],
             'updated_at'    => $row[32],
             ]);
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> dd1810d5a27320092d8e323d952eb815b5ef0061
     }
 }
