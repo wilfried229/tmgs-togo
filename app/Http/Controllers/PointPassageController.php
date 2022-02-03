@@ -274,6 +274,8 @@ class PointPassageController extends Controller
             $pointPassage = PointPassage::find($id);
             $pointPassage->delete();
 
+            flashy()->success("Suppression effectuée avec succès");
+
             return  redirect()->back();
 
         }catch (\Exception $ex){
@@ -340,4 +342,6 @@ class PointPassageController extends Controller
             abort(500);
         }
     }
+
+
 }

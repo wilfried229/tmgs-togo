@@ -170,6 +170,13 @@ Rapport TGMS-GATE \TOGO
 
                                 <td>
                                     <a href="{{ route('point-passage.edit',$point->id) }}" class="btn btn-info">Modifier</a>
+
+                                    <a  onclick="event.preventDefault(); document.getElementById('retirer-a-form-{{$point->id}}').submit(); return false;"   class="btn btn-danger">Retirer </a>
+                                    &nbsp;&nbsp;
+                                    <form id="retirer-a-form-{{$point->id}}" action="{{route('point-passage.destroy',['point_passage'=>$point->id])}}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </td>
                                 @endif
 

@@ -27,16 +27,36 @@ class ChatJsController extends Controller
 
         $dateTime = new DateTime($request->month);
         $month = $dateTime->format('m');
-        $year =$dateTime->format('y');
+        $year =$dateTime->format('Y');
         $start_date = "01-".$request->month."-".$year;
         $start_time = strtotime($start_date);
         $end_time = strtotime("+1 month", $start_time);
         $sommeGate = [];
         for($i=$start_time; $i<$end_time; $i+=86400)
         {
-           $list[] = date('d', $i);
-           $gate = PointPassage::whereDay('date', date('d', $i))
-           ->select('somme_total_trafic','site_id')->sum('somme_total_trafic');
+           ///dd($start_time);
+            $list[] = date('d', $i);
+            $numnber = date('d', $i);
+            $tes  = "$year-$month-$numnber";
+                    $date=date_create($tes);
+           // dd($tes);
+            $datSearch = date_format($date,"Y-m-d");
+            ////$list[]= date_format($date,"Y-m-d");
+           //$list[] = date('d-m-Y','01-12-2020');
+
+
+           $gate = PointPassage::whereDate('date', $datSearch)
+           ->where('site_id',"=",$request->site_id)
+           ->select('somme_total_recette_equialente','site_id')->sum('somme_total_recette_equialente');
+
+           //dd($gate);
+
+/*
+           $gate = PointPassage::whereDate('date', date('Y-m-d', $year."-".$month.'-'.$i))
+          // ->whereMonth('date','=',$month)
+           //->whereYear('date','=',$year)
+           ->where('site_id',"=",$request->site_id)
+           ->select('somme_total_recette_equialente','site_id')->sum('somme_total_recette_equialente'); */
            array_push($sommeGate,$gate);
         }
 
@@ -79,7 +99,13 @@ class ChatJsController extends Controller
         for($i=$start_time; $i<$end_time; $i+=86400)
         {
            $list[] = date('d', $i);
-           $Trafics = RecetesTrafic::whereDay('date', date('d', $i))
+           $numnber = date('d', $i);
+           $tes  = "$year-$month-$numnber";
+                   $date=date_create($tes);
+          // dd($tes);
+           $datSearch = date_format($date,"Y-m-d");
+           ////$list[]= date_format($date,"Y-m-d");
+           $Trafics = RecetesTrafic::whereDate('date',$datSearch)
            ->select('total','site_id')->sum('total');
            array_push($traficsMonth,$Trafics);
         }
