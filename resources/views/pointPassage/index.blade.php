@@ -145,15 +145,11 @@ Rapport TGMS-GATE \TOGO
                                 @endif
                             </tr>
                         </thead>
-
                         <tbody>
-
                             @foreach ($pointPassages as $point)
-
                             <tr>
                                 <td>
                                     {{ Carbon\Carbon::parse($point->date)->format('d/m/Y') }}
-
                                 </td>
                                 <td>{{ $point->site()->first()->libelle }}</td>
                                 <td>{{ $point->voie()->first()->libelle }}</td>
